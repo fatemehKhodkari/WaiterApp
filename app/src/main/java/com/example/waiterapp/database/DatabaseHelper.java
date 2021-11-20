@@ -1,4 +1,4 @@
-package com.example.foodorderiing.database;
+package com.example.waiterapp.database;
 
 
 import android.content.Context;
@@ -7,12 +7,12 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import com.example.foodorderiing.database.dao.CustomerDao;
-import com.example.foodorderiing.database.dao.GroupingDao;
-import com.example.foodorderiing.database.dao.ProductDao;
-import com.example.foodorderiing.model.Customer;
-import com.example.foodorderiing.model.Grouping;
-import com.example.foodorderiing.model.Product;
+import com.example.waiterapp.database.dao.CustomerDao;
+import com.example.waiterapp.database.dao.GroupingDao;
+import com.example.waiterapp.database.dao.ProductDao;
+import com.example.waiterapp.model.Customer;
+import com.example.waiterapp.model.Grouping;
+import com.example.waiterapp.model.Product;
 
 @Database(entities = {Grouping.class, Product.class, Customer.class} , exportSchema = false , version = 1)
 public abstract class DatabaseHelper extends RoomDatabase {
