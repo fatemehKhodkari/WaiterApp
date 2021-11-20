@@ -1,4 +1,4 @@
-package com.example.waiterapp;
+package com.example.waiterapp.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,10 +9,12 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 
+import com.example.waiterapp.R;
+
 import jp.wasabeef.glide.transformations.BlurTransformation;
 
 
-public class MainActivity extends AppCompatActivity {
+public class login extends AppCompatActivity {
 
     ImageView imageView;
     ImageView imageView1;
