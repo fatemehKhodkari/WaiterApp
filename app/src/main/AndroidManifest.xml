@@ -12,7 +12,7 @@
         android:hardwareAccelerated="false"
         android:theme="@style/Theme.WaiterApp">
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.login.login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

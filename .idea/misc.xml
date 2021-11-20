@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/drawable/back_button.xml" value="0.1" />
+        <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/drawable/back_editext.xml" value="0.1" />
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/drawable/shadow_login.xml" value="0.1675925925925926" />
-        <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/layout/activity_main.xml" value="0.264" />
       </map>
     </option>
   </component>

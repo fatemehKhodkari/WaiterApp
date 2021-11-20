@@ -1,4 +1,4 @@
-package com.example.waiterapp.activity;
+package com.example.waiterapp.activity.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
