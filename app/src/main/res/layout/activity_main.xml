@@ -2,9 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:gravity="center"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".activity.login.login">
 
 
@@ -29,33 +29,31 @@
         android:background="@drawable/shadow_login" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:context=".activity.login.ActivityLogin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:gravity="center"
-        android:orientation="vertical"
         android:clickable="true"
         android:focusableInTouchMode="true"
+        android:gravity="center"
+        android:orientation="vertical"
         android:paddingHorizontal="50dp"
-        android:paddingVertical="10dp">
-
+        android:paddingVertical="10dp"
+        tools:context=".activity.login.ActivityLogin">
 
 
         <LinearLayout
             android:id="@+id/lottie"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginBottom="10dp"
-            >
+            android:orientation="vertical">
 
             <com.airbnb.lottie.LottieAnimationView
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                app:lottie_rawRes="@raw/waiter"
                 app:lottie_autoPlay="true"
-                app:lottie_loop="false"/>
+                app:lottie_loop="false"
+                app:lottie_rawRes="@raw/waiter" />
 
         </LinearLayout>
 
@@ -79,8 +77,8 @@
                     android:id="@+id/text_inputpass"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:drawableStart="@drawable/mail_ic"
                     android:background="@drawable/back_editext"
+                    android:drawableStart="@drawable/mail_ic"
                     android:drawablePadding="10dp"
                     android:focusable="true"
                     android:inputType="textEmailAddress"
@@ -94,6 +92,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_marginTop="40dp"
+                android:layout_marginBottom="50dp"
                 android:hint="رمز عبور"
                 app:endIconMode="password_toggle">
 
@@ -101,28 +100,34 @@
                     android:id="@+id/text_input"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@drawable/back_editext"
                     android:drawableStart="@drawable/lock_ic"
                     android:drawablePadding="10dp"
                     android:focusable="true"
                     android:inputType="textPassword"
-                    android:background="@drawable/back_editext"
                     android:textColor="#AFB1B3"
                     android:textColorHint="#AFB1B3" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/buttonlogin"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginTop="50dp"
-                android:background="@drawable/back_button"
-                android:gravity="center"
-                android:text="ورود"
-                android:textColor="#f8f3f7"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/buttonlogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="56dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/back_button"
+                    android:gravity="center"
+                    android:paddingHorizontal="50dp"
+                    android:text="ورود"
+                    android:textColor="#f8f3f7"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
         </LinearLayout>
 
