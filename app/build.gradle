@@ -46,4 +46,9 @@ dependencies {
     //lottie motion
     def lottieVersion = "3.4.0"
     implementation "com.airbnb.android:lottie:$lottieVersion"
+
+    //chart
+    implementation 'com.jjoe64:graphview:4.2.2'
+
+
 }
