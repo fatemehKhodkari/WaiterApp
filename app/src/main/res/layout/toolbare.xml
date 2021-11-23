@@ -48,7 +48,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="رستوران خادم"
+                    android:text="کافه"
                     android:textStyle="bold"
                     android:textSize="18dp"
                     android:textColor="#f8f3f7"

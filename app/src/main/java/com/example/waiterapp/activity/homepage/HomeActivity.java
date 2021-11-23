@@ -1,9 +1,14 @@
 package com.example.waiterapp.activity.homepage;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.example.waiterapp.R;
 import com.jjoe64.graphview.GraphView;
@@ -13,13 +18,22 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 
 public class HomeActivity extends AppCompatActivity {
 
+    CardView cardViewproduct,cardViewcustomer , cardViewprouping;
+    ImageView add_shop;
+    LinearLayout copy , share , upload, download , delete;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        cardViewproduct = findViewById(R.id.products);
+//        cardViewcustomer=findViewById(R.id.customer);
+//        cardViewprouping=findViewById(R.id.grouping);
+//        add_shop = findViewById(R.id.add_shop);
+
         final GraphView graph = (GraphView) findViewById(R.id.graf);
-        LineGraphSeries<DataPoint> bgseries= new LineGraphSeries<>(new DataPoint[]{
+        LineGraphSeries<DataPoint> bgseries = new LineGraphSeries<>(new DataPoint[]{
 
                 new DataPoint(0, 1000),
                 new DataPoint(1, 8000),
@@ -71,5 +85,13 @@ public class HomeActivity extends AppCompatActivity {
         bgseries.setColor(R.color.browwn);
 //        graph.getLegendRenderer().setVisible(true);
         graph.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.TOP);
+        cardViewproduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+//                Intent i = new Intent(MainActivity.this, ActivityProduct.class);
+//                startActivity(i);
+            }
+        });
     }
 }
