@@ -25,16 +25,28 @@
             android:orientation="vertical"
             android:layout_marginTop="5dp">
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="5dp"
                 android:background="#f8f3f7"
                 android:paddingHorizontal="5dp">
 
                 <include layout="@layout/chart"/>
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp"
+                android:paddingHorizontal="5dp">
+
+                <include layout="@layout/date_data"/>
+
+            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -46,9 +58,8 @@
                 android:paddingHorizontal="5dp">
 
                 <include layout="@layout/cards"/>
-
-
             </LinearLayout>
+
 
 
         </LinearLayout>
