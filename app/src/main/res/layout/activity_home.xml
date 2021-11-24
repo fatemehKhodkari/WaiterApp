@@ -52,7 +52,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:layout_marginTop="5dp"
                 android:orientation="vertical"
                 android:background="#f8f3f7"
                 android:paddingHorizontal="5dp">
@@ -60,6 +59,15 @@
                 <include layout="@layout/cards"/>
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="10dp">
+
+                <include layout="@layout/status"/>
+
+            </LinearLayout>
 
 
         </LinearLayout>
