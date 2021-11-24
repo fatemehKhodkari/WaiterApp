@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.waiterapp.R;
+import com.example.waiterapp.activity.customer.CustomerActivity;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.LegendRenderer;
 import com.jjoe64.graphview.series.DataPoint;
@@ -28,8 +29,8 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         cardViewproduct = findViewById(R.id.products);
-//        cardViewcustomer=findViewById(R.id.customer);
-//        cardViewprouping=findViewById(R.id.grouping);
+        cardViewcustomer=findViewById(R.id.customer);
+        cardViewprouping=findViewById(R.id.grouping);
 //        add_shop = findViewById(R.id.add_shop);
 
         final GraphView graph = (GraphView) findViewById(R.id.graf);
@@ -88,10 +89,35 @@ public class HomeActivity extends AppCompatActivity {
         cardViewproduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 //                Intent i = new Intent(MainActivity.this, ActivityProduct.class);
 //                startActivity(i);
             }
         });
+        cardViewcustomer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent q= new Intent(HomeActivity.this, CustomerActivity.class);
+                startActivity(q);
+            }
+        });
+        cardViewprouping.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent r= new Intent(MainActivity.this, ActivityGrouping.class);
+//                startActivity(r);
+            }
+        });
+
+//        add_shop.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+////                showBottomSheetDialog();
+////                Intent a= new Intent(MainActivity.this, ActivityOrdering.class);
+////                startActivity(a);
+//
+//            }
+//        });
     }
 }

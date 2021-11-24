@@ -25,7 +25,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="393dp"
+                android:layout_height="396dp"
                 android:orientation="vertical"
                 android:background="@drawable/back_chart">
 
