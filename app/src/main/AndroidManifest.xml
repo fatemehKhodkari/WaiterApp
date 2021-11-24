@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WaiterApp">
         <activity
+            android:name=".activity.customer.CustomerActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.homepage.HomeActivity"
             android:exported="true" />
         <activity

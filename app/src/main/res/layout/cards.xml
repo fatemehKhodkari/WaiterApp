@@ -92,6 +92,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/customer"
             android:layout_width="wrap_content"
             android:layout_weight="1"
             app:cardElevation="5dp"
@@ -178,12 +179,11 @@
         android:layout_height="150dp">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/grouping"
             android:layout_width="wrap_content"
             android:layout_weight="1"
             android:layout_marginLeft="2.5dp"
             app:cardElevation="5dp"
-            app:cardBackgroundColor="@color/white"
-            android:background="#FAFAFA"
             app:cardCornerRadius="10dp"
             android:layout_height="wrap_content">
 
@@ -262,8 +262,6 @@
             android:layout_weight="1"
             app:cardElevation="5dp"
             android:layout_marginRight="2.5dp"
-            app:cardBackgroundColor="@color/white"
-            android:background="#FAFAFA"
             app:cardCornerRadius="10dp"
             android:layout_height="wrap_content">
 
