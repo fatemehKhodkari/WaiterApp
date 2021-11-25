@@ -4,6 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/layout_root"
+    android:backgroundTint="@color/whitediff"
     tools:context=".activity.customer.CustomerActivity">
+
+    <include layout="@layout/customer_toolbar"></include>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/customer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/customer_info">
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/customer_flabttn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/browwn"
+        android:elevation="25dp"
+        android:src="@drawable/add_ic"
+        android:tint="@color/whitediff"
+        app:maxImageSize="45dp" />
+
 
 </RelativeLayout>
