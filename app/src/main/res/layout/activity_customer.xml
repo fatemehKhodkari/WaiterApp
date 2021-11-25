@@ -33,8 +33,8 @@
         android:backgroundTint="@color/browwn"
         android:elevation="25dp"
         android:src="@drawable/add_ic"
-        android:tint="@color/whitediff"
+        app:rippleColor="#63000000"
         app:maxImageSize="45dp" />
 
-
 </RelativeLayout>
+
