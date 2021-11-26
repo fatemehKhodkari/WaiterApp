@@ -32,6 +32,7 @@
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/add_edit_customer_design"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/back_add_edit_design_top"
