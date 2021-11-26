@@ -10,7 +10,6 @@
         android:layout_height="match_parent"
         android:backgroundTint="#00000000"
         android:elevation="10dp"
-        app:cardCornerRadius="10dp"
         app:cardBackgroundColor="#00000000"
         android:background="#00000000">
 
@@ -22,7 +21,6 @@
             android:scaleType="fitXY"
             app:cardCornerRadius="100dp"
             >
-
         </LinearLayout>
 
         <LinearLayout
@@ -34,12 +32,12 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/et_get_name_customer"
+                android:id="@+id/get_customer_name"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="20dp"
-                android:background="@color/whitediff"
+                android:background="@drawable/back_editext2"
                 android:drawableRight="@drawable/person_ic"
                 android:drawablePadding="10dp"
                 android:gravity="center_vertical"
@@ -51,12 +49,12 @@
                 android:textStyle="normal" />
 
             <EditText
-                android:id="@+id/et_get_phone_customer"
+                android:id="@+id/get_customer_phone"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="20dp"
-                android:background="@color/whitediff"
+                android:background="@drawable/back_editext2"
                 android:drawableRight="@drawable/phone_ic"
                 android:drawablePadding="10dp"
                 android:gravity="right|center_vertical"
@@ -69,12 +67,12 @@
 
 
             <EditText
-                android:id="@+id/et_get_address_customer"
+                android:id="@+id/get_customer_address"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="20dp"
-                android:background="@color/whitediff"
+                android:background="@drawable/back_editext2"
                 android:drawableRight="@drawable/home_ic"
                 android:drawablePadding="10dp"
                 android:gravity="center_vertical"
@@ -102,7 +100,7 @@
                     android:weightSum="2">
 
                     <TextView
-                        android:id="@+id/tv_save_customer"
+                        android:id="@+id/save_customer"
                         android:layout_width="120dp"
                         android:layout_height="50dp"
                         android:layout_marginEnd="10dp"
@@ -118,7 +116,7 @@
                         tools:ignore="MissingConstraints" />
 
                     <TextView
-                        android:id="@+id/tv_cancel_customer"
+                        android:id="@+id/cancel_customer"
                         android:layout_width="120dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="10dp"
@@ -126,10 +124,10 @@
                         android:backgroundTint="@color/whiteopa"
                         android:background="@drawable/back_button"
                         android:gravity="center"
-                        android:text="لغو"
+                        android:text="انصراف"
                         android:textColor="@color/whitediff"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/tv_save_customer"
+                        app:layout_constraintStart_toEndOf="@+id/save_customer"
                         tools:ignore="MissingConstraints" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
