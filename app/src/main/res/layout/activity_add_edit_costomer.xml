@@ -40,12 +40,6 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints">
             <LinearLayout
-                android:layout_width="225dp"
-                android:layout_height="85dp"
-                android:gravity="center"
-                android:background="@drawable/back_add_edit_design_top"
-                android:backgroundTint="@color/browwn"></LinearLayout>
-            <LinearLayout
                 android:layout_width="218dp"
                 android:layout_height="118dp"
                 android:background="@drawable/back_add_edit_design_top"
