@@ -5,28 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.customer.AddEditCostomerActivity">
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
-        android:src="@drawable/coffee_bk"/>
+        android:src="@drawable/coffe_backg" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_gravity="bottom"
-            android:background="@drawable/back_add_edit_bottom"
-            android:orientation="horizontal"
-            android:showDividers="beginning"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="MissingConstraints"></LinearLayout>
 
         <LinearLayout
             android:id="@+id/canter"
@@ -34,7 +22,7 @@
             android:layout_height="wrap_content"
             android:gravity="bottom"
             app:cardCornerRadius="10dp"
-            android:paddingTop="100dp"
+            android:paddingTop="120dp"
             android:layout_alignParentBottom="true"
             app:layout_constraintBottom_toBottomOf="parent"
 
@@ -51,39 +39,53 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints">
-
             <LinearLayout
-                android:layout_width="175dp"
+                android:layout_width="225dp"
                 android:layout_height="85dp"
+                android:gravity="center"
                 android:background="@drawable/back_add_edit_design_top"
                 android:backgroundTint="@color/browwn"></LinearLayout>
-
             <LinearLayout
-                android:layout_width="156.5dp"
-                android:layout_height="116.5dp"
+                android:layout_width="218dp"
+                android:layout_height="118dp"
                 android:background="@drawable/back_add_edit_design_top"
                 android:backgroundTint="@color/browwn">
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="165dp"
+                android:layout_width="215dp"
                 android:layout_height="115dp"
                 android:background="@drawable/back_add_edit_design_top"
                 android:backgroundTint="@color/whitediff"></LinearLayout>
 
             <LinearLayout
-                android:layout_width="165dp"
+                android:layout_width="215dp"
                 android:layout_height="115dp"
                 android:background="@drawable/back_add_edit_design_top"
                 android:backgroundTint="@color/brownopa"></LinearLayout>
 
             <LinearLayout
-                android:layout_width="155dp"
+                android:layout_width="205dp"
                 android:layout_height="116dp"
                 android:background="@drawable/back_add_edit_design_top"
                 android:backgroundTint="@color/whitediff">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    >
+                    <LinearLayout
+                        android:layout_width="70dp"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/browwn"
+                        android:background="@drawable/person_ic_cafe">
+                    </LinearLayout>
+
+                </LinearLayout>
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
