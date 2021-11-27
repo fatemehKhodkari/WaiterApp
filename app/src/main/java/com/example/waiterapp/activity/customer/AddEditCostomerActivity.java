@@ -108,11 +108,11 @@ public class AddEditCostomerActivity extends AppCompatActivity {
     }
 
     void animateOb(){
-        desing.setTranslationX(-1500f);
-        desing.animate().translationXBy(+1500f).setDuration(1500);
+        desing.setTranslationX(-200f);
+        desing.animate().translationXBy(+200f).setDuration(200);
 
-        customer_anim_feilds.setTranslationX(+1500f);
-        customer_anim_feilds.animate().translationXBy(-1500f).setDuration(1500);
+        customer_anim_feilds.setTranslationX(+200f);
+        customer_anim_feilds.animate().translationXBy(-200f).setDuration(200);
     }
 
 
