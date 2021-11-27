@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.waiterapp" >
+    package="com.example.waiterapp">
 
     <application
         android:allowBackup="true"
@@ -10,7 +10,10 @@
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.WaiterApp" >
+        android:theme="@style/Theme.WaiterApp">
+        <activity
+            android:name=".activity.grouping.GroupingActivity"
+            android:exported="true" />
         <activity
             android:name=".activity.customer.AddEditCostomerActivity"
             android:exported="true" />
@@ -22,7 +25,7 @@
             android:exported="true" />
         <activity
             android:name=".activity.login.login"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
