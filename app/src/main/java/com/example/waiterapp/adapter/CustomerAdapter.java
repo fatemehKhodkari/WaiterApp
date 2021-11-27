@@ -51,7 +51,7 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CustomerAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(CustomerAdapter.ViewHolder holder, int position) {
         customer = list_customer.get(position);
         holder.customer_name_tv.setText(customer.name);
         holder.customer_phone_tv.setText(customer.phone);
@@ -73,7 +73,7 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView customer_name_tv, customer_phone_tv , customer_address_tv;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
             customer_name_tv = itemView.findViewById(R.id.customer_name);
             customer_phone_tv = itemView.findViewById(R.id.customer_phone);
