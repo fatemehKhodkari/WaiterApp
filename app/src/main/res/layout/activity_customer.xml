@@ -12,7 +12,7 @@
     <include layout="@layout/customer_toolbar"></include>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/customer_layout"
+        android:id="@+id/customer_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
