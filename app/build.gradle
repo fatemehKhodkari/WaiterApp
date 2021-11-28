@@ -42,7 +42,7 @@ dependencies {
 
     //gson
     implementation 'com.google.code.gson:gson:2.8.9'
-//
+
     // glide(blure)
     implementation 'jp.wasabeef:glide-transformations:4.0.0'
 

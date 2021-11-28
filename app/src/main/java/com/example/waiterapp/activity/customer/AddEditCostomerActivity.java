@@ -22,7 +22,7 @@ import com.r0adkll.slidr.model.SlidrInterface;
 
 public class AddEditCostomerActivity extends AppCompatActivity {
 
-    TextView save_customer,cancle_ed;
+    TextView save_customer,cancle_tv;
     EditText customer_name_edt,customer_phone_edt,customer_adress_edt;
     String customer_name , customer_phone , customer_adress ;
     DatabaseHelper databaseHelper;
@@ -87,7 +87,7 @@ public class AddEditCostomerActivity extends AppCompatActivity {
             }
         });
 
-        cancle_ed.setOnClickListener(new View.OnClickListener() {
+        cancle_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
@@ -105,7 +105,7 @@ public class AddEditCostomerActivity extends AppCompatActivity {
 
     void init(){
         save_customer = findViewById(R.id.save_customer);
-        cancle_ed = findViewById(R.id.cancel_customer);
+        cancle_tv = findViewById(R.id.cancel_customer);
         customer_name_edt = findViewById(R.id.get_customer_name);
         customer_phone_edt = findViewById(R.id.get_customer_phone);
         customer_adress_edt = findViewById(R.id.get_customer_address);
