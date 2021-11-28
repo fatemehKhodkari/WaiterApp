@@ -12,6 +12,8 @@ import android.widget.LinearLayout;
 
 import com.example.waiterapp.R;
 import com.example.waiterapp.activity.customer.CustomerActivity;
+import com.example.waiterapp.activity.grouping.GroupingActivity;
+import com.example.waiterapp.model.Grouping;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.LegendRenderer;
 import com.jjoe64.graphview.series.DataPoint;
@@ -19,7 +21,7 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 
 public class HomeActivity extends AppCompatActivity {
 
-    CardView cardViewproduct,cardViewcustomer , cardViewprouping;
+    CardView cardViewproduct,cardViewcustomer , cardViewgrouping;
     ImageView add_shop;
     LinearLayout copy , share , upload, download , delete;
 
@@ -28,9 +30,10 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+
         cardViewproduct = findViewById(R.id.products);
         cardViewcustomer=findViewById(R.id.customer);
-        cardViewprouping=findViewById(R.id.grouping);
+        cardViewgrouping=findViewById(R.id.grouping);
 //        add_shop = findViewById(R.id.add_shop);
 
         final GraphView graph = (GraphView) findViewById(R.id.graf);
@@ -97,15 +100,17 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent q= new Intent(HomeActivity.this, CustomerActivity.class);
-                startActivity(q);
+                Intent intentC= new Intent(HomeActivity.this, CustomerActivity.class);
+                startActivity(intentC);
+                overridePendingTransition(android.R.anim.fade_in , android.R.anim.fade_out);
             }
         });
-        cardViewprouping.setOnClickListener(new View.OnClickListener() {
+        cardViewgrouping.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent r= new Intent(MainActivity.this, ActivityGrouping.class);
-//                startActivity(r);
+                Intent intentG= new Intent(HomeActivity.this, GroupingActivity.class);
+                startActivity(intentG);
+                overridePendingTransition(android.R.anim.fade_in , android.R.anim.fade_out);
             }
         });
 

@@ -15,6 +15,11 @@
 
         <item name="android:direction">left_to_right</item>
         <item name="android:layoutDirection">rtl</item>
-
     </style>
+
+    <style name="Theme.WaiterApp.SlidrActivityTheme">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
 </resources>

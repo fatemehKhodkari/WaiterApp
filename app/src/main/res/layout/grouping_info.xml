@@ -6,9 +6,6 @@
     android:background="@color/whiteopa"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
-
-
     <androidx.cardview.widget.CardView
         app:cardCornerRadius="8dp"
         android:outlineSpotShadowColor="@color/browwn"

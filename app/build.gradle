@@ -53,5 +53,8 @@ dependencies {
     //chart
     implementation 'com.jjoe64:graphview:4.2.2'
 
+    //slider
+    implementation 'com.r0adkll:slidableactivity:2.1.0'
+
 
 }

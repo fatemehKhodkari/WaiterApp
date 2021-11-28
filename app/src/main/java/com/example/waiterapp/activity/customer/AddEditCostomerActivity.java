@@ -17,6 +17,8 @@ import com.example.waiterapp.database.DatabaseHelper;
 import com.example.waiterapp.database.dao.CustomerDao;
 import com.example.waiterapp.model.Customer;
 import com.google.gson.Gson;
+import com.r0adkll.slidr.Slidr;
+import com.r0adkll.slidr.model.SlidrInterface;
 
 public class AddEditCostomerActivity extends AppCompatActivity {
 
@@ -28,12 +30,16 @@ public class AddEditCostomerActivity extends AppCompatActivity {
     CustomerDao customerDao;
     LinearLayout customer_anim_feilds;
     ConstraintLayout desing;
+    SlidrInterface slidrInterface;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         hideActionBar();
         setContentView(R.layout.activity_add_edit_costomer);
+
+        slidrInterface = Slidr.attach(this);
 
         init();
         animateOb();

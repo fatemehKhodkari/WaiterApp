@@ -16,6 +16,8 @@ import com.example.waiterapp.adapter.CustomerAdapter;
 import com.example.waiterapp.database.DatabaseHelper;
 import com.example.waiterapp.database.dao.CustomerDao;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.r0adkll.slidr.Slidr;
+import com.r0adkll.slidr.model.SlidrInterface;
 
 import java.util.ArrayList;
 
@@ -26,11 +28,14 @@ public class CustomerActivity extends AppCompatActivity {
     DatabaseHelper databaseHelper;
     CustomerDao customerDao;
     CustomerAdapter customerAdapter;
+    private SlidrInterface slidrInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer);
+
+        slidrInterface = Slidr.attach(this);
 
         init();
         set_floatingActtionButton();
