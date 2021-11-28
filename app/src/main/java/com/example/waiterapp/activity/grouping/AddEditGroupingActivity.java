@@ -12,7 +12,6 @@ public class AddEditGroupingActivity extends AppCompatActivity {
 
     SlidrInterface slidrInterface;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
