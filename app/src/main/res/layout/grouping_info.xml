@@ -16,7 +16,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/img_food_grouping"
+            android:id="@+id/grouping_photo_imv"
             android:src="@drawable/cofee_grouping_back"
             android:scaleType="centerCrop"
             android:alpha="0.7"
@@ -24,18 +24,18 @@
             android:layout_height="match_parent"/>
 
         <LinearLayout
-            android:background="@drawable/rippelc"
+            android:background="@drawable/back_cardview_grouping"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/tv_name_of_category_group"
+                android:id="@+id/grouping_name_tv"
                 android:text="دسته بندی"
                 android:textSize="30dp"
                 android:layout_gravity="center"
                 android:textStyle="bold"
-                android:textColor="@color/whiteopa"
+                android:textColor="@color/whitediff"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 

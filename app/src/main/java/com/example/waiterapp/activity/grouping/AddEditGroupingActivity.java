@@ -42,7 +42,7 @@ public class AddEditGroupingActivity extends AppCompatActivity {
 
         init();
         call_db();
-        chech_db();
+        check_db();
         animateOb();
         save_bttn();
         cancle_bttn();
@@ -74,9 +74,9 @@ public class AddEditGroupingActivity extends AppCompatActivity {
         grouping_anim_feilds.animate().translationXBy(-200f).setDuration(200);
     }
 
-    void chech_db(){
+    void check_db(){
         if(getIntent().getExtras() != null){
-            String getGrouping =getIntent().getStringExtra("grouping");
+            String getGrouping =getIntent().getStringExtra("Grouping");
             grouping = new Gson().fromJson(getGrouping, Grouping.class);
             grouping_previous_name = grouping.name;
             grouping_name_edt.setText(grouping.name); }
