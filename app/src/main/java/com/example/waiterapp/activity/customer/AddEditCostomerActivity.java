@@ -40,60 +40,12 @@ public class AddEditCostomerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_edit_costomer);
 
         slidrInterface = Slidr.attach(this);
-
         init();
         animateOb();
-
-        databaseHelper = DatabaseHelper.getInstance(getApplicationContext());
-        customerDao = databaseHelper.customerDao();
-
-        if (getIntent().getExtras() != null){
-            String getNameCustomer = getIntent().getStringExtra("Customer");
-            customer = new Gson().fromJson(getNameCustomer,Customer.class);
-            customer_name_edt.setText(customer.name);
-            customer_phone_edt.setText(customer.phone);
-            customer_adress_edt.setText(customer.address);
-        }
-
-        save_customer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                customer_name = customer_name_edt.getText().toString();
-                customer_phone = customer_phone_edt.getText().toString();
-                customer_adress = customer_adress_edt.getText().toString();
-
-                if(customer == null){
-                    if(TextUtils.isEmpty(customer_name) || TextUtils.isEmpty(customer_phone) || TextUtils.isEmpty(customer_adress)){
-                        Toast.makeText(getApplicationContext(),"تمام فیلد هارا پر کنید!",Toast.LENGTH_SHORT).show();
-                    }else
-                        if(customer_phone.length() != 11){
-                            Toast.makeText(getApplicationContext(), "شماره تلفن باید 11 رقم باشد!", Toast.LENGTH_SHORT).show();
-                        }else {
-                            customerDao.insertCustomer(new Customer(customer_name,customer_phone,customer_adress));
-                            Toast.makeText(getApplicationContext(),"با موفقیت به لیست اضافه شد",Toast.LENGTH_SHORT).show();
-                            finish();
-                        }
-                }else {
-                    customer.name = customer_name;
-                    customer.phone = customer_phone;
-                    customer.address = customer_adress;
-
-                    Log.e("qqqq","onClick: update customer =" + customer.id);
-                    customerDao.updateCustomer(customer);
-                    finish();
-                }
-                overridePendingTransition(android.R.anim.fade_in , android.R.anim.fade_out);
-            }
-        });
-
-        cancle_tv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-                overridePendingTransition(android.R.anim.fade_in , android.R.anim.fade_out);
-            }
-        });
+        callDatabase();
+        checkDatabase();
+        save_bttn();
+        cancle_bttn();
     }
 
 
@@ -113,12 +65,71 @@ public class AddEditCostomerActivity extends AppCompatActivity {
         desing = findViewById(R.id.add_edit_customer_design);
     }
 
+    void callDatabase(){
+        databaseHelper = DatabaseHelper.getInstance(getApplicationContext());
+        customerDao = databaseHelper.customerDao();
+    }
+
+    void checkDatabase(){
+        if (getIntent().getExtras() != null){
+            String getNameCustomer = getIntent().getStringExtra("Customer");
+            customer = new Gson().fromJson(getNameCustomer,Customer.class);
+            customer_name_edt.setText(customer.name);
+            customer_phone_edt.setText(customer.phone);
+            customer_adress_edt.setText(customer.address);
+        }
+
+    }
+
     void animateOb(){
         desing.setTranslationX(-200f);
         desing.animate().translationXBy(+200f).setDuration(200);
 
         customer_anim_feilds.setTranslationX(+200f);
         customer_anim_feilds.animate().translationXBy(-200f).setDuration(200);
+    }
+
+    void save_bttn(){
+        save_customer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                customer_name = customer_name_edt.getText().toString();
+                customer_phone = customer_phone_edt.getText().toString();
+                customer_adress = customer_adress_edt.getText().toString();
+
+                if(customer == null){
+                    if(TextUtils.isEmpty(customer_name) || TextUtils.isEmpty(customer_phone) || TextUtils.isEmpty(customer_adress)){
+                        Toast.makeText(getApplicationContext(),"تمام فیلد هارا پر کنید!",Toast.LENGTH_SHORT).show();
+                    }else
+                    if(customer_phone.length() != 11){
+                        Toast.makeText(getApplicationContext(), "شماره تلفن باید 11 رقم باشد!", Toast.LENGTH_SHORT).show();
+                    }else {
+                        customerDao.insertCustomer(new Customer(customer_name,customer_phone,customer_adress));
+                        Toast.makeText(getApplicationContext(),"با موفقیت به لیست اضافه شد",Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                }else {
+                    customer.name = customer_name;
+                    customer.phone = customer_phone;
+                    customer.address = customer_adress;
+
+                    Log.e("qqqq","onClick: update customer =" + customer.id);
+                    customerDao.updateCustomer(customer);
+                    finish();
+                }
+            }
+        });
+    }
+
+
+    void cancle_bttn(){
+        cancle_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
 
