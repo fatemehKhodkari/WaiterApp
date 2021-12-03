@@ -10,7 +10,9 @@
                 android:centerColor="#28282828"
                 android:endColor="#B5282828"
                 />
+
             <corners android:radius="10dp"></corners>
+
         </shape>
     </item>
 </ripple>

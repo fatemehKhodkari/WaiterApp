@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,7 +50,7 @@ public class GroupingAdapter extends RecyclerView.Adapter<GroupingAdapter.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.grouping_info,parent,false);
+        View view = layoutInflater.inflate(R.layout.list_grouping,parent,false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }

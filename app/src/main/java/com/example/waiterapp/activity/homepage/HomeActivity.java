@@ -84,7 +84,7 @@ public class HomeActivity extends AppCompatActivity {
         bgseries.setDrawBackground(true);
         bgseries.setColor(getResources().getColor(R.color.browwn));
 //        bgseries.setBackgroundColor(Color.rgb(248,243,247));
-        bgseries.setBackgroundColor(getResources().getColor(R.color.whiteopa));
+        bgseries.setBackgroundColor(getResources().getColor(R.color.whitediff));
         bgseries.setAnimated(true);
         bgseries.setColor(R.color.browwn);
 //        graph.getLegendRenderer().setVisible(true);

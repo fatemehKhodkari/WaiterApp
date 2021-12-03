@@ -88,7 +88,6 @@ public class GroupingActivity extends AppCompatActivity {
         if (databaseHelper != null) databaseHelper.close();
     }
 
-
     @Override
     protected void onResume() {
         super.onResume();
