@@ -20,11 +20,12 @@ import com.example.waiterapp.database.DatabaseHelper;
 import com.example.waiterapp.database.dao.ProductDao;
 import com.example.waiterapp.model.Product;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewholderProduct> implements Filterable {
 
-    List<Product> productList;
+    List<Product> productList,search_list_product;
     Context  context;
     Listener listener;
     DatabaseHelper databaseHelper;
@@ -77,8 +78,40 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Viewhold
 
     @Override
     public Filter getFilter() {
-        return null;
+        return newsFilter;
     }
+
+    private final Filter newsFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+
+            List<Product> filterNewList = new ArrayList<>();
+            if(constraint == null || constraint.length() == 0){
+                filterNewList.addAll(search_list_product);
+            }else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for(Product product : search_list_product){
+
+                    if(product.name_product.toLowerCase().contains(filterPattern))
+                        filterNewList.add(product);
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filterNewList;
+            results.count = filterNewList.size();
+            return results;
+        }
+
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            productList.clear();
+            productList.addAll((ArrayList)results.values);
+            notifyDataSetChanged();
+        }
+    };
+
 
     public class ViewholderProduct extends RecyclerView.ViewHolder {
         TextView product_name_tv , product_grouping_name_tv , product_price_tv;
@@ -91,5 +124,16 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Viewhold
             product_price_tv = itemView.findViewById(R.id.product_price_tv);
 
         }
+    }
+
+    public  void addList(List<Product> arryList){
+        search_list_product.clear();
+        search_list_product.addAll(arryList);
+        productList = new ArrayList<>(search_list_product);
+        notifyDataSetChanged();
+    }
+
+    public int count(){
+        return productList.size();
     }
 }
