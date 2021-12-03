@@ -56,5 +56,7 @@ dependencies {
     //slider
     implementation 'com.r0adkll:slidableactivity:2.1.0'
 
+    //carousel
+    implementation 'com.mig35:carousellayoutmanager:1.4.6'
 
 }

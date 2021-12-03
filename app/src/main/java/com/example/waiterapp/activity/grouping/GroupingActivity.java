@@ -15,6 +15,9 @@ import com.example.waiterapp.database.DatabaseHelper;
 import com.example.waiterapp.database.dao.GroupingDao;
 import com.example.waiterapp.model.Grouping;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.mig35.carousellayoutmanager.CarouselLayoutManager;
+import com.mig35.carousellayoutmanager.CarouselZoomPostLayoutListener;
+import com.mig35.carousellayoutmanager.CenterScrollListener;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
 
@@ -49,12 +52,19 @@ public class GroupingActivity extends AppCompatActivity {
     }
 
     public void set_recycler(){
+        final CarouselLayoutManager layoutManager = new CarouselLayoutManager(CarouselLayoutManager.VERTICAL, true);
+        layoutManager.setPostLayoutListener(new CarouselZoomPostLayoutListener());
+
         databaseHelper = DatabaseHelper.getInstance(getApplicationContext());
         groupingDao = databaseHelper.groupingDao();
 
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.addOnScrollListener(new CenterScrollListener());
         recyclerView.setHasFixedSize(true);
         groupingAdapter = new GroupingAdapter(new ArrayList<>(),this);
         recyclerView.setAdapter(groupingAdapter);
+
     }
 
     public void set_floatingActionBttn(){
