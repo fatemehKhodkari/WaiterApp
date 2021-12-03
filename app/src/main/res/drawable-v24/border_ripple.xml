@@ -4,6 +4,12 @@
 
     <item
         android:id="@+id/mask"
-        android:drawable="@android:color/white"></item>
+        >
+        <shape>
+            <stroke android:color="#795548"
+                android:width="3dp"></stroke>
+            <corners android:radius="10dp"></corners>
+        </shape>
+    </item>
 
 </ripple>

@@ -18,7 +18,7 @@
         android:layout_marginTop="?attr/actionBarSize"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/list_grouping_info">
+        tools:listitem="@layout/list_grouping">
     </androidx.recyclerview.widget.RecyclerView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

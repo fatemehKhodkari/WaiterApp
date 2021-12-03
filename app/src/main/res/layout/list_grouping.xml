@@ -14,7 +14,6 @@
         android:layout_height="150dp"
         android:layout_marginHorizontal="10dp"
         android:layout_marginVertical="2dp"
-        android:alpha="0.7"
         android:elevation="6dp"
         android:background="@drawable/border_ripple"
         android:outlineSpotShadowColor="@color/browwn"
@@ -24,7 +23,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:backgroundTint="@color/matn"
+            android:backgroundTint="@color/browwn"
             android:background="@drawable/border_ripple">
 
             <ImageView
@@ -32,6 +31,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:layout_marginHorizontal="4dp"
+                android:layout_marginVertical="4dp"
+                android:alpha="0.7"
                 android:src="@drawable/cofee_grouping_back" />
 
             <LinearLayout
