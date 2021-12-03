@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/whitediff"
-    android:paddingTop="5dp"
+    android:background="#00FFFFFF"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
@@ -13,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_marginHorizontal="10dp"
-        android:layout_marginVertical="2dp"
         android:elevation="6dp"
         android:background="@drawable/border_ripple"
         android:outlineSpotShadowColor="@color/browwn"
