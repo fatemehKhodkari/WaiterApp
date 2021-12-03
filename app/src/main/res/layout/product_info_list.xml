@@ -24,7 +24,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/image_product"
+                    android:id="@+id/product_imv"
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
                     android:scaleType="fitXY"
@@ -52,7 +52,7 @@
                     android:layout_marginTop="5dp">
 
                     <TextView
-                        android:id="@+id/name_product"
+                        android:id="@+id/product_name_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="نام محصول"
@@ -95,7 +95,7 @@
                                 android:src="@drawable/category_ic"/>
 
                             <TextView
-                                android:id="@+id/category_product"
+                                android:id="@+id/product_grouping_name_tv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:text="فست فود"
@@ -129,7 +129,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/price_product"
+                    android:id="@+id/product_price_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
