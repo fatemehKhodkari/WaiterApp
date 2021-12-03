@@ -2,19 +2,21 @@
     <!-- Base application theme. -->
     <style name="Theme.WaiterApp" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#795548</item>
-        <item name="colorPrimaryVariant">#795548</item>
+        <item name="colorPrimary">@color/browwn</item>
+        <item name="colorPrimaryVariant">@color/browwn</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">#795548</item>
-        <item name="colorSecondaryVariant">#795548</item>
+        <item name="colorSecondary">@color/browwn</item>
+        <item name="colorSecondaryVariant">@color/browwn</item>
         <item name="colorOnSecondary">@color/whitediff</item>
+        <item name="colorPrimaryDark">@color/browwn</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-
-        <item name="android:direction">left_to_right</item>
+        <item name="android:direction">right_to_left</item>
         <item name="android:layoutDirection">rtl</item>
+
+        <!--        <item name="editTextColor">@color/text</item>-->
+        <!--        <item name="android:textColorSecondary">@color/text</item>-->
     </style>
 
     <style name="Theme.WaiterApp.SlidrActivityTheme">
