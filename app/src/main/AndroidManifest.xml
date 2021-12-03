@@ -12,24 +12,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WaiterApp">
         <activity
+            android:name=".activity.product.AddEditProduct"
+            android:exported="true" />
+        <activity
+            android:name=".activity.product.ProductActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.grouping.AddEditGroupingActivity"
             android:exported="true"
-            android:theme="@style/Theme.WaiterApp.SlidrActivityTheme"/>
+            android:theme="@style/Theme.WaiterApp.SlidrActivityTheme" />
         <activity
             android:name=".activity.grouping.GroupingActivity"
             android:exported="true"
-            android:theme="@style/Theme.WaiterApp.SlidrActivityTheme"/>
+            android:theme="@style/Theme.WaiterApp.SlidrActivityTheme" />
         <activity
             android:name=".activity.customer.AddEditCostomerActivity"
             android:exported="true"
-            android:theme="@style/Theme.WaiterApp.SlidrActivityTheme"/>
+            android:theme="@style/Theme.WaiterApp.SlidrActivityTheme" />
         <activity
             android:name=".activity.customer.CustomerActivity"
             android:exported="true"
-            android:theme="@style/Theme.WaiterApp.SlidrActivityTheme"/>
+            android:theme="@style/Theme.WaiterApp.SlidrActivityTheme" />
         <activity
             android:name=".activity.homepage.HomeActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".activity.login.login"
             android:exported="true">

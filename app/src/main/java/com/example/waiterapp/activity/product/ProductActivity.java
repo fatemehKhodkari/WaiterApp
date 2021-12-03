@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.example.waiterapp.R;
+
 public class ProductActivity extends AppCompatActivity {
 
     @Override

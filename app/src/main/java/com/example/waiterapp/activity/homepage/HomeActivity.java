@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import com.example.waiterapp.R;
 import com.example.waiterapp.activity.customer.CustomerActivity;
 import com.example.waiterapp.activity.grouping.GroupingActivity;
+import com.example.waiterapp.activity.product.ProductActivity;
 import com.example.waiterapp.model.Grouping;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.LegendRenderer;
@@ -24,19 +25,28 @@ public class HomeActivity extends AppCompatActivity {
     CardView cardViewproduct,cardViewcustomer , cardViewgrouping;
     ImageView add_shop;
     LinearLayout copy , share , upload, download , delete;
+    GraphView graph;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        init();
+        graph();
+        on_click_cards();
 
+    }
+
+    void init(){
         cardViewproduct = findViewById(R.id.products);
         cardViewcustomer=findViewById(R.id.customer);
         cardViewgrouping=findViewById(R.id.grouping);
 //        add_shop = findViewById(R.id.add_shop);
+        graph = (GraphView) findViewById(R.id.graf);
+    }
 
-        final GraphView graph = (GraphView) findViewById(R.id.graf);
+    void graph(){
         LineGraphSeries<DataPoint> bgseries = new LineGraphSeries<>(new DataPoint[]{
 
                 new DataPoint(0, 1000),
@@ -89,11 +99,15 @@ public class HomeActivity extends AppCompatActivity {
         bgseries.setColor(R.color.browwn);
 //        graph.getLegendRenderer().setVisible(true);
         graph.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.TOP);
+    }
+
+    void on_click_cards(){
         cardViewproduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent i = new Intent(MainActivity.this, ActivityProduct.class);
-//                startActivity(i);
+                Intent intentP = new Intent(HomeActivity.this, ProductActivity.class);
+                startActivity(intentP);
+                overridePendingTransition(android.R.anim.fade_in , android.R.anim.fade_out);
             }
         });
         cardViewcustomer.setOnClickListener(new View.OnClickListener() {
@@ -113,6 +127,9 @@ public class HomeActivity extends AppCompatActivity {
                 overridePendingTransition(android.R.anim.fade_in , android.R.anim.fade_out);
             }
         });
+    }
+
+    void Ordering(){
 
 //        add_shop.setOnClickListener(new View.OnClickListener() {
 //            @Override
