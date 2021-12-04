@@ -32,7 +32,6 @@ public class GroupingProductAdapter extends RecyclerView.Adapter<GroupingProduct
         View view = layoutInflater.inflate(R.layout.grouping_product_info_list,parent,false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
-
     }
 
     @Override
@@ -44,7 +43,6 @@ public class GroupingProductAdapter extends RecyclerView.Adapter<GroupingProduct
             public void onClick(View v) {
             }
         });
-
     }
 
     @Override

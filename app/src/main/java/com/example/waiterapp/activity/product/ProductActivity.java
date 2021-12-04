@@ -21,7 +21,6 @@ import com.r0adkll.slidr.model.SlidrInterface;
 
 public class ProductActivity extends AppCompatActivity {
 
-    SlidrInterface slidrInterface;
     FloatingActionButton floatingActionButton;
     RecyclerView category_recycler;
     RecyclerView product_recycler;
@@ -39,7 +38,6 @@ public class ProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
 
-        slidrInterface = Slidr.attach(this);
 
         init();
         set_floatingActtionButton();
