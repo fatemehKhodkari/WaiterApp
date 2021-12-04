@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WaiterApp">
         <activity
-            android:name=".activity.product.AddEditProduct"
+            android:name=".activity.product.AddEditProductActivity"
             android:exported="true"
             android:theme="@style/Theme.WaiterApp.SlidrActivityTheme"/>
         <activity

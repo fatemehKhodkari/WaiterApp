@@ -8,7 +8,7 @@ import com.example.waiterapp.R;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
 
-public class AddEditProduct extends AppCompatActivity {
+public class AddEditProductActivity extends AppCompatActivity {
 
     SlidrInterface slidrInterface;
 
