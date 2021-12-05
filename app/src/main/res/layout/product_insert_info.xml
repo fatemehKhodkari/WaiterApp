@@ -75,7 +75,7 @@
                 android:textSize="16dp"
                 android:textStyle="normal" />
 
-            <EditText
+            <AutoCompleteTextView
                 android:id="@+id/get_product_grouping_name"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
