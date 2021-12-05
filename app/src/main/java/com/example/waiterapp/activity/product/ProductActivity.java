@@ -100,6 +100,7 @@ public class ProductActivity extends AppCompatActivity {
     }
 
     void set_product_recycler(){
+
         product_recycler.setHasFixedSize(true);
     }
 
