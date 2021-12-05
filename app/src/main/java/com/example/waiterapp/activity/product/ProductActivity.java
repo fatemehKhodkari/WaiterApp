@@ -15,6 +15,8 @@ import com.example.waiterapp.database.DatabaseHelper;
 import com.example.waiterapp.database.dao.GroupingDao;
 import com.example.waiterapp.database.dao.ProductDao;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.mig35.carousellayoutmanager.CarouselLayoutManager;
+import com.mig35.carousellayoutmanager.CarouselZoomPostLayoutListener;
 import com.mig35.carousellayoutmanager.CenterScrollListener;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
@@ -22,8 +24,7 @@ import com.r0adkll.slidr.model.SlidrInterface;
 public class ProductActivity extends AppCompatActivity {
 
     FloatingActionButton floatingActionButton;
-    RecyclerView category_recycler;
-    RecyclerView product_recycler;
+    RecyclerView category_recycler , product_recycler;
     DatabaseHelper databaseHelper;
     ProductDao productDao;
     GroupingDao groupingDao;
@@ -86,11 +87,20 @@ public class ProductActivity extends AppCompatActivity {
 
     public void set_grouping_recycler(){
         category_recycler.setHasFixedSize(true);
+//
+//        final CarouselLayoutManager layoutManager = new CarouselLayoutManager(CarouselLayoutManager.HORIZONTAL,true);
+//        layoutManager.setPostLayoutListener(new CarouselZoomPostLayoutListener());
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(this ,LinearLayoutManager.HORIZONTAL , false);
         category_recycler.setLayoutManager(layoutManager);
+
         category_recycler.addOnScrollListener(new CenterScrollListener());
         groupingProductAdapter = new GroupingProductAdapter(this, groupingDao.getGroupingList());
         category_recycler.setAdapter(groupingProductAdapter);
+    }
+
+    void set_product_recycler(){
+        product_recycler.setHasFixedSize(true);
     }
 
     @Override

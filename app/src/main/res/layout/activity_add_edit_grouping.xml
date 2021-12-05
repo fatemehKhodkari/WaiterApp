@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipToPadding="false"
     tools:context=".activity.customer.AddEditCostomerActivity">
 
     <ImageView
@@ -23,6 +24,7 @@
             android:gravity="bottom"
             app:cardCornerRadius="10dp"
             android:paddingTop="120dp"
+            android:elevation="30dp"
             android:layout_alignParentBottom="true"
             app:layout_constraintBottom_toBottomOf="parent"
 

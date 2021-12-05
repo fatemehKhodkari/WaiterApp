@@ -16,6 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingVertical="10dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_marginTop="?attr/actionBarSize"
         tools:listitem="@layout/grouping_product_info_list"
         />
@@ -46,6 +47,7 @@
         android:src="@drawable/add_ic"
         app:rippleColor="#63000000"
         app:maxImageSize="45dp" />
+
 
 </RelativeLayout>
 
