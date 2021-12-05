@@ -1,9 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.product.AddEditProductActivity">
+    android:clipToPadding="false"
+    tools:context=".activity.customer.AddEditCostomerActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/coffe_backg" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/product_info_feilds"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            app:cardCornerRadius="10dp"
+            android:paddingTop="120dp"
+            android:elevation="30dp"
+            android:layout_alignParentBottom="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            tools:ignore="MissingConstraints">
+
+            <include layout="@layout/product_insert_info"></include>
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/add_edit_product_design"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/back_add_edit_design_top"
+            android:backgroundTint="@color/brownopa"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints">
+            <LinearLayout
+                android:layout_width="218dp"
+                android:layout_height="118dp"
+                android:background="@drawable/back_add_edit_design_top"
+                android:backgroundTint="@color/browwn">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="215dp"
+                android:layout_height="115dp"
+                android:background="@drawable/back_add_edit_design_top"
+                android:backgroundTint="@color/whitediff"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="215dp"
+                android:layout_height="115dp"
+                android:background="@drawable/back_add_edit_design_top"
+                android:backgroundTint="@color/brownopa"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="205dp"
+                android:layout_height="116dp"
+                android:background="@drawable/back_add_edit_design_top"
+                android:backgroundTint="@color/whitediff">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    >
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/browwn"
+                        android:background="@drawable/product_pic">
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</RelativeLayout>

@@ -41,7 +41,7 @@
                 android:paddingVertical="10dp">
 
                 <ImageView
-                    android:id="@+id/grouping_add_img"
+                    android:id="@+id/product_add_img"
                     android:layout_width="match_parent"
                     android:layout_marginHorizontal="24dp"
                     android:layout_height="120dp"
