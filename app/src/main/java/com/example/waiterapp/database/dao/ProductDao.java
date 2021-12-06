@@ -14,6 +14,9 @@ public interface ProductDao {
     @Query("Select * from Product_table")
     List<Product> getProductList();
 
+    @Query("SELECT * FROM Product_table WHERE category = :category")
+    List<Product> getListByCtegory(String category);
+
     @Insert
     void insertProduct(Product product);
     @Delete

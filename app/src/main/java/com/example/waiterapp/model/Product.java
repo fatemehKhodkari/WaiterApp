@@ -16,6 +16,8 @@ public class Product {
     public String category;
     @ColumnInfo(name = "price")
     public String price;
+    @Ignore
+    public int amount = 1;
 
     public Product(int id, String name_product, String category, String price) {
         this.id = id;
