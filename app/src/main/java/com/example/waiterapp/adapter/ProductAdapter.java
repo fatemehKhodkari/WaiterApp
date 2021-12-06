@@ -129,7 +129,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Viewhold
     public  void addList(List<Product> arryList){
         productList.clear();
         productList.addAll(arryList);
-        productList = new ArrayList<>();
         notifyDataSetChanged();
     }
 
