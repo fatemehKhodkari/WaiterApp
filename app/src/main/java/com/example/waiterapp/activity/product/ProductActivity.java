@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,12 +15,16 @@ import com.example.waiterapp.adapter.ProductAdapter;
 import com.example.waiterapp.database.DatabaseHelper;
 import com.example.waiterapp.database.dao.GroupingDao;
 import com.example.waiterapp.database.dao.ProductDao;
+import com.example.waiterapp.model.Product;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.gson.Gson;
 import com.mig35.carousellayoutmanager.CarouselLayoutManager;
 import com.mig35.carousellayoutmanager.CarouselZoomPostLayoutListener;
 import com.mig35.carousellayoutmanager.CenterScrollListener;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
+
+import java.util.ArrayList;
 
 public class ProductActivity extends AppCompatActivity {
 
@@ -49,7 +54,7 @@ public class ProductActivity extends AppCompatActivity {
         groupingDao = databaseHelper.groupingDao();
 
         set_grouping_recycler();
-
+        set_product_recycler();
 
 
     }
@@ -102,6 +107,23 @@ public class ProductActivity extends AppCompatActivity {
     void set_product_recycler(){
 
         product_recycler.setHasFixedSize(true);
+        productAdapter = new ProductAdapter(new ArrayList<>(), this, new ProductAdapter.Listener() {
+            @Override
+            public void onClick(Product product, int pos) {
+                if(for_order){
+                    for_order = getIntent().getBooleanExtra("for_order" , false);
+                    Intent returnIntent = new Intent();
+                    returnIntent.putExtra("json_product" , new Gson().toJson(product));
+                    setResult(Activity.RESULT_OK, returnIntent);
+                    finish();
+                }else {
+
+//                    productAdapter.showDialogSheet(pos , name);
+                }
+            }
+        });
+        product_recycler.setAdapter(productAdapter);
+        productAdapter.notifyDataSetChanged();
     }
 
     @Override
