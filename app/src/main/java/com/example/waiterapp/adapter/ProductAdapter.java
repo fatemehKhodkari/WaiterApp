@@ -23,7 +23,7 @@ import com.example.waiterapp.model.Product;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewholderProduct>{
+public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewholderProduct> implements Filterable{
 
     List<Product> productList,search_list_product;
     Context  context;
@@ -32,9 +32,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Viewhold
     ProductDao productDao;
 
     public ProductAdapter(List<Product> productList, Context context, Listener listener) {
-        this.productList = productList;
+//        this.productList = productList;
+        this.search_list_product = productList;
         this.context = context;
         this.listener = listener;
+        this.productList = new ArrayList<>(search_list_product);
+
     }
 
     public interface Listener{
@@ -76,41 +79,41 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Viewhold
         return productList.size();
     }
 
-//    @Override
-//    public Filter getFilter() {
-//        return newsFilter;
-//    }
-//
-//    private final Filter newsFilter = new Filter() {
-//        @Override
-//        protected FilterResults performFiltering(CharSequence constraint) {
-//
-//            List<Product> filterNewList = new ArrayList<>();
-//            if(constraint == null || constraint.length() == 0){
-//                filterNewList.addAll(search_list_product);
-//            }else {
-//                String filterPattern = constraint.toString().toLowerCase().trim();
-//                for(Product product : search_list_product){
-//
-//                    if(product.name_product.toLowerCase().contains(filterPattern))
-//                        filterNewList.add(product);
-//                }
-//            }
-//
-//            FilterResults results = new FilterResults();
-//            results.values = filterNewList;
-//            results.count = filterNewList.size();
-//            return results;
-//        }
-//
-//
-//        @Override
-//        protected void publishResults(CharSequence constraint, FilterResults results) {
-//            productList.clear();
-//            productList.addAll((ArrayList)results.values);
-//            notifyDataSetChanged();
-//        }
-//    };
+    @Override
+    public Filter getFilter() {
+        return newsFilter;
+    }
+
+    private final Filter newsFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+
+            List<Product> filterNewList = new ArrayList<>();
+            if(constraint == null || constraint.length() == 0){
+                filterNewList.addAll(search_list_product);
+            }else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for(Product product : search_list_product){
+
+                    if(product.name_product.toLowerCase().contains(filterPattern))
+                        filterNewList.add(product);
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filterNewList;
+            results.count = filterNewList.size();
+            return results;
+        }
+
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            productList.clear();
+            productList.addAll((ArrayList)results.values);
+            notifyDataSetChanged();
+        }
+    };
 
 
     public class ViewholderProduct extends RecyclerView.ViewHolder {
@@ -127,8 +130,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Viewhold
     }
 
     public  void addList(List<Product> arryList){
-        productList.clear();
-        productList.addAll(arryList);
+        search_list_product.clear();
+        search_list_product.addAll(arryList);
+        productList = new ArrayList<>(search_list_product);
         notifyDataSetChanged();
     }
 
