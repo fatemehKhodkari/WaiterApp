@@ -1,13 +1,17 @@
 package com.example.waiterapp.activity.product;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import androidx.appcompat.widget.SearchView;
 
 import com.example.waiterapp.R;
 import com.example.waiterapp.adapter.GroupingProductAdapter;
@@ -35,6 +39,7 @@ public class ProductActivity extends AppCompatActivity {
     GroupingDao groupingDao;
     ProductAdapter productAdapter;
     GroupingProductAdapter groupingProductAdapter;
+    Toolbar toolbar;
 
     private Boolean for_order = false ;
 
@@ -46,6 +51,7 @@ public class ProductActivity extends AppCompatActivity {
 
 
         init();
+        set_toolBar();
         set_floatingActtionButton();
         hide_floatingActionButton();
 
@@ -134,4 +140,32 @@ public class ProductActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_search,menu);
+        MenuItem item = menu.findItem(R.id.menu_item_search);
+        SearchView searchView = (SearchView)item.getActionView();
+        searchView.setMaxWidth(Integer.MAX_VALUE);
+        searchView.setBackground(getResources().getDrawable(R.drawable.rippler));
+        searchView.setIconified(false);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newtxt) {
+                productAdapter.getFilter().filter(newtxt);
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+    }
+    public void set_toolBar(){
+        toolbar = findViewById(R.id.product_toolbar);
+        toolbar.setTitle("");
+        toolbar.setTitleTextColor(getResources().getColor(R.color.whitediff));
+        setSupportActionBar(toolbar);
+    }
 }
