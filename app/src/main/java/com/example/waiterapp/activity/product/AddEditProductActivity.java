@@ -136,4 +136,7 @@ public class AddEditProductActivity extends AppCompatActivity {
             }
         });
     }
+
+    void set_autoCompleteTV(){
+    }
 }
