@@ -2,7 +2,10 @@ package com.example.waiterapp.adapter;
 
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,15 +13,21 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.waiterapp.R;
+import com.example.waiterapp.activity.customer.AddEditCostomerActivity;
+import com.example.waiterapp.activity.product.AddEditProductActivity;
 import com.example.waiterapp.database.DatabaseHelper;
 import com.example.waiterapp.database.dao.ProductDao;
 import com.example.waiterapp.model.Product;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,8 +74,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Viewhold
             @Override
             public void onClick(View v) {
 
-//                showBottomSheetDialogclick(position);
-                listener.onClick(product , position);
+                showDialogBSheet(position);
+            listener.onClick(product , position);
 
             }
         });
@@ -127,6 +136,64 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Viewhold
             product_price_tv = itemView.findViewById(R.id.product_price_tv);
 
         }
+    }
+
+    private void showDialogBSheet(int pos){
+
+        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
+        bottomSheetDialog.setContentView(R.layout.bottom_sheet_add_edit_product);
+
+        LinearLayout edit_product_btsh , delete_product_btsh ;
+
+        edit_product_btsh = bottomSheetDialog.findViewById(R.id.edit_product_btsh);
+        delete_product_btsh = bottomSheetDialog.findViewById(R.id.delete_product_btsh);
+
+        delete_product_btsh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                new AlertDialog.Builder(context)
+                        .setTitle("حذف")
+                        .setMessage("آیا از حذف این محصول اطمینان دارید؟")
+                        .setPositiveButton("بله", new DialogInterface.OnClickListener(){
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                                databaseHelper = DatabaseHelper.getInstance(context.getApplicationContext());
+                                productDao = databaseHelper.productDao();
+                                productDao.deleteProduct(productList.get(pos));
+                                productList.remove(pos);
+                                notifyItemRemoved(pos);
+                                notifyItemRangeChanged(pos,productList.size());
+                                bottomSheetDialog.dismiss();
+                            }
+                        })
+                        .setNegativeButton("خیر",new DialogInterface.OnClickListener(){
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                                bottomSheetDialog.dismiss();
+                            }
+                        })
+                        .create()
+                        .show();
+                bottomSheetDialog.dismiss();
+            }
+        });
+
+        edit_product_btsh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+//                Toast.makeText(context, "fjkdjf", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(context, AddEditProductActivity.class);
+                intent.putExtra("product" , new Gson().toJson(productList.get(pos)));
+                context.startActivity(intent);
+                bottomSheetDialog.dismiss();
+            }
+        });
+        bottomSheetDialog.show();
     }
 
     public  void addList(List<Product> arryList){

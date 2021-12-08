@@ -48,9 +48,15 @@ public class AddEditProductActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_edit_product);
 
         slidrInterface = Slidr.attach(this);
-        init();
+
         call_db();
+        init();
+
         check_db();
+
+
+
+
         thousandNumbersEdt();
         animateOb();
         save_bttn();

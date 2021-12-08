@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipToPadding="false"
-    tools:context=".activity.customer.AddEditCostomerActivity">
+    tools:context=".activity.product.AddEditProductActivity">
 
     <ImageView
         android:layout_width="match_parent"
