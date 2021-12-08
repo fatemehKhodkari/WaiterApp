@@ -22,7 +22,8 @@
         <activity
             android:name=".activity.grouping.AddEditGroupingActivity"
             android:exported="true"
-            android:theme="@style/Theme.WaiterApp.SlidrActivityTheme" />
+            android:theme="@style/Theme.WaiterApp.SlidrActivityTheme"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".activity.grouping.GroupingActivity"
             android:exported="true"
