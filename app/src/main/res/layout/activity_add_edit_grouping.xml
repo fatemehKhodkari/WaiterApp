@@ -22,14 +22,15 @@
         <LinearLayout
             android:id="@+id/grouping_info_feilds"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="bottom"
-            app:cardCornerRadius="10dp"
-            android:paddingTop="120dp"
-            android:elevation="30dp"
+            android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
+            android:elevation="30dp"
+            android:gravity="bottom"
+            android:paddingTop="120dp"
+            app:cardCornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
 
+            app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints">
 
             <include layout="@layout/grouping_insert_info"></include>

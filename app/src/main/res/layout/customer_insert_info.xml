@@ -1,33 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:backgroundTint="#00000000"
-        android:elevation="10dp"
-        app:cardBackgroundColor="#00000000"
-        android:background="#00000000">
+    android:orientation="vertical"
+    android:elevation="30dp"
+    android:clipToPadding="false"
+    android:backgroundTint="@color/browwn"
+    app:cardBackgroundColor="#00000000"
+    android:background="@drawable/back_add_edit_center">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/back_add_edit_center"
-            android:backgroundTint="@color/browwn"
-            android:scaleType="fitXY"
-            app:cardCornerRadius="100dp"
-            >
-        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:backgroundTint="#00000000"
             android:gravity="center"
+            android:layout_marginTop="120dp"
             android:foregroundGravity="center"
             android:orientation="vertical">
 
@@ -137,8 +129,8 @@
 
         </LinearLayout>
 
-    </RelativeLayout>
 
 
 
-</LinearLayout>
+
+</ScrollView>
