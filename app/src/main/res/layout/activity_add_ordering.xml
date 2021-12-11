@@ -7,6 +7,14 @@
     android:background="@color/whitediff"
     tools:context=".addordering.AddOrderingActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:paddingTop="230dp"
+        tools:listitem="@layout/product_submited_info">
+    </androidx.recyclerview.widget.RecyclerView>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
