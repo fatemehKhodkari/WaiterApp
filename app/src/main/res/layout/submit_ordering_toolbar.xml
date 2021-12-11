@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/add_ordering_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:padding="6dp"
+        android:elevation="6dp"
+        android:background="@color/browwn">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ثبت سفارش"
+                android:textColor="@color/whitediff"
+                android:textSize="16dp"
+                android:fontFamily="@font/iran_sans"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"/>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:gravity="left">
+
+                <LinearLayout
+                    android:id="@+id/lottie_clear_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/clear_submit_ordering_ic"
+                        android:layout_width="50dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_height="match_parent"
+                        app:lottie_loop="false"
+                        app:lottie_autoPlay="false"
+                        app:lottie_repeatCount="1"
+                        app:lottie_rawRes="@raw/clear_list"
+                        android:padding="5dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+</LinearLayout>

@@ -25,14 +25,12 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1">
 
-                <TextView
+                <ImageView
+                    android:id="@+id/add_order_ic"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="داشبورد"
-                    android:textStyle="bold"
-                    android:textSize="14dp"
-                    android:textColor="#f8f3f7"
                     android:gravity="center"
+                    android:src="@drawable/add_shopingcart_ic"
                     android:paddingRight="10dp"/>
 
 

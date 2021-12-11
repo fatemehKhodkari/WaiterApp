@@ -14,6 +14,7 @@ import com.example.waiterapp.R;
 import com.example.waiterapp.activity.customer.CustomerActivity;
 import com.example.waiterapp.activity.grouping.GroupingActivity;
 import com.example.waiterapp.activity.product.ProductActivity;
+import com.example.waiterapp.addordering.AddOrderingActivity;
 import com.example.waiterapp.model.Grouping;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.LegendRenderer;
@@ -23,7 +24,7 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 public class HomeActivity extends AppCompatActivity {
 
     CardView cardViewproduct,cardViewcustomer , cardViewgrouping;
-    ImageView add_shop;
+    ImageView add_order;
     LinearLayout copy , share , upload, download , delete;
     GraphView graph;
 
@@ -35,6 +36,7 @@ public class HomeActivity extends AppCompatActivity {
         init();
         graph();
         on_click_cards();
+        ordering();
 
     }
 
@@ -42,7 +44,7 @@ public class HomeActivity extends AppCompatActivity {
         cardViewproduct = findViewById(R.id.products);
         cardViewcustomer=findViewById(R.id.customer);
         cardViewgrouping=findViewById(R.id.grouping);
-//        add_shop = findViewById(R.id.add_shop);
+        add_order = findViewById(R.id.add_order_ic);
         graph = (GraphView) findViewById(R.id.graf);
     }
 
@@ -129,17 +131,17 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
-    void Ordering(){
+    void ordering(){
 
-//        add_shop.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-////                showBottomSheetDialog();
-////                Intent a= new Intent(MainActivity.this, ActivityOrdering.class);
-////                startActivity(a);
-//
-//            }
-//        });
+        add_order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+//                showBottomSheetDialog();
+                Intent addorder= new Intent(HomeActivity.this, AddOrderingActivity.class);
+                startActivity(addorder);
+
+            }
+        });
     }
 }

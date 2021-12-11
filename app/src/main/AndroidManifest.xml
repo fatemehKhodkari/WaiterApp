@@ -12,18 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WaiterApp">
         <activity
+            android:name=".addordering.AddOrderingActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.product.AddEditProductActivity"
             android:exported="true"
-            android:theme="@style/Theme.WaiterApp.SlidrActivityTheme"/>
+            android:theme="@style/Theme.WaiterApp.SlidrActivityTheme" />
         <activity
             android:name=".activity.product.ProductActivity"
             android:exported="true"
-            android:theme="@style/Theme.WaiterApp.SlidrActivityTheme"/>
+            android:theme="@style/Theme.WaiterApp.SlidrActivityTheme" />
         <activity
             android:name=".activity.grouping.AddEditGroupingActivity"
             android:exported="true"
             android:theme="@style/Theme.WaiterApp.SlidrActivityTheme"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.grouping.GroupingActivity"
             android:exported="true"
