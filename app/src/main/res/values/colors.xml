@@ -6,11 +6,11 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#f8f3f7</color>
     <color name="browwn">#795548</color>
     <color name="browwndiff">#DDC8BF</color>
     <color name="brownopa">#48795548</color>
-    <color name="whitediff">#f8f3f7</color>
+    <color name="whitediff">#E4DBDB</color>
     <color name="whiteopa">#47F8F3F7</color>
     <color name="matn">#404040</color>
 
