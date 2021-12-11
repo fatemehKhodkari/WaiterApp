@@ -8,6 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="browwn">#795548</color>
+    <color name="browwndiff">#DDC8BF</color>
     <color name="brownopa">#48795548</color>
     <color name="whitediff">#f8f3f7</color>
     <color name="whiteopa">#47F8F3F7</color>
