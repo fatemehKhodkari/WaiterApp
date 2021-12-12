@@ -13,8 +13,10 @@ import com.example.waiterapp.database.dao.ProductDao;
 import com.example.waiterapp.model.Customer;
 import com.example.waiterapp.model.Grouping;
 import com.example.waiterapp.model.Product;
+import com.example.waiterapp.model.DetailOrder;
 
-@Database(entities = {Grouping.class, Product.class, Customer.class} , exportSchema = false , version = 1)
+
+@Database(entities = {Grouping.class, Product.class, Customer.class , DetailOrder.class , Order.class} , exportSchema = false , version = 1)
 public abstract class DatabaseHelper extends RoomDatabase {
     private static final String DB_NAME = "db_name";
     private static DatabaseHelper instance;
@@ -35,5 +37,6 @@ public abstract class DatabaseHelper extends RoomDatabase {
     public abstract ProductDao productDao();
     public abstract GroupingDao groupingDao();
     public abstract CustomerDao customerDao();
-
+    public abstract DetailOrderDao detailOrderDao();
+    public abstract SavedOrderDao savedOrderDao();
 }
