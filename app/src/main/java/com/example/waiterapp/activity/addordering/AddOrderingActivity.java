@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.waiterapp.R;
+import com.r0adkll.slidr.Slidr;
+import com.r0adkll.slidr.model.SlidrInterface;
 
 public class AddOrderingActivity extends AppCompatActivity {
 
@@ -24,12 +26,16 @@ public class AddOrderingActivity extends AppCompatActivity {
             submit_ordering_tv;
     private RelativeLayout bttnvigtion_submit_order;
     private CardView counting_orders;
+    private SlidrInterface slidrInterface;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_ordering);
+
+        slidrInterface = Slidr.attach(this);
 
         init();
     }
