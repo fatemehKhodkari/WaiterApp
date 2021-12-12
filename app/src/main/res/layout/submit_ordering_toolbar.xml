@@ -19,7 +19,7 @@
 
 
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/clear_submit_ordering_ic"
+        android:id="@+id/clear_submit_ordering_ic_lottie"
         android:layout_width="50dp"
         android:layout_gravity="center_vertical"
         android:layout_height="match_parent"

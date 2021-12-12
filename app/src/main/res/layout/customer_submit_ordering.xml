@@ -15,7 +15,7 @@
         android:gravity="center">
 
         <LinearLayout
-            android:id="@+id/box_custome"
+            android:id="@+id/customer_orderer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingHorizontal="10dp"
@@ -42,7 +42,7 @@
                 android:gravity="center">
 
                 <TextView
-                    android:id="@+id/txtname"
+                    android:id="@+id/orderer_name_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="مشتری"
