@@ -55,7 +55,7 @@ public class AddOrderingActivity extends AppCompatActivity {
         callDatabase();
         init();
 
-        
+
     }
 
     private void init(){
