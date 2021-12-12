@@ -11,8 +11,10 @@ import com.example.waiterapp.database.dao.CustomerDao;
 import com.example.waiterapp.database.dao.DetailOrderDao;
 import com.example.waiterapp.database.dao.GroupingDao;
 import com.example.waiterapp.database.dao.ProductDao;
+import com.example.waiterapp.database.dao.SubmitOrderDao;
 import com.example.waiterapp.model.Customer;
 import com.example.waiterapp.model.Grouping;
+import com.example.waiterapp.model.Order;
 import com.example.waiterapp.model.Product;
 import com.example.waiterapp.model.DetailOrder;
 
@@ -39,5 +41,5 @@ public abstract class DatabaseHelper extends RoomDatabase {
     public abstract GroupingDao groupingDao();
     public abstract CustomerDao customerDao();
     public abstract DetailOrderDao detailOrderDao();
-    public abstract SavedOrderDao savedOrderDao();
+    public abstract SubmitOrderDao submitOrderDao();
 }
