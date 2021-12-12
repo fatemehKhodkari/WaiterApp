@@ -1,16 +1,21 @@
 package com.example.waiterapp.activity.addordering;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.waiterapp.R;
+import com.example.waiterapp.adapter.OrderingAdapter;
+import com.example.waiterapp.database.DatabaseHelper;
+import com.example.waiterapp.database.dao.DetailOrderDao;
+import com.example.waiterapp.database.dao.SubmitOrderDao;
+import com.example.waiterapp.model.Customer;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
 
@@ -25,8 +30,18 @@ public class AddOrderingActivity extends AppCompatActivity {
             counting_orders_tv ,
             submit_ordering_tv;
     private RelativeLayout bttnvigtion_submit_order;
-    private CardView counting_orders;
+    private CardView counting_orders , add_ordering;
     private SlidrInterface slidrInterface;
+    private OrderingAdapter orderingAdapter;
+    private DatabaseHelper databaseHelper;
+    private DetailOrderDao detailOrderDao;
+    private SubmitOrderDao submitOrderDao;
+    private Customer customer;
+    private String CODE = String.valueOf(System.currentTimeMillis());
+
+
+
+
 
 
 
@@ -37,7 +52,10 @@ public class AddOrderingActivity extends AppCompatActivity {
 
         slidrInterface = Slidr.attach(this);
 
+        callDatabase();
         init();
+
+        
     }
 
     private void init(){
@@ -50,5 +68,12 @@ public class AddOrderingActivity extends AppCompatActivity {
         counting_orders = findViewById(R.id.counting_orders);
         counting_orders_tv = findViewById(R.id.counting_orders_tv);
         submit_ordering_tv = findViewById(R.id.submit_ordering_tv);
+        add_ordering = findViewById(R.id.add_ordering);
+    }
+
+    private void callDatabase(){
+        databaseHelper = DatabaseHelper.getInstance(getApplicationContext());
+        submitOrderDao = databaseHelper.submitOrderDao();
+        detailOrderDao = databaseHelper.detailOrderDao();
     }
 }
