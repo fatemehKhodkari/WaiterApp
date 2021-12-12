@@ -19,6 +19,9 @@ public interface CustomerDao {
     @Query("Select * from customer_table where phone = :phone limit 1")
     Customer getCustomer(String phone);
 
+    @Query("Select * from customer_table where id = :id limit 1")
+    Customer getID(int id);
+
     @Insert
     void insertCustomer(Customer customer);
     @Update
