@@ -28,13 +28,14 @@
     </RelativeLayout>
 
     <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ordering_product_imv"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginRight="20dp"
         android:src="@drawable/ordering_pic"></de.hdodenhof.circleimageview.CircleImageView>
 
     <TextView
-        android:id="@+id/product_name_tv"
+        android:id="@+id/product_ordering_name_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
@@ -119,7 +120,7 @@
 
 
         <TextView
-            android:id="@+id/product_number"
+            android:id="@+id/product_number_ordering"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
