@@ -37,9 +37,13 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHo
     Customer customer;
     Context context;
 
-    public CustomerAdapter(List<Customer> list_customer,Context context){
+    public CustomerAdapter(List<Customer> list_customer, Context context, Listener listener){
         this.list_customer = list_customer;
         this.context = context;
+    }
+
+    public interface Listener{
+        void onClickListener(Customer customer , int pos);
     }
 
     @Override
@@ -81,7 +85,7 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHo
         }
     }
 
-    private void showDialogBSheet(int pos){
+     public void showDialogBSheet(int pos){
 
         final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
         bottomSheetDialog.setContentView(R.layout.bottom_sheet_add_edit_customer);

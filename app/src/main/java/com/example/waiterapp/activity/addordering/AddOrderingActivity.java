@@ -1,5 +1,6 @@
 package com.example.waiterapp.activity.addordering;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.waiterapp.R;
+import com.example.waiterapp.activity.customer.CustomerActivity;
 import com.example.waiterapp.adapter.OrderingAdapter;
 import com.example.waiterapp.database.DatabaseHelper;
 import com.example.waiterapp.database.dao.DetailOrderDao;
@@ -54,6 +56,7 @@ public class AddOrderingActivity extends AppCompatActivity {
 
         callDatabase();
         init();
+        click_customer();
 
 
     }
@@ -75,5 +78,13 @@ public class AddOrderingActivity extends AppCompatActivity {
         databaseHelper = DatabaseHelper.getInstance(getApplicationContext());
         submitOrderDao = databaseHelper.submitOrderDao();
         detailOrderDao = databaseHelper.detailOrderDao();
+    }
+
+    private void click_customer(){
+        customer_orderer.setOnClickListener(v -> {
+            Intent intent = new Intent(this, CustomerActivity.class);
+            intent.putExtra("for_order" , true);
+            startActivityForResult(intent,100);
+        });
     }
 }
