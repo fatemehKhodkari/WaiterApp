@@ -1,4 +1,4 @@
-package com.example.waiterapp.addordering;
+package com.example.waiterapp.activity.addordering;
 
 import androidx.appcompat.app.AppCompatActivity;
 

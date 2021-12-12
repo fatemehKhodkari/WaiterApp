@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,8 +13,7 @@ import com.example.waiterapp.R;
 import com.example.waiterapp.activity.customer.CustomerActivity;
 import com.example.waiterapp.activity.grouping.GroupingActivity;
 import com.example.waiterapp.activity.product.ProductActivity;
-import com.example.waiterapp.addordering.AddOrderingActivity;
-import com.example.waiterapp.model.Grouping;
+import com.example.waiterapp.activity.addordering.AddOrderingActivity;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.LegendRenderer;
 import com.jjoe64.graphview.series.DataPoint;
