@@ -8,6 +8,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.example.waiterapp.database.dao.CustomerDao;
+import com.example.waiterapp.database.dao.DetailOrderDao;
 import com.example.waiterapp.database.dao.GroupingDao;
 import com.example.waiterapp.database.dao.ProductDao;
 import com.example.waiterapp.model.Customer;
