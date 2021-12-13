@@ -1,22 +1,14 @@
 package com.example.waiterapp.adapter;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.waiterapp.R;
@@ -36,10 +28,12 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHo
     CustomerDao customerDao;
     Customer customer;
     Context context;
+    Listener listener;
 
     public CustomerAdapter(List<Customer> list_customer, Context context, Listener listener){
         this.list_customer = list_customer;
         this.context = context;
+        this.listener = listener;
     }
 
     public interface Listener{
@@ -63,7 +57,9 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHo
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDialogBSheet(position);
+
+//                showDialogBSheet(position);
+                listener.onClickListener(customer , position);
             }
         });
     }
