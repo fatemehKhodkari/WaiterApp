@@ -1,10 +1,5 @@
 package com.example.waiterapp.activity.product;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -14,7 +9,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.waiterapp.R;
 import com.example.waiterapp.adapter.GroupingProductAdapter;
@@ -25,11 +24,7 @@ import com.example.waiterapp.database.dao.ProductDao;
 import com.example.waiterapp.model.Product;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
-import com.mig35.carousellayoutmanager.CarouselLayoutManager;
-import com.mig35.carousellayoutmanager.CarouselZoomPostLayoutListener;
 import com.mig35.carousellayoutmanager.CenterScrollListener;
-import com.r0adkll.slidr.Slidr;
-import com.r0adkll.slidr.model.SlidrInterface;
 
 import java.util.ArrayList;
 
@@ -55,6 +50,7 @@ public class ProductActivity extends AppCompatActivity {
 
 //        TextView gg=(TextView) findViewById(R.id)
 
+        check_intent();
         init();
         set_toolBar();
         set_floatingActtionButton();
@@ -68,6 +64,12 @@ public class ProductActivity extends AppCompatActivity {
         set_product_recycler();
 
 
+    }
+
+    void check_intent(){
+        if(getIntent().getExtras() != null){
+            for_order = getIntent().getBooleanExtra("for_order",false);
+        }
     }
 
     public void init(){
@@ -128,8 +130,7 @@ public class ProductActivity extends AppCompatActivity {
                     setResult(Activity.RESULT_OK, returnIntent);
                     finish();
                 }else {
-
-//                    productAdapter.showDialogSheet(pos , name);
+                    productAdapter.showDialogBSheet(pos);
                 }
             }
         });

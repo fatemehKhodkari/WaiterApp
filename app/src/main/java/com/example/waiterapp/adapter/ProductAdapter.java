@@ -15,13 +15,11 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.waiterapp.R;
-import com.example.waiterapp.activity.customer.AddEditCostomerActivity;
 import com.example.waiterapp.activity.product.AddEditProductActivity;
 import com.example.waiterapp.database.DatabaseHelper;
 import com.example.waiterapp.database.dao.ProductDao;
@@ -36,7 +34,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Viewhold
 
     List<Product> productList,search_list_product;
     Context  context;
-    Listener listener;
+    public Listener listener;
     DatabaseHelper databaseHelper;
     ProductDao productDao;
 
@@ -74,7 +72,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Viewhold
             @Override
             public void onClick(View v) {
 
-                showDialogBSheet(position);
             listener.onClick(product , position);
 
             }
@@ -138,7 +135,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Viewhold
         }
     }
 
-    private void showDialogBSheet(int pos){
+    public void showDialogBSheet(int pos){
 
         final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
         bottomSheetDialog.setContentView(R.layout.bottom_sheet_add_edit_product);
