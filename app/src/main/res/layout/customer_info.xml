@@ -40,7 +40,7 @@
                     android:alpha="0.5"
                     android:paddingLeft="5dp"
                     android:src="@drawable/person_ic"
-                    app:tint="@color/browwndiff" />
+                    app:tint="@color/cream" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -81,7 +81,7 @@
                     android:alpha="0.5"
                     android:paddingLeft="5dp"
                     android:src="@drawable/phone_ic"
-                    app:tint="@color/browwndiff" />
+                    app:tint="@color/cream" />
 
 
                 <TextView
@@ -123,7 +123,7 @@
                         android:alpha="0.5"
                         android:paddingLeft="5dp"
                         android:src="@drawable/home_ic"
-                        app:tint="@color/browwndiff" />
+                        app:tint="@color/cream" />
 
                     <TextView
                         android:layout_width="wrap_content"
