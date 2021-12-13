@@ -1,5 +1,6 @@
 package com.example.waiterapp.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,7 +42,7 @@ public class GroupingProductAdapter extends RecyclerView.Adapter<GroupingProduct
     }
 
     @Override
-    public void onBindViewHolder(GroupingProductAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(GroupingProductAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         grouping = groupingList.get(position);
         holder.grouping_product_name_tv.setText(grouping.name);
         holder.itemView.setOnClickListener(new View.OnClickListener() {

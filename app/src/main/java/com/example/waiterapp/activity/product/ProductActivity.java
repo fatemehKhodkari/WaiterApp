@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +22,8 @@ import com.example.waiterapp.adapter.ProductAdapter;
 import com.example.waiterapp.database.DatabaseHelper;
 import com.example.waiterapp.database.dao.GroupingDao;
 import com.example.waiterapp.database.dao.ProductDao;
+import com.example.waiterapp.helper.App;
+import com.example.waiterapp.model.Grouping;
 import com.example.waiterapp.model.Product;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
@@ -38,6 +41,8 @@ public class ProductActivity extends AppCompatActivity {
     ProductAdapter productAdapter;
     GroupingProductAdapter groupingProductAdapter;
     Toolbar toolbar;
+    String category;
+
 
     private Boolean for_order = false ;
 
@@ -56,7 +61,7 @@ public class ProductActivity extends AppCompatActivity {
         set_floatingActtionButton();
         hide_floatingActionButton();
 
-        databaseHelper= DatabaseHelper.getInstance(getApplicationContext());
+        databaseHelper= App.getDatabase();
         productDao= databaseHelper.productDao();
         groupingDao = databaseHelper.groupingDao();
 
@@ -113,7 +118,17 @@ public class ProductActivity extends AppCompatActivity {
         category_recycler.setLayoutManager(layoutManager);
 
         category_recycler.addOnScrollListener(new CenterScrollListener());
-        groupingProductAdapter = new GroupingProductAdapter(this, groupingDao.getGroupingList());
+        groupingProductAdapter = new GroupingProductAdapter(this, groupingDao.getGroupingList(), new GroupingProductAdapter.Listener() {
+            @Override
+            public void onClick(int pos, Grouping catgry) {
+                if(pos == 1){
+                    category = null;
+                }else {
+                    category = catgry.name;
+                }
+                initListProduct();
+            }
+        });
         category_recycler.setAdapter(groupingProductAdapter);
     }
 
@@ -141,9 +156,7 @@ public class ProductActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if(productAdapter != null){
-            productAdapter.addList(productDao.getProductList());
-        }
+        initListProduct();
     }
 
     @Override
@@ -178,4 +191,16 @@ public class ProductActivity extends AppCompatActivity {
         toolbar.setTitleTextColor(getResources().getColor(R.color.whitediff));
         setSupportActionBar(toolbar);
     }
+
+    private void initListProduct(){
+        Log.e("qqqq", "initListProduct: " + category);
+        if(productAdapter != null){
+            if (category == null || category.isEmpty()){
+                productAdapter.addList(productDao.getProductList());
+            }else {
+                productAdapter.addList(productDao.getListByCtegory(category));
+            }
+        }
+    }
+
 }
