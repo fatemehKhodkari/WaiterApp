@@ -6,13 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.waiterapp.R;
 import com.example.waiterapp.model.Grouping;
 
-import java.util.*;
+import java.util.List;
 
 public class GroupingProductAdapter extends RecyclerView.Adapter<GroupingProductAdapter.ViewHolder>{
 
@@ -20,11 +19,18 @@ public class GroupingProductAdapter extends RecyclerView.Adapter<GroupingProduct
     Grouping grouping;
     List<Grouping> groupingList;
     ProductAdapter productAdapter;
+    Listener listener;
 
-    public GroupingProductAdapter(Context context, List<Grouping> groupingList) {
+    public GroupingProductAdapter(Context context, List<Grouping> groupingList,Listener listener) {
         this.context = context;
         this.groupingList = groupingList;
+        this.listener = listener;
     }
+
+    public interface Listener{
+        void onClick(int pos, Grouping category);
+    }
+
 
     @Override
     public GroupingProductAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -41,6 +47,7 @@ public class GroupingProductAdapter extends RecyclerView.Adapter<GroupingProduct
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                listener.onClick(position,grouping);
             }
         });
     }
