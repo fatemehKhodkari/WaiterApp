@@ -140,7 +140,7 @@ public class ProductActivity extends AppCompatActivity {
         category_recycler.setAdapter(groupingProductAdapter);
     }
 
-    void set_product_recycler(){
+    public void set_product_recycler(){
 
         product_recycler.setHasFixedSize(true);
         productAdapter = new ProductAdapter(new ArrayList<>(), this, new ProductAdapter.Listener() {
@@ -164,6 +164,7 @@ public class ProductActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        productAdapter.clear();
         initListProduct();
     }
 
@@ -209,6 +210,13 @@ public class ProductActivity extends AppCompatActivity {
                 productAdapter.addList(productDao.getListByCtegory(category));
             }
         }
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (databaseHelper != null) databaseHelper.close();
     }
 
 }

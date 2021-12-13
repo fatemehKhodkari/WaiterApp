@@ -1,27 +1,24 @@
 package com.example.waiterapp.activity.product;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import com.example.waiterapp.R;
 import com.example.waiterapp.database.DatabaseHelper;
 import com.example.waiterapp.database.dao.GroupingDao;
 import com.example.waiterapp.database.dao.ProductDao;
 import com.example.waiterapp.design.NumberTextWatcherForThousand;
-import com.example.waiterapp.model.Customer;
-import com.example.waiterapp.model.Grouping;
 import com.example.waiterapp.model.Product;
 import com.google.gson.Gson;
 import com.r0adkll.slidr.Slidr;
@@ -115,7 +112,13 @@ public class AddEditProductActivity extends AppCompatActivity {
                 if(product == null){
                     if(TextUtils.isEmpty(product_name) || TextUtils.isEmpty(product_grouping_name) || TextUtils.isEmpty(product_price)){
                         Toast.makeText(getApplicationContext(),"تمام فیلد هارا پر کنید!",Toast.LENGTH_SHORT).show();
-                    }else{
+                    }else
+                        if(productDao.getOneName(product_name) != null){
+                            Toast.makeText(AddEditProductActivity.this, " این محصول تکراری است! ", Toast.LENGTH_SHORT).show();
+                        }else if(groupingDao.getOneName(product_grouping_name) == null){
+                            Toast.makeText(AddEditProductActivity.this,  " دسته بندی "+ product_grouping_name + " وجود ندارد ", Toast.LENGTH_SHORT).show();
+
+                        } else{
                         productDao.insertProduct(new Product(product_name,product_grouping_name,product_price));
                         Toast.makeText(getApplicationContext(),"با موفقیت به لیست اضافه شد",Toast.LENGTH_SHORT).show();
                         finish();

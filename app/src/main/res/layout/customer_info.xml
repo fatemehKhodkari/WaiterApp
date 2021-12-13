@@ -40,7 +40,7 @@
                     android:alpha="0.5"
                     android:paddingLeft="5dp"
                     android:src="@drawable/person_ic"
-                    app:tint="@color/brownopa" />
+                    app:tint="@color/browwndiff" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -49,7 +49,7 @@
                     android:gravity="center"
                     android:paddingLeft="5dp"
                     android:paddingTop="5dp"
-                    android:textColor="@color/matn"
+                    android:textColor="#737373"
                     android:text="نام و نام خانوادگی :"
                     android:textSize="12dp"
                     android:textStyle="bold" />
@@ -61,7 +61,7 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:text="_____"
-                    android:textColor="#737373"
+                    android:textColor="@color/matn"
                     android:paddingTop="5dp"
                     android:textSize="12dp"
                     android:textStyle="bold" />
@@ -81,7 +81,7 @@
                     android:alpha="0.5"
                     android:paddingLeft="5dp"
                     android:src="@drawable/phone_ic"
-                    app:tint="@color/brownopa" />
+                    app:tint="@color/browwndiff" />
 
 
                 <TextView
@@ -89,7 +89,7 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="5dp"
                     android:text="تلفن :"
-                    android:textColor="@color/matn"
+                    android:textColor="#737373"
                     android:paddingTop="5dp"
                     android:textSize="12dp"
                     android:textStyle="bold" />
@@ -100,7 +100,7 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="5dp"
                     android:text="_____"
-                    android:textColor="#737373"
+                    android:textColor="@color/matn"
                     android:textSize="12dp"
                     android:textStyle="bold" />
 
@@ -123,7 +123,7 @@
                         android:alpha="0.5"
                         android:paddingLeft="5dp"
                         android:src="@drawable/home_ic"
-                        app:tint="@color/brownopa" />
+                        app:tint="@color/browwndiff" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -131,7 +131,7 @@
                         android:paddingLeft="5dp"
                         android:paddingTop="5dp"
                         android:text="آدرس :"
-                        android:textColor="@color/matn"
+                        android:textColor="#737373"
                         android:textSize="12dp"
                         android:textStyle="bold" />
 
@@ -141,7 +141,7 @@
                         android:layout_height="wrap_content"
                         android:text="______"
                         android:textSize="12dp"
-                        android:textColor="#737373"
+                        android:textColor="@color/matn"
                         android:paddingBottom="10dp"
                         android:textStyle="bold" />
                 </LinearLayout>

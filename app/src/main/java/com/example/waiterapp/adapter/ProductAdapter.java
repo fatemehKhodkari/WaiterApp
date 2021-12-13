@@ -193,6 +193,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Viewhold
         bottomSheetDialog.show();
     }
 
+
     public  void addList(List<Product> arryList){
         search_list_product.clear();
         search_list_product.addAll(arryList);
@@ -202,5 +203,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Viewhold
 
     public int count(){
         return productList.size();
+    }
+
+    public  void clear(){
+        search_list_product.clear();
+        productList.clear();
+        notifyDataSetChanged();
     }
 }

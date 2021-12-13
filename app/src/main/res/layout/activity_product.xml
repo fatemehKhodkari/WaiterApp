@@ -36,7 +36,7 @@
         android:layout_height="match_parent"
         android:paddingTop="10dp"
         android:clipToPadding="false"
-        android:layout_below="@id/grouping_product_recycler"
+        android:layout_below="@+id/linear_saparat"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/product_info_list">
     </androidx.recyclerview.widget.RecyclerView>
