@@ -21,7 +21,7 @@ public class OrderingAdapter extends RecyclerView.Adapter<OrderingAdapter.ViewHo
     Context context;
     Product product;
     List<Product> productList;
-    Listener listener;
+    public Listener listener;
 
     public OrderingAdapter(Context context, List<Product> productList, Listener listener) {
         this.context = context;

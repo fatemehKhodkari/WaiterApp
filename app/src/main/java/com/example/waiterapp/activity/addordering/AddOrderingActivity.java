@@ -15,18 +15,27 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.waiterapp.R;
 import com.example.waiterapp.activity.customer.CustomerActivity;
+import com.example.waiterapp.activity.product.ProductActivity;
 import com.example.waiterapp.adapter.OrderingAdapter;
 import com.example.waiterapp.database.DatabaseHelper;
 import com.example.waiterapp.database.dao.DetailOrderDao;
 import com.example.waiterapp.database.dao.SubmitOrderDao;
 import com.example.waiterapp.helper.Tools;
 import com.example.waiterapp.model.Customer;
+import com.example.waiterapp.model.DetailOrder;
+import com.example.waiterapp.model.Order;
 import com.example.waiterapp.model.Product;
 import com.google.gson.Gson;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+
+import saman.zamani.persiandate.PersianDate;
+import saman.zamani.persiandate.PersianDateFormat;
 
 public class AddOrderingActivity extends AppCompatActivity {
 
@@ -67,7 +76,8 @@ public class AddOrderingActivity extends AppCompatActivity {
         init();
         click_customer();
         set_Lottie();
-
+        click_add_product();
+        set_recycler();
 
     }
 
@@ -144,11 +154,7 @@ public class AddOrderingActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
-
-
+    
     private void init(){
         lottie = findViewById(R.id.clear_submit_ordering_ic_lottie);
         recyclerView = findViewById(R.id.ordering_recycler);
@@ -175,5 +181,76 @@ public class AddOrderingActivity extends AppCompatActivity {
             intent.putExtra("for_order" , true);
             startActivityForResult(intent,100);
         });
+    }
+
+    private void click_add_product(){
+        add_ordering.setOnClickListener(v ->{
+            Intent intent = new Intent(this, ProductActivity.class);
+            intent.putExtra("for_order" , true);
+            startActivityForResult(intent , 200);
+        });
+    }
+
+    private void set_recycler(){
+        orderDetailList = new ArrayList<>();
+        orderingAdapter = new OrderingAdapter(this, orderDetailList, new OrderingAdapter.Listener() {
+                    @Override
+                    public void onAdded(int pos) {
+                        orderDetailList.get(pos).amount = orderDetailList.get(pos).amount + 1;
+                        orderingAdapter.notifyItemChanged(pos);
+                        initCounter();
+                    }
+
+                    @Override
+                    public void onRemove(int pos) {
+                        if (orderDetailList.get(pos).amount > 1){
+                            orderDetailList.get(pos).amount = orderDetailList.get(pos).amount - 1;
+                            orderingAdapter.notifyItemChanged(pos);
+                        }else {
+                            orderDetailList.remove(pos);
+                            orderingAdapter.notifyDataSetChanged();
+
+                        }
+                        initCounter();
+                    }
+                });
+        recyclerView.setAdapter(orderingAdapter);
+        recyclerView.setHasFixedSize(true);
+    }
+
+    private void set_submit_order(){
+        submit_ordering_tv.setOnClickListener(view -> {
+            if( customer == null ){
+                Toast.makeText(this, "فیلد مشتری خالی است!", Toast.LENGTH_SHORT).show();
+            }else {
+                submitOrderDao.insertOrder(new Order(customer.name , CODE , customer.id , 1 , total_price_tv.getText()+"" , "با تمام مخلفات" , getCurrentTime_time() , getCurrentTime_Date()));
+
+                for (int i = 0; i < orderDetailList.size(); i++) {
+
+                    detailOrderDao.insertDetailOrder(new DetailOrder(orderDetailList.get(i).name_product , orderDetailList.get(i).category ,
+                            String.valueOf(Tools.convertToPrice(orderDetailList.get(i).price) * orderDetailList.get(i).amount)  ,
+                            orderDetailList.get(i).amount ,CODE ));
+
+                    Toast.makeText(AddOrderingActivity.this, " سفارش " + customer.name + " با موفقیت ثبت شد", Toast.LENGTH_SHORT).show();
+                }
+                databaseHelper.close();
+                finish();
+            }
+
+        });
+    }
+
+    public String getCurrentTime_Date(){
+        PersianDate c = new PersianDate();
+        PersianDateFormat dateFormat = new PersianDateFormat(" Y/m/d ");
+        String datetime = dateFormat.format(c);
+        return datetime;
+    }
+
+    public String getCurrentTime_time(){
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss ");
+        String datetime = dateFormat.format(c.getTime());
+        return datetime;
     }
 }
