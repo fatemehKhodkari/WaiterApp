@@ -120,10 +120,9 @@
     <LinearLayout
         android:id="@+id/not_order_here"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="150dp">
+        android:gravity="center">
 
         <TextView
             android:id="@+id/not_ordering_tv"
