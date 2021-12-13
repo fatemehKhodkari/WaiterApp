@@ -109,6 +109,14 @@ public class ProductActivity extends AppCompatActivity {
     }
 
     public void set_grouping_recycler(){
+
+
+
+        ArrayList<Grouping> groupingArrayList = new ArrayList<>();
+        groupingArrayList.add(0,new Grouping("همه محصولات"));
+        groupingArrayList.addAll(groupingDao.getGroupingList());
+
+
         category_recycler.setHasFixedSize(true);
 //
 //        final CarouselLayoutManager layoutManager = new CarouselLayoutManager(CarouselLayoutManager.HORIZONTAL,true);
@@ -118,10 +126,10 @@ public class ProductActivity extends AppCompatActivity {
         category_recycler.setLayoutManager(layoutManager);
 
         category_recycler.addOnScrollListener(new CenterScrollListener());
-        groupingProductAdapter = new GroupingProductAdapter(this, groupingDao.getGroupingList(), new GroupingProductAdapter.Listener() {
+        groupingProductAdapter = new GroupingProductAdapter(this, groupingArrayList , new GroupingProductAdapter.Listener() {
             @Override
             public void onClick(int pos, Grouping catgry) {
-                if(pos == 1){
+                if(pos == 0){
                     category = null;
                 }else {
                     category = catgry.name;

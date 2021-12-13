@@ -22,6 +22,14 @@
         tools:listitem="@layout/grouping_product_info_list"
         />
 
+    <View
+        android:id="@+id/linear_saparat"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/grouping_product_recycler"
+        android:background="#dbdbdb"
+        android:orientation="horizontal" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/product_recycler"
         android:layout_width="match_parent"
