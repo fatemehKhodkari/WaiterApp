@@ -78,6 +78,7 @@ public class AddOrderingActivity extends AppCompatActivity {
         set_Lottie();
         click_add_product();
         set_recycler();
+        set_submit_order();
 
     }
 
@@ -253,4 +254,15 @@ public class AddOrderingActivity extends AppCompatActivity {
         String datetime = dateFormat.format(c.getTime());
         return datetime;
     }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(databaseHelper != null){
+            databaseHelper.close();
+        }
+
+    }
+
 }
