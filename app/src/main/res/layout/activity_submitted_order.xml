@@ -20,7 +20,7 @@
         tools:listitem="@layout/submitted_order_info_list"></androidx.recyclerview.widget.RecyclerView>
 
     <TextView
-        android:id="@+id/not_submited_order"
+        android:id="@+id/not_submitted_order"
         android:text="هنوز سفارشی ثبت نشده است!"
         android:gravity="center"
         android:visibility="visible"
