@@ -7,7 +7,7 @@
     android:background="@color/whitediff"
     tools:context=".activity.submittedorder.SubmittedOrderActivity">
 
-    <include layout="@layout/submit_ordering_toolbar"></include>
+    <include layout="@layout/submited_order_toolbar"></include>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/submited_ordering_recycler"
