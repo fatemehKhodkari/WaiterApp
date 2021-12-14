@@ -28,7 +28,7 @@ public class SubmittedOrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_submitted_order);
-        
+
         slidrInterface = Slidr.attach(this);
 
         call_db();

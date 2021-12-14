@@ -128,11 +128,11 @@
             android:id="@+id/not_ordering_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="هنوز سفارشی ثبت نشده است!"
+            android:text="هنوز محصولی به لیست سفارشات اضافه نشده است!"
             android:fontFamily="@font/iran_sans"
             android:textStyle="bold"
             android:textColor="#d3d3d3"
-            android:textSize="16dp"
+            android:textSize="14dp"
             android:layout_gravity="center"
             />
 
