@@ -1,9 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/whitediff"
     tools:context=".activity.submitedorder.SubmitedOrderActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <include layout="@layout/submit_ordering_toolbar"></include>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/submited_ordering_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:paddingTop="5dp"
+        android:visibility="gone"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/submited_order_info_list"></androidx.recyclerview.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/not_submited_order"
+        android:text="هنوز سفارشی ثبت نشده است!"
+        android:gravity="center"
+        android:visibility="visible"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:fontFamily="@font/iran_sans"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>

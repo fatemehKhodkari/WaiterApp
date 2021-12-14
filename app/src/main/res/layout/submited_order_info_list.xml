@@ -7,6 +7,7 @@
     android:layout_marginHorizontal="10dp"
     android:background="@drawable/back_submited_order_info_all"
     android:elevation="1dp"
+    android:layout_marginBottom="10dp"
     android:orientation="vertical"
     android:outlineSpotShadowColor="@color/browwn">
 
@@ -15,8 +16,7 @@
         android:id="@+id/name_record"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginStart="15dp"
         android:fontFamily="@font/iran_sans"
         android:gravity="right"
         android:paddingVertical="5dp"
@@ -27,13 +27,15 @@
 
 
     <TextView
+        android:id="@+id/date_of_ordered"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:fontFamily="@font/irsansfanum"
-        android:padding="5dp"
+        android:padding="6dp"
+        android:layout_marginEnd="5dp"
+        android:gravity="center"
         android:textColor="#9C9B9B"
-        android:textSize="12dp"
         android:text="date"/>
 
         <LinearLayout
@@ -42,9 +44,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/name_record"
             android:layout_marginHorizontal="5dp"
+            android:layout_marginBottom="1dp"
             android:backgroundTint="@color/white"
             android:elevation="15dp"
-            android:background="@drawable/back_submited_order_info_all"
+            android:background="@drawable/back_submited_order_info_in"
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -140,10 +143,19 @@
 
             </LinearLayout>
         </LinearLayout>
+    <LinearLayout
+        android:id="@+id/second"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/whitediff"
+        android:layout_below="@+id/first"
+
+        android:backgroundTint="@color/whitediff"
+        android:orientation="vertical" />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/first"
+        android:layout_below="@+id/second"
         android:layout_marginVertical="5dp"
         android:layout_marginHorizontal="6dp"
         android:orientation="horizontal">
