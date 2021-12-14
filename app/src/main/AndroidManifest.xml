@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WaiterApp">
         <activity
+            android:name=".activity.submittedorderdetail.SubmittedOrderDetailActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.submittedorder.SubmittedOrderActivity"
             android:exported="true" />
         <activity

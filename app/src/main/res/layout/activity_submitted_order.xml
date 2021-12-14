@@ -17,7 +17,7 @@
         android:paddingTop="5dp"
         android:visibility="gone"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/submited_order_info_list"></androidx.recyclerview.widget.RecyclerView>
+        tools:listitem="@layout/submitted_order_info_list"></androidx.recyclerview.widget.RecyclerView>
 
     <TextView
         android:id="@+id/not_submited_order"
