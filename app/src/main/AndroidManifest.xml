@@ -14,10 +14,12 @@
         android:theme="@style/Theme.WaiterApp">
         <activity
             android:name=".activity.submittedorderdetail.SubmittedOrderDetailActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.WaiterApp.SlidrActivityTheme"/>
         <activity
             android:name=".activity.submittedorder.SubmittedOrderActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.WaiterApp.SlidrActivityTheme"/>
         <activity
             android:name=".activity.addordering.AddOrderingActivity"
             android:exported="true"
