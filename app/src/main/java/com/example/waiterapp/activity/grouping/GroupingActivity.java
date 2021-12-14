@@ -1,19 +1,17 @@
 package com.example.waiterapp.activity.grouping;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.waiterapp.R;
-import com.example.waiterapp.activity.customer.AddEditCostomerActivity;
-import com.example.waiterapp.activity.customer.CustomerActivity;
 import com.example.waiterapp.adapter.GroupingAdapter;
 import com.example.waiterapp.database.DatabaseHelper;
 import com.example.waiterapp.database.dao.GroupingDao;
-import com.example.waiterapp.model.Grouping;
+import com.example.waiterapp.helper.App;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mig35.carousellayoutmanager.CarouselLayoutManager;
 import com.mig35.carousellayoutmanager.CarouselZoomPostLayoutListener;
@@ -55,7 +53,7 @@ public class GroupingActivity extends AppCompatActivity {
         final CarouselLayoutManager layoutManager = new CarouselLayoutManager(CarouselLayoutManager.VERTICAL, true);
         layoutManager.setPostLayoutListener(new CarouselZoomPostLayoutListener());
 
-        databaseHelper = DatabaseHelper.getInstance(getApplicationContext());
+        databaseHelper = App.getDatabase();
         groupingDao = databaseHelper.groupingDao();
 
         recyclerView.setLayoutManager(layoutManager);

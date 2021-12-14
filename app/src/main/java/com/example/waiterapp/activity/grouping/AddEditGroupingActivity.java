@@ -1,8 +1,5 @@
 package com.example.waiterapp.activity.grouping;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -14,9 +11,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import com.example.waiterapp.R;
 import com.example.waiterapp.database.DatabaseHelper;
 import com.example.waiterapp.database.dao.GroupingDao;
+import com.example.waiterapp.helper.App;
 import com.example.waiterapp.model.Grouping;
 import com.google.gson.Gson;
 import com.r0adkll.slidr.Slidr;
@@ -75,7 +76,7 @@ public class AddEditGroupingActivity extends AppCompatActivity {
         grouping_desing_anim = findViewById(R.id.add_edit_grouping_design);
     }
     void call_db(){
-        databaseHelper = DatabaseHelper.getInstance(getApplicationContext());
+        databaseHelper = App.getDatabase();
         groupingDao = databaseHelper.groupingDao();
     }
 

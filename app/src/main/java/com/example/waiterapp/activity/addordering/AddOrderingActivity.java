@@ -18,8 +18,10 @@ import com.example.waiterapp.activity.customer.CustomerActivity;
 import com.example.waiterapp.activity.product.ProductActivity;
 import com.example.waiterapp.adapter.OrderingAdapter;
 import com.example.waiterapp.database.DatabaseHelper;
+import com.example.waiterapp.database.dao.CustomerDao;
 import com.example.waiterapp.database.dao.DetailOrderDao;
 import com.example.waiterapp.database.dao.SubmitOrderDao;
+import com.example.waiterapp.helper.App;
 import com.example.waiterapp.helper.Tools;
 import com.example.waiterapp.model.Customer;
 import com.example.waiterapp.model.DetailOrder;
@@ -43,11 +45,12 @@ public class AddOrderingActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private LinearLayout customer_orderer ;
     private TextView
-            orderer_name_tv ,
             total_price_tv ,
             counting_orders_tv ,
             submit_ordering_tv ,
             not_ordering_tv ;
+
+    private TextView orderer_name_tv ;
     private RelativeLayout bttnvigtion_submit_order;
     private CardView counting_orders , add_ordering;
     private SlidrInterface slidrInterface;
@@ -56,6 +59,7 @@ public class AddOrderingActivity extends AppCompatActivity {
     private DetailOrderDao detailOrderDao;
     private SubmitOrderDao submitOrderDao;
     private Customer customer;
+    private CustomerDao customerDao;
     private String CODE = String.valueOf(System.currentTimeMillis());
     private List<Product> orderDetailList;
 
@@ -96,7 +100,7 @@ public class AddOrderingActivity extends AppCompatActivity {
 
                 case 200:
                     not_ordering_tv.setVisibility(View.GONE);
-                    recyclerView.setVisibility(View.VISIBLE);
+//                    recyclerView.setVisibility(View.VISIBLE);
                     bttnvigtion_submit_order.setVisibility(View.VISIBLE);
                     String json_product = data.getExtras().getString("json_product");
                     Product product = new Gson().fromJson(json_product,Product.class);
@@ -171,7 +175,7 @@ public class AddOrderingActivity extends AppCompatActivity {
     }
 
     private void callDatabase(){
-        databaseHelper = DatabaseHelper.getInstance(getApplicationContext());
+        databaseHelper = App.getDatabase();
         submitOrderDao = databaseHelper.submitOrderDao();
         detailOrderDao = databaseHelper.detailOrderDao();
     }

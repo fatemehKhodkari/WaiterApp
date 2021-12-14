@@ -13,9 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WaiterApp">
         <activity
-            android:name=".activity.addordering.AddOrderingActivity"
-            android:theme="@style/Theme.WaiterApp.SlidrActivityTheme"
+            android:name=".activity.submitedorder.SubmitedOrderActivity"
             android:exported="true" />
+        <activity
+            android:name=".activity.addordering.AddOrderingActivity"
+            android:exported="true"
+            android:theme="@style/Theme.WaiterApp.SlidrActivityTheme" />
         <activity
             android:name=".activity.product.AddEditProductActivity"
             android:exported="true"

@@ -1,42 +1,30 @@
 package com.example.waiterapp.adapter;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Parcelable;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.waiterapp.R;
-import com.example.waiterapp.activity.customer.AddEditCostomerActivity;
 import com.example.waiterapp.activity.grouping.AddEditGroupingActivity;
 import com.example.waiterapp.database.DatabaseHelper;
 import com.example.waiterapp.database.dao.GroupingDao;
-import com.example.waiterapp.model.Customer;
 import com.example.waiterapp.model.Grouping;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.gson.Gson;
-import java.util.*;
+
+import java.util.List;
 
 public class GroupingAdapter extends RecyclerView.Adapter<GroupingAdapter.ViewHolder>{
     Context context;
-    Grouping grouping;
     DatabaseHelper databaseHelper;
     GroupingDao groupingDao;
     List<Grouping> groupingList;
@@ -56,8 +44,8 @@ public class GroupingAdapter extends RecyclerView.Adapter<GroupingAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        grouping = groupingList.get(position);
+    public void onBindViewHolder(ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        Grouping grouping = groupingList.get(position);
         holder.grouping_name_tv.setText(grouping.name);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,6 +82,8 @@ public class GroupingAdapter extends RecyclerView.Adapter<GroupingAdapter.ViewHo
 
         edit_grouping_btsh = bottomSheetDialog.findViewById(R.id.edit_grouping_btsh);
         delete_grouping_btsh = bottomSheetDialog.findViewById(R.id.delete_grouping_btsh);
+
+        Grouping grouping = groupingList.get(pos);
 
         delete_grouping_btsh.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -55,15 +55,18 @@ public class ProductActivity extends AppCompatActivity {
 
 //        TextView gg=(TextView) findViewById(R.id)
 
+
+
+        databaseHelper= App.getDatabase();
+        productDao= databaseHelper.productDao();
+        groupingDao = databaseHelper.groupingDao();
         check_intent();
+
         init();
         set_toolBar();
         set_floatingActtionButton();
         hide_floatingActionButton();
 
-        databaseHelper= App.getDatabase();
-        productDao= databaseHelper.productDao();
-        groupingDao = databaseHelper.groupingDao();
 
         set_grouping_recycler();
         set_product_recycler();

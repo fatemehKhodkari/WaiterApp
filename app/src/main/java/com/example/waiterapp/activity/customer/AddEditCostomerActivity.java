@@ -15,6 +15,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.example.waiterapp.R;
 import com.example.waiterapp.database.DatabaseHelper;
 import com.example.waiterapp.database.dao.CustomerDao;
+import com.example.waiterapp.helper.App;
 import com.example.waiterapp.model.Customer;
 import com.google.gson.Gson;
 import com.r0adkll.slidr.Slidr;
@@ -66,7 +67,7 @@ public class AddEditCostomerActivity extends AppCompatActivity {
     }
 
     void callDatabase(){
-        databaseHelper = DatabaseHelper.getInstance(getApplicationContext());
+        databaseHelper = App.getDatabase();
         customerDao = databaseHelper.customerDao();
     }
 

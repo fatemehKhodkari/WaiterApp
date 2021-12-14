@@ -19,6 +19,7 @@ import com.example.waiterapp.database.DatabaseHelper;
 import com.example.waiterapp.database.dao.GroupingDao;
 import com.example.waiterapp.database.dao.ProductDao;
 import com.example.waiterapp.design.NumberTextWatcherForThousand;
+import com.example.waiterapp.helper.App;
 import com.example.waiterapp.model.Product;
 import com.google.gson.Gson;
 import com.r0adkll.slidr.Slidr;
@@ -79,7 +80,7 @@ public class AddEditProductActivity extends AppCompatActivity {
         product_price_edt.addTextChangedListener(new NumberTextWatcherForThousand(product_price_edt));
     }
     void call_db(){
-        databaseHelper = DatabaseHelper.getInstance(getApplicationContext());
+        databaseHelper = App.getDatabase();
         productDao = databaseHelper.productDao();
         groupingDao = databaseHelper.groupingDao();
     }

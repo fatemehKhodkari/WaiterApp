@@ -13,6 +13,7 @@ import com.example.waiterapp.R;
 import com.example.waiterapp.adapter.CustomerAdapter;
 import com.example.waiterapp.database.DatabaseHelper;
 import com.example.waiterapp.database.dao.CustomerDao;
+import com.example.waiterapp.helper.App;
 import com.example.waiterapp.model.Customer;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
@@ -40,12 +41,14 @@ public class CustomerActivity extends AppCompatActivity {
 
         slidrInterface = Slidr.attach(this);
 
+        databaseHelper = App.getDatabase();
+        customerDao = databaseHelper.customerDao();
+
         check_intent();
         init();
         set_floatingActtionButton();
         hide_floatingActionButton();
-        databaseHelper = DatabaseHelper.getInstance(getApplicationContext());
-        customerDao = databaseHelper.customerDao();
+
         set_recyclerView();
     }
 
@@ -91,8 +94,8 @@ public class CustomerActivity extends AppCompatActivity {
         customerAdapter = new CustomerAdapter(new ArrayList<>() , this,new CustomerAdapter.Listener(){
             @Override
             public void onClickListener(Customer customer, int pos) {
-                customerr = customer;
-                poss = pos;
+//                customerr = customer;
+//                poss = pos;
                 if (for_order) {
                     Intent returnIntent = new Intent();
                     returnIntent.putExtra("json_customer", new Gson().toJson(customer));

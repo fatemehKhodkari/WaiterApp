@@ -19,7 +19,6 @@ import java.util.List;
 public class OrderingAdapter extends RecyclerView.Adapter<OrderingAdapter.ViewHolder>{
 
     Context context;
-    Product product;
     List<Product> productList;
     public Listener listener;
 
@@ -45,7 +44,7 @@ public class OrderingAdapter extends RecyclerView.Adapter<OrderingAdapter.ViewHo
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(OrderingAdapter.ViewHolder holder, int position) {
-        product = productList.get(position);
+        Product product = productList.get(position);
         holder.product_ordering_name_tv.setText(product.name_product);
         holder.category_ordering_tv.setText(product.category);
         holder.product_ordering_price_tv.setText(Tools.getForamtPrice(Tools.convertToPrice(product.price) * product.amount + ""));
