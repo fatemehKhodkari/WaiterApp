@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/browwn">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/browwn"
+        android:fontFamily="@font/iran_sans"
+        android:gravity="right|center"
+        android:paddingStart="10dp"
+        android:text="لیست سفارشات"
+        android:textColor="@color/whitediff"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

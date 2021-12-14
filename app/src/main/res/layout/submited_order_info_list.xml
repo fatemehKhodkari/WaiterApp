@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="10dp"
+    android:background="@drawable/back_submited_order_info_all"
+    android:elevation="1dp"
+    android:orientation="vertical"
+    android:outlineSpotShadowColor="@color/browwn">
+
+
+    <TextView
+        android:id="@+id/name_record"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginRight="5dp"
+        android:fontFamily="@font/iran_sans"
+        android:gravity="right"
+        android:paddingVertical="5dp"
+        android:paddingEnd="5dp"
+        android:text="نام مشتری"
+        android:textStyle="bold"
+        android:textColor="@color/matn" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:fontFamily="@font/irsansfanum"
+        android:padding="5dp"
+        android:textColor="#9C9B9B"
+        android:textSize="12dp"
+        android:text="date"/>
+
+        <LinearLayout
+            android:id="@+id/first"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/name_record"
+            android:layout_marginHorizontal="5dp"
+            android:backgroundTint="@color/white"
+            android:elevation="15dp"
+            android:background="@drawable/back_submited_order_info_all"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="9dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/iran_sans"
+                    android:padding="5dp"
+                    android:text="وضعیت مشتری :"
+                    android:textColor="#9C9B9B"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/status_record"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/iran_sans"
+                    android:paddingVertical="5dp"
+                    android:paddingEnd="5dp"
+                    android:gravity="right"
+                    android:text="در حال ارسال.."
+                    android:textColor="#676767" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="9dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/iran_sans"
+                    android:padding="5dp"
+                    android:text="جمع کل :"
+                    android:textColor="#9c9b9b"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/total_record"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/irsansfanum"
+                    android:paddingVertical="5dp"
+                    android:paddingEnd="5dp"
+                    android:gravity="right"
+                    android:text="88,000"
+                    android:textColor="@color/browwn" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/irsansfanum"
+                    android:gravity="right"
+                    android:text="تومان"
+                    android:paddingVertical="5dp"
+                    android:textSize="12dp"
+                    android:textColor="#676767" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="9dp"
+                android:paddingBottom="6dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/iran_sans"
+                    android:padding="5dp"
+                    android:text="توضیحات :"
+                    android:textColor="#9c9b9b"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/explain_record"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/iran_sans"
+                    android:paddingVertical="5dp"
+                    android:paddingEnd="10dp"
+                    android:gravity="right"
+                    android:text="توضیحات بیشتر"
+                    android:textColor="#747474" />
+
+            </LinearLayout>
+        </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/first"
+        android:layout_marginVertical="5dp"
+        android:layout_marginHorizontal="6dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/edit_ic"
+            android:layout_alignParentRight="true"
+            />
+        <ImageView
+            android:id="@+id/trash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/delete_ic"
+            android:layout_alignParentLeft="true"/>
+
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
