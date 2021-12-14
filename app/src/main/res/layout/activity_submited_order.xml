@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/whitediff"
-    tools:context=".activity.submitedorder.SubmitedOrderActivity">
+    tools:context=".activity.submittedorder.SubmittedOrderActivity">
 
     <include layout="@layout/submit_ordering_toolbar"></include>
 

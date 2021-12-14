@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WaiterApp">
         <activity
-            android:name=".activity.submitedorder.SubmitedOrderActivity"
+            android:name=".activity.submittedorder.SubmittedOrderActivity"
             android:exported="true" />
         <activity
             android:name=".activity.addordering.AddOrderingActivity"

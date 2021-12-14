@@ -1,4 +1,4 @@
-package com.example.waiterapp.activity.submitedorder;
+package com.example.waiterapp.activity.submittedorder;
 
 import android.os.Bundle;
 
@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.waiterapp.R;
 
-public class SubmitedOrderActivity extends AppCompatActivity {
+public class SubmittedOrderActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,19 +1,20 @@
 package com.example.waiterapp.activity.homepage;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+
 import com.example.waiterapp.R;
+import com.example.waiterapp.activity.addordering.AddOrderingActivity;
 import com.example.waiterapp.activity.customer.CustomerActivity;
 import com.example.waiterapp.activity.grouping.GroupingActivity;
 import com.example.waiterapp.activity.product.ProductActivity;
-import com.example.waiterapp.activity.addordering.AddOrderingActivity;
+import com.example.waiterapp.activity.submittedorder.SubmittedOrderActivity;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.LegendRenderer;
 import com.jjoe64.graphview.series.DataPoint;
@@ -21,7 +22,7 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 
 public class HomeActivity extends AppCompatActivity {
 
-    CardView cardViewproduct,cardViewcustomer , cardViewgrouping;
+    CardView cardViewproduct,cardViewcustomer , cardViewgrouping , cardViewSubmittedOrdering;
     ImageView add_order;
     LinearLayout copy , share , upload, download , delete;
     GraphView graph;
@@ -42,6 +43,7 @@ public class HomeActivity extends AppCompatActivity {
         cardViewproduct = findViewById(R.id.products);
         cardViewcustomer=findViewById(R.id.customer);
         cardViewgrouping=findViewById(R.id.grouping);
+        cardViewSubmittedOrdering = findViewById(R.id.submitted_orders);
         add_order = findViewById(R.id.add_order_ic);
         graph = (GraphView) findViewById(R.id.graf);
     }
@@ -127,7 +129,18 @@ public class HomeActivity extends AppCompatActivity {
                 overridePendingTransition(android.R.anim.fade_in , android.R.anim.fade_out);
             }
         });
+
+        cardViewSubmittedOrdering.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentSO = new Intent(HomeActivity.this , SubmittedOrderActivity.class);
+                startActivity(intentSO);
+                overridePendingTransition(android.R.anim.fade_in , android.R.anim.fade_out);
+            }
+        });
+
     }
+
 
     void ordering(){
 
