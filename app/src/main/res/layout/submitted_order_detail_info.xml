@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingBottom="5dp"
+    android:paddingTop="2dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginHorizontal="10dp"
+            android:backgroundTint="@color/browwndiff"
+            android:elevation="15dp"
+            app:cardCornerRadius="10dp"></androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:layout_marginHorizontal="10dp"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="10dp"></androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/submitted_order_imv"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ordering_pic"></de.hdodenhof.circleimageview.CircleImageView>
+
+
+
+        <TextView
+            android:id="@+id/submitted_ordering_category_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="75dp"
+            android:elevation="10dp"
+            android:fontFamily="@font/iran_sans"
+            android:gravity="center"
+            android:text="دسته بندی"
+            android:textColor="@color/browwndiff"
+            android:textSize="12dp"
+
+            />
+
+    <TextView
+        android:id="@+id/submitted_ordering_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="100dp"
+        android:gravity="center"
+        android:fontFamily="@font/iran_sans"
+        android:text="نام محصول"
+        android:textColor="@color/matn"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="150dp"
+        android:layout_marginRight="15dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="قیمت :"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textColor="#737373"
+            android:fontFamily="@font/iran_sans"/>
+
+
+        <TextView
+            android:id="@+id/submitted_ordering_price_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/price"
+            android:fontFamily="@font/irsansfanum"
+            android:gravity="center"
+            android:text="78000"
+            android:textColor="@color/browwn"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/toman"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/submitted_ordering_price_tv"
+            android:layout_marginRight="5dp"
+            android:fontFamily="@font/iran_sans"
+            android:text="تومان"
+            android:textColor="#737373"
+            android:textSize="10dp" />
+
+
+    </RelativeLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="25dp"
+        android:layout_alignParentLeft="true"
+        android:elevation="10dp"
+        android:layout_marginLeft="15dp"
+        android:outlineSpotShadowColor="@color/browwn"
+        app:cardBackgroundColor="@color/browwndiff"
+        app:cardCornerRadius="40dp">
+
+            <TextView
+                android:id="@+id/amount_detail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
+                android:fontFamily="@font/irsansfanum"
+                android:gravity="center"
+                android:text="11"
+                android:textColor="@color/browwn"
+                android:textSize="18dp"
+
+                />
+    </androidx.cardview.widget.CardView>
+
+
+
+
+</RelativeLayout>
