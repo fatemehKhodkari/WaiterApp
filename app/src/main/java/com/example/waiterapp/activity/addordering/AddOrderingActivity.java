@@ -89,8 +89,8 @@ public class AddOrderingActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode,Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == RESULT_OK){
-            switch (resultCode){
+        if(resultCode == RESULT_OK){
+            switch (requestCode){
 
                 case 100:
                     String json_customer = data.getExtras().getString("json_customer");
@@ -121,6 +121,9 @@ public class AddOrderingActivity extends AppCompatActivity {
                 return;
             }
         }
+        orderDetailList.add(product);
+        orderingAdapter.notifyDataSetChanged();
+        initCounter();
     }
 
 
