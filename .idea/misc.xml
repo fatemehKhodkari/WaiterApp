@@ -46,7 +46,7 @@
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/layout/activity_add_edit_costomer.xml" value="0.19907407407407407" />
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/layout/activity_add_edit_grouping.xml" value="0.228125" />
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/layout/activity_add_edit_product.xml" value="0.2" />
-        <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/layout/activity_add_ordering.xml" value="0.1" />
+        <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/layout/activity_add_ordering.xml" value="0.2" />
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/layout/activity_customer.xml" value="0.11727456940222898" />
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/layout/activity_grouping.xml" value="0.13986013986013987" />
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/layout/activity_home.xml" value="0.264" />
@@ -84,6 +84,7 @@
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/layout/submit_ordering_toolbar.xml" value="0.1" />
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/layout/submited_order_info_list.xml" value="0.2" />
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/layout/submited_order_toolbar.xml" value="0.1" />
+        <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/layout/submitted_order_detail_info.xml" value="0.2570480928689884" />
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/layout/submitted_order_info_list.xml" value="0.2" />
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/layout/test.xml" value="0.6" />
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/layout/toolbare.xml" value="0.2" />
