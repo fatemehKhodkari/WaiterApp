@@ -8,6 +8,7 @@
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/drawable/add_photo_ic.xml" value="0.17037037037037037" />
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/drawable/add_shopingcart_ic.xml" value="0.15572916666666667" />
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/drawable/add_white_ic.xml" value="0.1425925925925926" />
+        <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/drawable/arrow_back_ic.xml" value="0.1" />
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/drawable/back_add_edit_bottom.xml" value="0.1527777777777778" />
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/drawable/back_add_edit_center.xml" value="0.1641025641025641" />
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/drawable/back_add_edit_design_top.xml" value="0.152" />
@@ -34,6 +35,7 @@
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/drawable/ic_waiters_rafiki.xml" value="0.6" />
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/drawable/ordered.xml" value="0.18425925925925926" />
+        <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/drawable/person_circle_ic.xml" value="0.1" />
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/drawable/products.xml" value="0.25729166666666664" />
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/drawable/remove_ic.xml" value="0.1425925925925926" />
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/drawable/rippelc.xml" value="0.22870370370370371" />
@@ -54,7 +56,7 @@
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/layout/activity_product.xml" value="0.1694915254237288" />
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/layout/activity_submited_order.xml" value="0.2" />
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/layout/activity_submitted_order.xml" value="0.15514809590973203" />
-        <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/layout/activity_submitted_order_detail.xml" value="0.1" />
+        <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/layout/activity_submitted_order_detail.xml" value="0.2" />
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/layout/add_new_order.xml" value="0.1" />
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/layout/add_product_submit_ordering.xml" value="0.264" />
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/layout/border_ripple.xml" value="0.13677536231884058" />
@@ -88,6 +90,7 @@
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/layout/submitted_order_info_list.xml" value="0.2" />
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/layout/test.xml" value="0.6" />
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/layout/toolbare.xml" value="0.2" />
+        <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/layout/top_design_submitted_detail.xml" value="0.152" />
         <entry key="..\:/git/blue_panel/waiters/WaiterApp/app/src/main/res/menu/menu_search.xml" value="0.6" />
       </map>
     </option>
