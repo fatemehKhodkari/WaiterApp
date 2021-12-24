@@ -16,7 +16,7 @@
         android:src="@drawable/person_circle_ic" />
 
     <TextView
-        android:id="@+id/ordere_name_detail_tv"
+        android:id="@+id/orderer_name_detail_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -33,7 +33,7 @@
         android:id="@+id/ordere_phone_detail_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ordere_name_detail_tv"
+        android:layout_below="@+id/orderer_name_detail_tv"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:fontFamily="@font/irsansfanum"
@@ -47,8 +47,8 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
         android:src="@drawable/arrow_back_ic" />
 
 </RelativeLayout>

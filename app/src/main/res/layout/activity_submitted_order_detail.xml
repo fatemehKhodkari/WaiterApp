@@ -13,10 +13,53 @@
         android:layout_height="match_parent"
         android:paddingTop="255dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/submitted_order_detail_info">
-    </androidx.recyclerview.widget.RecyclerView>
+        tools:listitem="@layout/submitted_order_detail_info"></androidx.recyclerview.widget.RecyclerView>
 
     <include layout="@layout/top_design_submitted_detail"></include>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/box_total_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="15dp"
+        app:cardBackgroundColor="@color/browwn"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/iran_sans"
+                android:padding="15dp"
+                android:paddingStart="25dp"
+                android:text="جمع کل :"
+                android:textColor="@color/whitediff"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/total_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/irsansfanum"
+                android:gravity="end"
+                android:padding="15dp"
+                android:paddingEnd="25dp"
+                android:text="480,000"
+                android:textColor="@color/whitediff"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
 
 </RelativeLayout>
