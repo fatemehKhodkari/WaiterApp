@@ -97,8 +97,8 @@ public class ListSubmittedAdapter extends  RecyclerView.Adapter<ListSubmittedAda
         public void onClick(View view) {
             final Intent intent = new Intent(context , SubmittedOrderDetailActivity.class);
             intent.putExtra("code" , orderList.get(getAdapterPosition()).unit_code);
-            intent.putExtra("ordererid" , orderList.get(getAdapterPosition()).orderer_id);
-            intent.putExtra("nameorderer" , orderList.get(getAdapterPosition()).name_orderer);
+            intent.putExtra("orderer_id" , orderList.get(getAdapterPosition()).orderer_id);
+            intent.putExtra("orderer_name" , orderList.get(getAdapterPosition()).name_orderer);
             intent.putExtra("total" , orderList.get(getAdapterPosition()).total);
             context.startActivity(intent);
 
