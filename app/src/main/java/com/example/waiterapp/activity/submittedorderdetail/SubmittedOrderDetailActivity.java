@@ -1,6 +1,7 @@
 package com.example.waiterapp.activity.submittedorderdetail;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -43,6 +44,9 @@ public class SubmittedOrderDetailActivity extends AppCompatActivity {
 
         check_intent();
         initID();
+        set_recycler();
+        set_orderer_info();
+        set_total();
 
     }
 
@@ -68,5 +72,19 @@ public class SubmittedOrderDetailActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         submittedOrderDetailAdapter = new SubmittedOrderDetailAdapter(this,detailOrderDao.getSpecificOrder(code));
         recyclerView.setAdapter(submittedOrderDetailAdapter);
+    }
+
+    private void set_orderer_info(){
+        orderer_name_tv.setText(orderer_name);
+        orderer_phone_tv.setText(customerDao.getID(orderer_id).phone);
+        arrow_beck_ic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+    private void set_total(){
+        total.setText(total_detail);
     }
 }
