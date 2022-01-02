@@ -44,8 +44,9 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/irsansfanum"
         android:layout_toRightOf="@+id/date_of_ordered"
-        android:padding="10dp"
+        android:padding="6dp"
         android:text="13:12"
+        android:gravity="center"
         android:textColor="#a2a2a2"
         android:textSize="13dp" />
 

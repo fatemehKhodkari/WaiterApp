@@ -112,8 +112,8 @@ public class CustomerActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(databaseHelper != null)
-            databaseHelper.close();
+//        if(databaseHelper != null)
+//            databaseHelper.close();
     }
 
     @Override
