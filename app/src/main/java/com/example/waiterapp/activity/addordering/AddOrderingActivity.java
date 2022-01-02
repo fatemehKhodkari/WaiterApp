@@ -235,9 +235,12 @@ public class AddOrderingActivity extends AppCompatActivity {
 
                 for (int i = 0; i < orderDetailList.size(); i++) {
 
-                    detailOrderDao.insertDetailOrder(new DetailOrder(orderDetailList.get(i).name_product , orderDetailList.get(i).category ,
+                    detailOrderDao.insertDetailOrder(new DetailOrder(
+                            orderDetailList.get(i).name_product ,
                             String.valueOf(Tools.convertToPrice(orderDetailList.get(i).price) * orderDetailList.get(i).amount)  ,
-                            orderDetailList.get(i).amount ,CODE ));
+                            orderDetailList.get(i).category ,
+                            orderDetailList.get(i).amount ,
+                            CODE ));
 
                     Toast.makeText(AddOrderingActivity.this, " سفارش " + customer.name + " با موفقیت ثبت شد", Toast.LENGTH_SHORT).show();
                 }

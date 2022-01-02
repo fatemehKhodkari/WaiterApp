@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.waiterapp.R;
@@ -40,10 +39,10 @@ public class ListSubmittedAdapter extends  RecyclerView.Adapter<ListSubmittedAda
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ListSubmittedAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(ListSubmittedAdapter.ViewHolder holder, int position) {
         Order order = orderList.get(position);
         holder.name_orderer.setText(order.name_orderer);
-        holder.status_orered.setText(order.status);
+        holder.status_orered.setText(String.valueOf(order.status));
         holder.total_ordered.setText(order.total);
         holder.explain_ordered.setText(order.description);
         holder.date_of_ordered.setText(order.date);
