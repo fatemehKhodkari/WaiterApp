@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.waiterapp.R;
@@ -33,12 +32,12 @@ public class SubmittedOrderDetailAdapter extends RecyclerView.Adapter<SubmittedO
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SubmittedOrderDetailAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(SubmittedOrderDetailAdapter.ViewHolder holder, int position) {
         DetailOrder detailOrder = detailOrderList.get(position);
         holder.submitted_ordering_name_tv.setText(detailOrder.name);
         holder.submitted_ordering_category_tv.setText(detailOrder.category);
         holder.submitted_ordering_price_tv.setText(detailOrder.price);
-        holder.amount_detail.setText(detailOrder.amant);
+        holder.amount_detail.setText(String.valueOf(detailOrder.amant));
 
     }
 
