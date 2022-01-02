@@ -17,7 +17,6 @@ import java.util.List;
 public class GroupingProductAdapter extends RecyclerView.Adapter<GroupingProductAdapter.ViewHolder>{
 
     Context context;
-    Grouping grouping;
     List<Grouping> groupingList;
     ProductAdapter productAdapter;
     Listener listener;
@@ -43,7 +42,7 @@ public class GroupingProductAdapter extends RecyclerView.Adapter<GroupingProduct
 
     @Override
     public void onBindViewHolder(GroupingProductAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        grouping = groupingList.get(position);
+        Grouping grouping = groupingList.get(position);
         holder.grouping_product_name_tv.setText(grouping.name);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
