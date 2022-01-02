@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -15,6 +16,12 @@ import com.example.waiterapp.activity.customer.CustomerActivity;
 import com.example.waiterapp.activity.grouping.GroupingActivity;
 import com.example.waiterapp.activity.product.ProductActivity;
 import com.example.waiterapp.activity.submittedorder.SubmittedOrderActivity;
+import com.example.waiterapp.database.DatabaseHelper;
+import com.example.waiterapp.database.dao.CustomerDao;
+import com.example.waiterapp.database.dao.GroupingDao;
+import com.example.waiterapp.database.dao.ProductDao;
+import com.example.waiterapp.database.dao.SubmitOrderDao;
+import com.example.waiterapp.helper.App;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.LegendRenderer;
 import com.jjoe64.graphview.series.DataPoint;
@@ -22,21 +29,36 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 
 public class HomeActivity extends AppCompatActivity {
 
-    CardView cardViewproduct,cardViewcustomer , cardViewgrouping , cardViewSubmittedOrdering;
-    ImageView add_order;
-    LinearLayout copy , share , upload, download , delete;
-    GraphView graph;
+    private CardView cardViewproduct,cardViewcustomer , cardViewgrouping , cardViewSubmittedOrdering;
+    private ImageView add_order;
+    private LinearLayout copy , share , upload, download , delete;
+    private GraphView graph;
+    private TextView num_product , num_customer , num_ordering , num_category ;
+    private DatabaseHelper databaseHelper;
+    private ProductDao productDao;
+    private CustomerDao customerDao;
+    private GroupingDao groupingDao;
+    private SubmitOrderDao submitOrderDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        initDataBase();
         init();
         graph();
         on_click_cards();
         ordering();
 
+    }
+
+    private void initDataBase(){
+        databaseHelper = App.getDatabase();
+        productDao = databaseHelper.productDao();
+        customerDao = databaseHelper.customerDao();
+        groupingDao = databaseHelper.groupingDao();
+        submitOrderDao = databaseHelper.submitOrderDao();
     }
 
     void init(){
@@ -46,6 +68,10 @@ public class HomeActivity extends AppCompatActivity {
         cardViewSubmittedOrdering = findViewById(R.id.submitted_orders);
         add_order = findViewById(R.id.add_order_ic);
         graph = (GraphView) findViewById(R.id.graf);
+        num_product = findViewById(R.id.number_product);
+        num_category = findViewById(R.id.number_category);
+        num_ordering = findViewById(R.id.number_orderings);
+        num_customer = findViewById(R.id.number_customer);
     }
 
     void graph(){
@@ -154,5 +180,14 @@ public class HomeActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        num_product.setText(Integer.toString(productDao.getProductList().size()));
+        num_customer.setText(Integer.toString(customerDao.getCustomerList().size()));
+        num_category.setText(Integer.toString(groupingDao.getGroupingList().size()));
+        num_ordering.setText(Integer.toString(submitOrderDao.getOrderList().size()));
     }
 }
