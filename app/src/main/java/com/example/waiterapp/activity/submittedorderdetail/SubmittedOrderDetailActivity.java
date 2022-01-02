@@ -14,7 +14,12 @@ import com.example.waiterapp.database.DatabaseHelper;
 import com.example.waiterapp.database.dao.CustomerDao;
 import com.example.waiterapp.database.dao.DetailOrderDao;
 import com.example.waiterapp.database.dao.SubmitOrderDao;
+import com.example.waiterapp.helper.App;
 import com.example.waiterapp.model.Customer;
+import com.example.waiterapp.model.DetailOrder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SubmittedOrderDetailActivity extends AppCompatActivity {
 
@@ -42,13 +47,22 @@ public class SubmittedOrderDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_submitted_order_detail);
 
-        check_intent();
+        callDatabase();
         initID();
+        check_intent();
         set_recycler();
         set_orderer_info();
         set_total();
 
+
     }
+    void callDatabase(){
+        databaseHelper = App.getDatabase();
+        detailOrderDao = databaseHelper.detailOrderDao();
+        submitOrderDao = databaseHelper.submitOrderDao();
+        customerDao = databaseHelper.customerDao();
+    }
+
 
     private void check_intent(){
         if(getIntent().getExtras() != null){
@@ -69,8 +83,11 @@ public class SubmittedOrderDetailActivity extends AppCompatActivity {
     }
 
     private void set_recycler(){
+        List<DetailOrder> list = new ArrayList<>();
+        list.addAll(detailOrderDao.getSpecificOrder(code));
         recyclerView.setHasFixedSize(true);
-        submittedOrderDetailAdapter = new SubmittedOrderDetailAdapter(this,detailOrderDao.getSpecificOrder(code));
+
+        submittedOrderDetailAdapter = new SubmittedOrderDetailAdapter(this,list);
         recyclerView.setAdapter(submittedOrderDetailAdapter);
     }
 
