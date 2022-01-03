@@ -40,7 +40,7 @@ public class AddEditGroupingActivity extends AppCompatActivity {
     EditText grouping_name_edt;
     String grouping_name , grouping_previous_name;
     private static final int PICK_IMAGE = 100;
-    Uri imageuri;
+    Uri imageuri , img_previouse_uri;
 
 
     @Override
@@ -103,7 +103,10 @@ public class AddEditGroupingActivity extends AppCompatActivity {
             String getGrouping =getIntent().getStringExtra("Grouping");
             grouping = new Gson().fromJson(getGrouping, Grouping.class);
             grouping_previous_name = grouping.name;
-            grouping_name_edt.setText(grouping.name); }
+            grouping_name_edt.setText(grouping.name);
+            img_previouse_uri = Uri.parse(grouping.picture);
+            grouping_add_img.setImageURI(Uri.parse(grouping.picture));
+        }
     }
 
     public void save_bttn(){
@@ -130,6 +133,7 @@ public class AddEditGroupingActivity extends AppCompatActivity {
                     }
                 }else {
                     grouping.name = grouping_name;
+                    grouping.picture = imageuri.toString();
                     groupingDao.updateGrouping(grouping);
                     Toast.makeText(getApplicationContext(),  grouping_previous_name + " به " + grouping_name + " تغییر کرد", Toast.LENGTH_LONG).show();
                     finish();
