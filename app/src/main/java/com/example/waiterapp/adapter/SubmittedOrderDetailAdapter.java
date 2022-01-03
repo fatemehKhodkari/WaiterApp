@@ -1,6 +1,7 @@
 package com.example.waiterapp.adapter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import com.example.waiterapp.R;
 import com.example.waiterapp.model.DetailOrder;
 
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SubmittedOrderDetailAdapter extends RecyclerView.Adapter<SubmittedOrderDetailAdapter.ViewHolder> {
 
@@ -38,6 +41,7 @@ public class SubmittedOrderDetailAdapter extends RecyclerView.Adapter<SubmittedO
         holder.submitted_ordering_category_tv.setText(detailOrder.category);
         holder.submitted_ordering_price_tv.setText(detailOrder.price);
         holder.amount_detail.setText(String.valueOf(detailOrder.amant));
+        holder.submitted_order_imv.setImageURI(Uri.parse(detailOrder.ordered_pic));
 
     }
 
@@ -53,6 +57,7 @@ public class SubmittedOrderDetailAdapter extends RecyclerView.Adapter<SubmittedO
                 submitted_ordering_name_tv,
                 submitted_ordering_category_tv,
                 amount_detail;
+        CircleImageView submitted_order_imv;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -60,6 +65,7 @@ public class SubmittedOrderDetailAdapter extends RecyclerView.Adapter<SubmittedO
             submitted_ordering_name_tv = itemView.findViewById(R.id.submitted_ordering_name_tv);
             submitted_ordering_category_tv = itemView.findViewById(R.id.submitted_ordering_category_tv);
             amount_detail = itemView.findViewById(R.id.amount_detail);
+            submitted_order_imv = itemView.findViewById(R.id.submitted_order_imv);
         }
     }
 }

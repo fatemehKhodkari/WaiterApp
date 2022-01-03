@@ -2,19 +2,23 @@ package com.example.waiterapp.adapter;
 
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.waiterapp.R;
 import com.example.waiterapp.helper.Tools;
 import com.example.waiterapp.model.Product;
 
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class OrderingAdapter extends RecyclerView.Adapter<OrderingAdapter.ViewHolder>{
 
@@ -49,6 +53,7 @@ public class OrderingAdapter extends RecyclerView.Adapter<OrderingAdapter.ViewHo
         holder.category_ordering_tv.setText(product.category);
         holder.product_ordering_price_tv.setText(Tools.getForamtPrice(Tools.convertToPrice(product.price) * product.amount + ""));
         holder.product_number_ordering.setText(product.amount+"");
+        holder.ordering_product_imv.setImageURI(Uri.parse(product.picture_product));
     }
 
     @Override
@@ -63,7 +68,7 @@ public class OrderingAdapter extends RecyclerView.Adapter<OrderingAdapter.ViewHo
                 category_ordering_tv ,
                 product_ordering_price_tv ,
                 product_number_ordering ;
-        ImageView ordering_product_imv;
+        CircleImageView ordering_product_imv;
 
         public ViewHolder(View itemView) {
             super(itemView);

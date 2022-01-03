@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,6 +69,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Viewhold
         holder.product_name_tv.setText(product.name_product);
         holder.product_grouping_name_tv.setText(product.category);
         holder.product_price_tv.setText(product.price);
+        holder.product_imv.setImageURI(Uri.parse(product.picture_product));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

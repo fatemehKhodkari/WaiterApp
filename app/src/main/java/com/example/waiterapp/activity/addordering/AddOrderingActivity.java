@@ -240,7 +240,9 @@ public class AddOrderingActivity extends AppCompatActivity {
                             String.valueOf(Tools.convertToPrice(orderDetailList.get(i).price) * orderDetailList.get(i).amount)  ,
                             orderDetailList.get(i).category ,
                             orderDetailList.get(i).amount ,
-                            CODE ));
+                            CODE ,
+                            orderDetailList.get(i).picture_product
+                            ));
 
                     Toast.makeText(AddOrderingActivity.this, " سفارش " + customer.name + " با موفقیت ثبت شد", Toast.LENGTH_SHORT).show();
                 }
