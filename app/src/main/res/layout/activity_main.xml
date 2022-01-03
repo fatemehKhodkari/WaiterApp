@@ -82,7 +82,9 @@
                     android:drawablePadding="10dp"
                     android:focusable="true"
                     android:inputType="textEmailAddress"
-                    app:hintTextColor="#AFB1B3" />
+                    android:textColor="#AFB1B3"
+                    app:hintTextColor="#AFB1B3"
+                    android:textColorHint="#AFB1B3" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -106,6 +108,7 @@
                     android:focusable="true"
                     android:inputType="textPassword"
                     android:textColor="#AFB1B3"
+                    app:hintTextColor="#AFB1B3"
                     android:textColorHint="#AFB1B3" />
 
             </com.google.android.material.textfield.TextInputLayout>
