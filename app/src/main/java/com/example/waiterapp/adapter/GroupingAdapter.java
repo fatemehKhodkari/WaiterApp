@@ -1,9 +1,11 @@
 package com.example.waiterapp.adapter;
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +49,7 @@ public class GroupingAdapter extends RecyclerView.Adapter<GroupingAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Grouping grouping = groupingList.get(position);
         holder.grouping_name_tv.setText(grouping.name);
+        holder.grouping_img.setImageURI(Uri.parse(grouping.picture));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

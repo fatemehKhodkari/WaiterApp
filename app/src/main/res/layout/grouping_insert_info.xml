@@ -28,7 +28,7 @@
                 android:foregroundGravity="center"
                 android:paddingVertical="10dp">
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/grouping_add_img"
                     android:layout_width="match_parent"
                     android:layout_marginHorizontal="24dp"

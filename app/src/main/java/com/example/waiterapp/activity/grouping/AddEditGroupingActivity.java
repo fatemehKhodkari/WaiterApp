@@ -1,6 +1,8 @@
 package com.example.waiterapp.activity.grouping;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -23,6 +25,8 @@ import com.google.gson.Gson;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class AddEditGroupingActivity extends AppCompatActivity {
 
     SlidrInterface slidrInterface;
@@ -32,8 +36,12 @@ public class AddEditGroupingActivity extends AppCompatActivity {
     GroupingDao groupingDao;
     Grouping grouping;
     DatabaseHelper databaseHelper;
+    CircleImageView grouping_add_img;
     EditText grouping_name_edt;
     String grouping_name , grouping_previous_name;
+    private static final int PICK_IMAGE = 100;
+    Uri imageuri;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +54,7 @@ public class AddEditGroupingActivity extends AppCompatActivity {
         init();
         call_db();
         check_db();
+        click_img();
         animateOb();
         save_bttn();
         cancle_bttn();
@@ -74,6 +83,7 @@ public class AddEditGroupingActivity extends AppCompatActivity {
         grouping_name_edt = findViewById(R.id.get_grouping_name);
         grouping_anim_feilds = findViewById(R.id.grouping_info_feilds);
         grouping_desing_anim = findViewById(R.id.add_edit_grouping_design);
+        grouping_add_img = findViewById(R.id.grouping_add_img);
     }
     void call_db(){
         databaseHelper = App.getDatabase();
@@ -105,7 +115,7 @@ public class AddEditGroupingActivity extends AppCompatActivity {
 
                 if(grouping == null){
 
-                    if(TextUtils.isEmpty(grouping_name)){
+                    if(TextUtils.isEmpty(grouping_name) || imageuri==null){
 
                         Toast.makeText(AddEditGroupingActivity.this, "تمام فیلد هارا پر کنید!", Toast.LENGTH_LONG).show();
                         //
@@ -113,7 +123,7 @@ public class AddEditGroupingActivity extends AppCompatActivity {
                         Toast.makeText(AddEditGroupingActivity.this, "این دسته بندی تکراری است!", Toast.LENGTH_LONG).show();
 
                     } else {
-                        groupingDao.insertGrouping(new Grouping(grouping_name));
+                        groupingDao.insertGrouping(new Grouping(grouping_name , imageuri.toString()));
                         Toast.makeText(getApplicationContext(), grouping_name + " با موفقیت به لیست اضافه شد ", Toast.LENGTH_LONG).show();
                         finish();
 
@@ -136,5 +146,27 @@ public class AddEditGroupingActivity extends AppCompatActivity {
             }
         });
 
+    }
+    void click_img(){
+        grouping_add_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
+                startActivityForResult(Intent.createChooser(intent , "Select Picture") , PICK_IMAGE);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK){
+            if(requestCode == PICK_IMAGE){
+                imageuri=data.getData();
+                grouping_add_img.setImageURI(imageuri);
+            }
+        }
     }
 }

@@ -116,7 +116,7 @@ public class ProductActivity extends AppCompatActivity {
 
 
         ArrayList<Grouping> groupingArrayList = new ArrayList<>();
-        groupingArrayList.add(0,new Grouping("همه محصولات"));
+        groupingArrayList.add(0,new Grouping("همه محصولات",""));
         groupingArrayList.addAll(groupingDao.getGroupingList());
 
 
