@@ -117,7 +117,7 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    public static final int[] MY_COLOES = {
+    private static final int[] MY_COLOES = {
             rgb("#C1A49A"), rgb("#FF202E39"), rgb("#DDC8BF"), rgb("#404040")
     };
 

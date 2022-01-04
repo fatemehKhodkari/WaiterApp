@@ -12,14 +12,16 @@ import com.example.waiterapp.database.dao.DetailOrderDao;
 import com.example.waiterapp.database.dao.GroupingDao;
 import com.example.waiterapp.database.dao.ProductDao;
 import com.example.waiterapp.database.dao.SubmitOrderDao;
+import com.example.waiterapp.database.dao.UserDao;
 import com.example.waiterapp.model.Customer;
+import com.example.waiterapp.model.DetailOrder;
 import com.example.waiterapp.model.Grouping;
 import com.example.waiterapp.model.Order;
 import com.example.waiterapp.model.Product;
-import com.example.waiterapp.model.DetailOrder;
+import com.example.waiterapp.model.User;
 
 
-@Database(entities = {Grouping.class, Product.class, Customer.class , DetailOrder.class , Order.class} , exportSchema = false , version = 1)
+@Database(entities = {Grouping.class, Product.class, Customer.class , DetailOrder.class , Order.class , User.class} , exportSchema = false , version = 1)
 public abstract class DatabaseHelper extends RoomDatabase {
     private static final String DB_NAME = "db_name";
     private static DatabaseHelper instance;
@@ -42,4 +44,5 @@ public abstract class DatabaseHelper extends RoomDatabase {
     public abstract CustomerDao customerDao();
     public abstract DetailOrderDao detailOrderDao();
     public abstract SubmitOrderDao submitOrderDao();
+    public abstract UserDao userDao();
 }
