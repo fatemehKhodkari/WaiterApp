@@ -1,5 +1,7 @@
 package com.example.waiterapp.activity.homepage;
 
+import static com.github.mikephil.charting.utils.ColorTemplate.rgb;
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -24,10 +26,11 @@ import com.example.waiterapp.database.dao.ProductDao;
 import com.example.waiterapp.database.dao.SubmitOrderDao;
 import com.example.waiterapp.helper.App;
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 
@@ -96,11 +99,27 @@ public class HomeActivity extends AppCompatActivity {
         barDataSet = new BarDataSet(barEntries, "");
         barData = new BarData(barDataSet);
         graph.setData(barData);
-        barDataSet.setColors(ColorTemplate.PASTEL_COLORS);
+        barDataSet.setColors(MY_COLOES);
         barDataSet.setValueTextColor(Color.BLACK);
         barDataSet.setValueTextSize(18f);
+        Description description = new Description();
+        description.setEnabled(false);
+        graph.setDescription(description);
+        graph.setFitBars(true);
+        graph.animateY(1000);
+
+        XAxis xAxis = graph.getXAxis();
+        xAxis.setGranularity(1f);
+        xAxis.setAxisMinimum(0f);
+        xAxis.setDrawAxisLine(true);
+        xAxis.setDrawGridLines(false);
+
 
     }
+
+    public static final int[] MY_COLOES = {
+            rgb("#C1A49A"), rgb("#FF202E39"), rgb("#DDC8BF"), rgb("#404040")
+    };
 
 
     void on_click_cards(){
