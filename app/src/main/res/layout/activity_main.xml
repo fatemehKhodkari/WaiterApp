@@ -34,7 +34,6 @@
         android:layout_gravity="center"
         android:clickable="true"
         android:focusableInTouchMode="true"
-        android:gravity="center"
         android:orientation="vertical"
         android:paddingHorizontal="50dp"
         android:paddingVertical="10dp"
@@ -94,7 +93,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_marginTop="40dp"
-                android:layout_marginBottom="50dp"
+                android:layout_marginBottom="70dp"
                 android:hint="رمز عبور"
                 app:endIconMode="password_toggle">
 
@@ -127,9 +126,57 @@
                     android:gravity="center"
                     android:paddingHorizontal="50dp"
                     android:text="ورود"
+                    android:fontFamily="@font/iran_sans"
                     android:textColor="#f8f3f7"
                     android:textSize="18sp"
                     android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/forget_pass_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginTop="20dp"
+                android:text="رمز عبور خود را فراموش کردید؟"
+                android:textColor="@color/cream"
+                android:layout_gravity="center"
+                android:autoLink="email"
+                android:textSize="10sp"
+                android:fontFamily="@font/iran_sans"
+                android:textColorLink="@android:color/holo_blue_light"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="حساب کاربری ندارید؟"
+                    android:textColor="@color/cream"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/iran_sans"/>
+
+                <TextView
+                    android:id="@+id/Register_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="ثبت نام"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/light_blue"
+                    android:layout_gravity="center"
+                    android:autoLink="email"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/iran_sans"
+                    android:textColorLink="@android:color/holo_blue_light"
+                    />
+
             </LinearLayout>
 
         </LinearLayout>
