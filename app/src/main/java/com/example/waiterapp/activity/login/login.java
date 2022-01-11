@@ -1,20 +1,20 @@
 package com.example.waiterapp.activity.login;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.waiterapp.R;
 import com.example.waiterapp.activity.homepage.HomeActivity;
-
-import jp.wasabeef.glide.transformations.BlurTransformation;
 
 
 public class login extends AppCompatActivity {
@@ -22,7 +22,8 @@ public class login extends AppCompatActivity {
     ImageView imageView;
     ImageView imageView1;
     TextView buttonlogin;
-
+    TextView Register_tv;
+    Dialog dialog;
 
 
     @Override
@@ -31,6 +32,7 @@ public class login extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         imageView= findViewById(R.id.img_back);
         imageView1= findViewById(R.id.img_back_blur);
+        Register_tv = findViewById(R.id.Register_tv);
 
         final Animation fadeOut = new AlphaAnimation(1, 0);
         fadeOut.setInterpolator(new AccelerateInterpolator());
@@ -59,7 +61,24 @@ public class login extends AppCompatActivity {
             }
         });
 
+        register_dialog();
 
 
+    }
+
+    private void register_dialog(){
+        Register_tv.setOnClickListener(view -> {
+
+            dialog = new Dialog(this);
+            dialog.setContentView(R.layout.regster_layout);
+            dialog.show();
+
+//            dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.dialog_desin));
+            dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+//            dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
+
+
+
+        });
     }
 }

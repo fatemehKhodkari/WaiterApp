@@ -1,8 +1,11 @@
 package com.example.waiterapp.activity.addordering;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -31,13 +34,19 @@ import com.google.gson.Gson;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import saman.zamani.persiandate.PersianDate;
-import saman.zamani.persiandate.PersianDateFormat;
+import ir.hamsaa.persiandatepicker.PersianDatePickerDialog;
+import ir.hamsaa.persiandatepicker.api.PersianPickerDate;
+import ir.hamsaa.persiandatepicker.api.PersianPickerListener;
+import ir.hamsaa.persiandatepicker.util.PersianCalendarUtils;
+//import saman.zamani.persiandate.PersianDate;
+//import saman.zamani.persiandate.PersianDateFormat;
 
 public class AddOrderingActivity extends AppCompatActivity {
 
@@ -64,7 +73,10 @@ public class AddOrderingActivity extends AppCompatActivity {
     private List<Product> orderDetailList;
 
 
+    private TextView ttttttt;
+private PersianDatePickerDialog picker;
 
+private static final String TAG = "AddOrdringActivity";
 
 
 
@@ -83,6 +95,45 @@ public class AddOrderingActivity extends AppCompatActivity {
         click_add_product();
         set_recycler();
         set_submit_order();
+
+
+
+        ttttttt = findViewById(R.id.date_tv_bttn);
+        ttttttt.setOnClickListener(view -> {
+            picker = new PersianDatePickerDialog(this)
+                    .setPositiveButtonString("باشه")
+                    .setNegativeButton("بیخیال")
+                    .setTodayButton("امروز")
+                    .setTodayButtonVisible(true)
+                    .setMinYear(1300)
+                    .setMaxYear(PersianDatePickerDialog.THIS_YEAR)
+                    .setMaxMonth(PersianDatePickerDialog.THIS_MONTH)
+                    .setMaxDay(PersianDatePickerDialog.THIS_DAY)
+                    .setInitDate(1370, 3, 13)
+                    .setActionTextColor(Color.GRAY)
+//                    .setTypeFace(typeface)
+                    .setTitleType(PersianDatePickerDialog.WEEKDAY_DAY_MONTH_YEAR)
+                    .setShowInBottomSheet(true)
+                    .setListener(new PersianPickerListener() {
+                        @Override
+                        public void onDateSelected(@NotNull PersianPickerDate persianPickerDate) {
+                            Log.d(TAG, "onDateSelected: " + persianPickerDate.getTimestamp());//675930448000
+                            Log.d(TAG, "onDateSelected: " + persianPickerDate.getGregorianDate());//Mon Jun 03 10:57:28 GMT+04:30 1991
+                            Log.d(TAG, "onDateSelected: " + persianPickerDate.getPersianLongDate());// دوشنبه  13  خرداد  1370
+                            Log.d(TAG, "onDateSelected: " + persianPickerDate.getPersianMonthName());//خرداد
+                            Log.d(TAG, "onDateSelected: " + PersianCalendarUtils.isPersianLeapYear(persianPickerDate.getPersianYear()));//true
+                            Toast.makeText(getApplicationContext(), persianPickerDate.getPersianYear() + "/" + persianPickerDate.getPersianMonth() + "/" + persianPickerDate.getPersianDay(), Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onDismissed() {
+
+                        }
+                    });
+
+            picker.show();
+        });
+
 
     }
 
@@ -231,7 +282,10 @@ public class AddOrderingActivity extends AppCompatActivity {
             if( customer == null ){
                 Toast.makeText(this, "فیلد مشتری خالی است!", Toast.LENGTH_SHORT).show();
             }else {
-                submitOrderDao.insertOrder(new Order(customer.name , CODE , customer.id , 1 , total_price_tv.getText()+"" , "با تمام مخلفات" , getCurrentTime_time() , getCurrentTime_Date()));
+                submitOrderDao.insertOrder(new Order(customer.name , CODE , customer.id , 1 , total_price_tv.getText()+"" , "با تمام مخلفات" , getCurrentTime_time() ,
+//                        getCurrentTime_Date()
+                        "1400/10/20"
+                ));
 
                 for (int i = 0; i < orderDetailList.size(); i++) {
 
@@ -253,12 +307,12 @@ public class AddOrderingActivity extends AppCompatActivity {
         });
     }
 
-    public String getCurrentTime_Date(){
-        PersianDate c = new PersianDate();
-        PersianDateFormat dateFormat = new PersianDateFormat(" Y/m/d ");
-        String datetime = dateFormat.format(c);
-        return datetime;
-    }
+//    public String getCurrentTime_Date(){
+//        PersianDate c = new PersianDate();
+//        PersianDateFormat dateFormat = new PersianDateFormat(" Y/m/d ");
+//        String datetime = dateFormat.format(c);
+//        return datetime;
+//    }
 
     public String getCurrentTime_time(){
         Calendar c = Calendar.getInstance();

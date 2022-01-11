@@ -49,138 +49,143 @@
 
             <com.airbnb.lottie.LottieAnimationView
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="wrap_content"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"
                 app:lottie_rawRes="@raw/waiter" />
 
         </LinearLayout>
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/lottie"
-            android:orientation="vertical">
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutname"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:fontFamily="@fonts/iran_sans"
-                android:hint="نام کاربری یا ایمیل"
-                app:endIconMode="clear_text">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/text_inputpass"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/back_editext"
-                    android:drawableStart="@drawable/mail_ic"
-                    android:drawablePadding="10dp"
-                    android:focusable="true"
-                    android:inputType="textEmailAddress"
-                    android:textColor="#AFB1B3"
-                    app:hintTextColor="#AFB1B3"
-                    android:textColorHint="#AFB1B3" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginBottom="70dp"
-                android:hint="رمز عبور"
-                app:endIconMode="password_toggle">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/text_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/back_editext"
-                    android:drawableStart="@drawable/lock_ic"
-                    android:drawablePadding="10dp"
-                    android:focusable="true"
-                    android:inputType="textPassword"
-                    android:textColor="#AFB1B3"
-                    app:hintTextColor="#AFB1B3"
-                    android:textColorHint="#AFB1B3" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
+            >
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/buttonlogin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="56dp"
-                    android:layout_gravity="center_vertical"
-                    android:background="@drawable/back_button"
-                    android:gravity="center"
-                    android:paddingHorizontal="50dp"
-                    android:text="ورود"
-                    android:fontFamily="@font/iran_sans"
-                    android:textColor="#f8f3f7"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/forget_pass_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_marginTop="20dp"
-                android:text="رمز عبور خود را فراموش کردید؟"
-                android:textColor="@color/cream"
-                android:layout_gravity="center"
-                android:autoLink="email"
-                android:textSize="10sp"
-                android:fontFamily="@font/iran_sans"
-                android:textColorLink="@android:color/holo_blue_light"
-                />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:layout_marginTop="50dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="حساب کاربری ندارید؟"
-                    android:textColor="@color/cream"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:textSize="14sp"
-                    android:fontFamily="@font/iran_sans"/>
+                android:layout_below="@+id/lottie"
+                android:orientation="vertical">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayoutname"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:fontFamily="@fonts/iran_sans"
+                    android:hint="نام کاربری یا ایمیل"
+                    app:endIconMode="clear_text">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_inputpass"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/back_editext"
+                        android:drawableStart="@drawable/mail_ic"
+                        android:drawablePadding="10dp"
+                        android:focusable="true"
+                        android:inputType="textEmailAddress"
+                        android:textColor="#AFB1B3"
+                        app:hintTextColor="#AFB1B3"
+                        android:textColorHint="#AFB1B3" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginBottom="70dp"
+                    android:hint="رمز عبور"
+                    app:endIconMode="password_toggle">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/back_editext"
+                        android:drawableStart="@drawable/lock_ic"
+                        android:drawablePadding="10dp"
+                        android:focusable="true"
+                        android:inputType="textPassword"
+                        android:textColor="#AFB1B3"
+                        app:hintTextColor="#AFB1B3"
+                        android:textColorHint="#AFB1B3" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/buttonlogin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="56dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/back_button"
+                        android:gravity="center"
+                        android:paddingHorizontal="50dp"
+                        android:text="ورود"
+                        android:fontFamily="@font/iran_sans"
+                        android:textColor="#f8f3f7"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/Register_tv"
+                    android:id="@+id/forget_pass_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
-                    android:text="ثبت نام"
-                    android:layout_marginRight="10dp"
-                    android:textColor="@color/light_blue"
+                    android:layout_marginTop="20dp"
+                    android:text="رمز عبور خود را فراموش کردید؟"
+                    android:textColor="@color/cream"
                     android:layout_gravity="center"
                     android:autoLink="email"
-                    android:textSize="14sp"
+                    android:textSize="10sp"
                     android:fontFamily="@font/iran_sans"
                     android:textColorLink="@android:color/holo_blue_light"
                     />
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="حساب کاربری ندارید؟"
+                        android:textColor="@color/cream"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/iran_sans"/>
+
+                    <TextView
+                        android:id="@+id/Register_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:text="ثبت نام"
+                        android:layout_marginRight="10dp"
+                        android:textColor="@color/light_blue"
+                        android:layout_gravity="center"
+                        android:autoLink="email"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/iran_sans"
+                        android:textColorLink="@android:color/holo_blue_light"
+                        />
+
+                </LinearLayout>
+
             </LinearLayout>
 
-        </LinearLayout>
-
+        </ScrollView>
     </LinearLayout>
 
 </RelativeLayout>

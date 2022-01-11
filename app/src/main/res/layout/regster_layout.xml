@@ -13,6 +13,7 @@
         android:layout_height="100dp"
         android:paddingRight="50dp"
         app:lottie_autoPlay="true"
+        android:layout_marginTop="20dp"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/waiter" />
 
@@ -83,11 +84,12 @@
     <TextView
         android:id="@+id/buttonlogin"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/register_user_pass_ti"
         android:layout_gravity="center_vertical"
-        android:layout_marginHorizontal="10dp"
+        android:layout_marginHorizontal="20dp"
         android:layout_marginTop="50dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/shap_cards"
         android:fontFamily="@font/iran_sans"
         android:gravity="center"
