@@ -38,7 +38,7 @@
         android:paddingHorizontal="10dp"
         android:layout_below="@+id/register_title"
         android:fontFamily="@fonts/iran_sans"
-        android:hint="نام کاربری یا ایمیل"
+        android:hint="نام قهوه سرا"
         app:endIconMode="clear_text">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -46,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/back_editext"
-            android:drawableStart="@drawable/mail_ic"
+            android:drawableStart="@drawable/store_ic"
             android:drawablePadding="10dp"
             android:focusable="true"
             android:inputType="textEmailAddress"

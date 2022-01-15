@@ -10,17 +10,19 @@ import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.waiterapp.R;
 import com.example.waiterapp.activity.homepage.HomeActivity;
 import com.example.waiterapp.database.DatabaseHelper;
 import com.example.waiterapp.database.dao.UserDao;
 import com.example.waiterapp.helper.App;
 import com.example.waiterapp.model.User;
+import com.google.android.material.textfield.TextInputEditText;
 
 
 public class login extends AppCompatActivity {
@@ -29,8 +31,10 @@ public class login extends AppCompatActivity {
     private ImageView imageView1;
     private TextView buttonlogin;
     private TextView Register_tv;
+    private TextInputEditText input_user_tv , input_pass_tv ;
     private Dialog dialog;
     private UserDao userDao;
+    private String userN , passW ;
     private DatabaseHelper databaseHelper;
     private SharedPreferences sharedPreferences;
 
@@ -46,6 +50,7 @@ public class login extends AppCompatActivity {
         set_anim();
         set_bttnlogin();
         register_dialog();
+        sharedPreferences = getSharedPreferences("shpr" , MODE_PRIVATE);
 
     }
 
@@ -60,6 +65,8 @@ public class login extends AppCompatActivity {
         imageView1= findViewById(R.id.img_back_blur);
         Register_tv = findViewById(R.id.Register_tv);
         buttonlogin = findViewById(R.id.buttonlogin);
+        input_user_tv = findViewById(R.id.input_user_tv);
+        input_pass_tv = findViewById(R.id.input_pass_tv);
     }
     private void set_anim(){
 
@@ -84,8 +91,20 @@ public class login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent a = new Intent(login.this, HomeActivity.class);
-                startActivity(a);
+                userN = input_user_tv.getText().toString();
+                passW = input_pass_tv.getText().toString();
+
+                if(TextUtils.isEmpty(userN) || TextUtils.isEmpty(passW)){
+                    Toast.makeText(getApplicationContext(), "لطفا فیلد ها را تکمیل کنید!", Toast.LENGTH_SHORT).show();
+                }else if(userDao.getUser(userN,passW) == null){
+                    Toast.makeText(getApplicationContext(), "همچین کافیشاپی وجود ندارد!", Toast.LENGTH_SHORT).show();
+                }else{
+                    Intent login = new Intent(login.this, HomeActivity.class);
+                    startActivity(login);
+                    finish();
+                }
+
+
             }
         });
     }
@@ -95,8 +114,8 @@ public class login extends AppCompatActivity {
             dialog = new Dialog(this);
             dialog.setContentView(R.layout.regster_layout);
 
-            EditText USERname = (EditText)dialog.findViewById(R.id.register_user_name_ed);
-            EditText passWord = (EditText)dialog.findViewById(R.id.register_user_name_ed);
+            TextInputEditText USERname = (TextInputEditText)dialog.findViewById(R.id.register_user_name_ed);
+            TextInputEditText passWord = (TextInputEditText)dialog.findViewById(R.id.register_user_name_ed);
             TextView register_new_user = (TextView)dialog.findViewById(R.id.register_new_user);
 
             register_new_user.setOnClickListener(view1 -> {
@@ -107,6 +126,7 @@ public class login extends AppCompatActivity {
                 if(TextUtils.isEmpty(getName) || TextUtils.isEmpty(getPass)){
                     Toast.makeText(getApplicationContext(), "لطفا فیلد ها را تکمیل کنید!", Toast.LENGTH_SHORT).show();
                 }else {
+//                    System.out.print("---------------------------------------------/n/npass and name:"+getName+"   "+getPass);
                     userDao.insertUser(new User(getName , getPass));
                     Toast.makeText(getApplicationContext(), "ثبت نام شما با موفقیت انجام شد", Toast.LENGTH_SHORT).show();
                     dialog.dismiss();

@@ -68,18 +68,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@fonts/iran_sans"
-                    android:hint="نام کاربری یا ایمیل"
+                    android:hint="نام قهوه سرا"
                     app:endIconMode="clear_text">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/text_inputpass"
+                        android:id="@+id/input_user_tv"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/back_editext"
-                        android:drawableStart="@drawable/mail_ic"
+                        android:drawableStart="@drawable/store_ic"
                         android:drawablePadding="10dp"
                         android:focusable="true"
-                        android:inputType="textEmailAddress"
+                        android:inputType="textPersonName"
                         android:textColor="#AFB1B3"
                         app:hintTextColor="#AFB1B3"
                         android:textColorHint="#AFB1B3" />
@@ -97,7 +97,7 @@
                     app:endIconMode="password_toggle">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/text_input"
+                        android:id="@+id/input_pass_tv"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/back_editext"
