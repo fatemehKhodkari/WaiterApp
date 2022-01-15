@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,9 +35,13 @@ public class login extends AppCompatActivity {
     private TextInputEditText input_user_tv , input_pass_tv ;
     private Dialog dialog;
     private UserDao userDao;
+    private CheckBox checkBox;
     private String userN , passW ;
     private DatabaseHelper databaseHelper;
     private SharedPreferences sharedPreferences;
+    public static final String CafePref = "CafePrefernce";
+    public static final String Name = "nameKey";
+    public static final String Pass = "passKey";
 
 
 
@@ -45,12 +50,14 @@ public class login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        sharedPreferences = getSharedPreferences(CafePref , MODE_PRIVATE);
+
         init_database();
         initID();
         set_anim();
         set_bttnlogin();
         register_dialog();
-        sharedPreferences = getSharedPreferences("shpr" , MODE_PRIVATE);
+        set_checkBox();
 
     }
 
@@ -67,6 +74,7 @@ public class login extends AppCompatActivity {
         buttonlogin = findViewById(R.id.buttonlogin);
         input_user_tv = findViewById(R.id.input_user_tv);
         input_pass_tv = findViewById(R.id.input_pass_tv);
+        checkBox = findViewById(R.id.remember);
     }
     private void set_anim(){
 
@@ -86,23 +94,44 @@ public class login extends AppCompatActivity {
         imageView.startAnimation(fadeOut);
     }
 
+    private void set_checkBox(){
+        checkBox.setOnClickListener(view -> {
+            String getName = input_user_tv.getText().toString();
+            String getPass = input_pass_tv.getText().toString();
+
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString(Name , getName);
+            editor.putString(Pass , getPass);
+            editor.apply();
+        });
+        if(sharedPreferences.contains(Name) && sharedPreferences.contains(Pass)){
+            input_user_tv.setText(sharedPreferences.getString(Name , null));
+            input_pass_tv.setText(sharedPreferences.getString(Pass , null));
+            checkBox.setChecked(true);
+        }
+    }
+
     private void set_bttnlogin(){
         buttonlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//
+//                userN = input_user_tv.getText().toString();
+//                passW = input_pass_tv.getText().toString();
+//
+//                if(TextUtils.isEmpty(userN) || TextUtils.isEmpty(passW)){
+//                    Toast.makeText(getApplicationContext(), "لطفا فیلد ها را تکمیل کنید!", Toast.LENGTH_SHORT).show();
+//                }else if(userDao.getUser(userN,passW) == null){
+//                    Toast.makeText(getApplicationContext(), "همچین کافیشاپی وجود ندارد!", Toast.LENGTH_SHORT).show();
+//                }else{
+//                    Intent login = new Intent(login.this, HomeActivity.class);
+//                    startActivity(login);
+//                    finish();
+//                }
 
-                userN = input_user_tv.getText().toString();
-                passW = input_pass_tv.getText().toString();
-
-                if(TextUtils.isEmpty(userN) || TextUtils.isEmpty(passW)){
-                    Toast.makeText(getApplicationContext(), "لطفا فیلد ها را تکمیل کنید!", Toast.LENGTH_SHORT).show();
-                }else if(userDao.getUser(userN,passW) == null){
-                    Toast.makeText(getApplicationContext(), "همچین کافیشاپی وجود ندارد!", Toast.LENGTH_SHORT).show();
-                }else{
-                    Intent login = new Intent(login.this, HomeActivity.class);
-                    startActivity(login);
-                    finish();
-                }
+                Intent login = new Intent(login.this, HomeActivity.class);
+                startActivity(login);
+                finish();
 
 
             }
