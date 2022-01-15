@@ -2,9 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:gravity="center"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context=".activity.login.login">
 
 
@@ -32,19 +31,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:clickable="true"
-        android:focusableInTouchMode="true"
         android:orientation="vertical"
         android:paddingHorizontal="50dp"
+        android:weightSum="3"
         android:paddingVertical="10dp"
-        tools:context=".activity.login.ActivityLogin">
-
+        >
 
         <LinearLayout
             android:id="@+id/lottie"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginBottom="10dp"
+            android:layout_weight="1"
             android:orientation="vertical">
 
             <com.airbnb.lottie.LottieAnimationView
@@ -56,13 +54,10 @@
 
         </LinearLayout>
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:layout_below="@+id/lottie"
                 android:orientation="vertical">
 
@@ -71,7 +66,7 @@
                     android:id="@+id/textInputLayoutname"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="70dp"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@fonts/iran_sans"
                     android:hint="نام کاربری یا ایمیل"
                     app:endIconMode="clear_text">
@@ -95,9 +90,9 @@
                     android:id="@+id/textInputLayout"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginBottom="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="10dp"
                     android:hint="رمز عبور"
                     app:endIconMode="password_toggle">
 
@@ -116,76 +111,99 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:gravity="center">
-
-                    <TextView
-                        android:id="@+id/buttonlogin"
-                        android:layout_width="wrap_content"
-                        android:layout_height="56dp"
-                        android:layout_gravity="center_vertical"
-                        android:background="@drawable/back_button"
-                        android:gravity="center"
-                        android:paddingHorizontal="50dp"
-                        android:text="ورود"
-                        android:fontFamily="@font/iran_sans"
-                        android:textColor="#f8f3f7"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/forget_pass_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="20dp"
-                    android:text="رمز عبور خود را فراموش کردید؟"
-                    android:textColor="@color/cream"
-                    android:layout_gravity="center"
-                    android:autoLink="email"
-                    android:textSize="10sp"
-                    android:fontFamily="@font/iran_sans"
-                    android:textColorLink="@android:color/holo_blue_light"
-                    />
-
-                <LinearLayout
+                <CheckBox
+                    android:id="@+id/remember"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:text="مرا بخاطر بسپار"
+                    android:fontFamily="@font/iran_sans"
+                    android:textSize="14dp"
+                    android:textColor="#AFB1B3"/>
+
+
+            </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/buttonlogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/back_button"
+                android:fontFamily="@font/iran_sans"
+                android:layout_marginTop="10dp"
+                android:paddingVertical="10dp"
+                android:gravity="center"
+                android:layout_marginHorizontal="50dp"
+                android:paddingHorizontal="50dp"
+                android:text="ورود"
+                android:textColor="#f8f3f7"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/forget_pass_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/noaccount"
+                android:layout_below="@+id/buttonlogin"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center"
+                android:autoLink="email"
+                android:fontFamily="@font/iran_sans"
+                android:gravity="center"
+                android:text="رمز عبور خود را فراموش کردید؟"
+                android:textColor="@color/cream"
+                android:textColorLink="@android:color/holo_blue_light"
+                android:textSize="10sp" />
+
+            <LinearLayout
+                android:id="@+id/noaccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="20dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="حساب کاربری ندارید؟"
-                        android:textColor="@color/cream"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:textSize="14sp"
-                        android:fontFamily="@font/iran_sans"/>
+                    android:fontFamily="@font/iran_sans"
+                    android:gravity="center"
+                    android:text="حساب کاربری ندارید؟"
+                    android:textColor="@color/cream"
+                    android:textSize="14sp" />
 
-                    <TextView
-                        android:id="@+id/Register_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:text="ثبت نام"
-                        android:layout_marginRight="10dp"
-                        android:textColor="@color/light_blue"
-                        android:layout_gravity="center"
-                        android:autoLink="email"
-                        android:textSize="14sp"
-                        android:fontFamily="@font/iran_sans"
-                        android:textColorLink="@android:color/holo_blue_light"
-                        />
-
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/Register_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="10dp"
+                    android:autoLink="email"
+                    android:fontFamily="@font/iran_sans"
+                    android:text="ثبت نام"
+                    android:textColor="@color/light_blue"
+                    android:textColorLink="@android:color/holo_blue_light"
+                    android:textSize="14sp" />
 
             </LinearLayout>
 
-        </ScrollView>
+
+        </RelativeLayout>
     </LinearLayout>
 
 </RelativeLayout>
