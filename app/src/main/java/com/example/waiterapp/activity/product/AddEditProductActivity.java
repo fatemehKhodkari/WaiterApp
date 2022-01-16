@@ -126,10 +126,7 @@ public class AddEditProductActivity extends AppCompatActivity {
                         }else if(groupingDao.getOneName(product_grouping_name) == null){
                             Toast.makeText(AddEditProductActivity.this,  " دسته بندی "+ product_grouping_name + " وجود ندارد ", Toast.LENGTH_SHORT).show();
 
-                        } else
-                            if(imageuri == null){
-                                imageuri = img_previouse_uri;
-                            }
+                        }
                         else{
                         productDao.insertProduct(new Product(product_name,product_grouping_name,product_price , imageuri.toString()));
                         Toast.makeText(getApplicationContext(),"با موفقیت به لیست اضافه شد",Toast.LENGTH_SHORT).show();
@@ -139,6 +136,12 @@ public class AddEditProductActivity extends AppCompatActivity {
                     product.name_product = product_name;
                     product.category = product_grouping_name;
                     product.price = product_price;
+                    if(imageuri == null){
+                        imageuri = img_previouse_uri;
+                        product.picture_product = imageuri.toString();
+                    }else {
+                        product.picture_product = imageuri.toString();
+                    }
                     product.picture_product = imageuri.toString();
                     Log.e("qqqq","onClick: update product =" + product.id);
                     productDao.updateProduct(product);

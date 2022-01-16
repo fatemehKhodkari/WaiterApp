@@ -133,7 +133,12 @@ public class AddEditGroupingActivity extends AppCompatActivity {
                     }
                 }else {
                     grouping.name = grouping_name;
-                    grouping.picture = imageuri.toString();
+                    if(imageuri == null){
+                        imageuri = img_previouse_uri;
+                        grouping.picture = imageuri.toString();
+                    }else {
+                        grouping.picture = imageuri.toString();
+                    }
                     groupingDao.updateGrouping(grouping);
                     Toast.makeText(getApplicationContext(),  grouping_previous_name + " به " + grouping_name + " تغییر کرد", Toast.LENGTH_LONG).show();
                     finish();
