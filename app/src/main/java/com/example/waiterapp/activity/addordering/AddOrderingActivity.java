@@ -2,6 +2,7 @@ package com.example.waiterapp.activity.addordering;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -30,6 +31,8 @@ import com.example.waiterapp.model.DetailOrder;
 import com.example.waiterapp.model.Order;
 import com.example.waiterapp.model.Product;
 import com.google.gson.Gson;
+import com.mohamadamin.persianmaterialdatetimepicker.time.RadialPickerLayout;
+import com.mohamadamin.persianmaterialdatetimepicker.time.TimePickerDialog;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
 
@@ -94,6 +97,7 @@ private static final String TAG = "AddOrdringActivity";
         set_recycler();
         set_submit_order();
         set_date_onClick();
+        set_timePicker();
         getCurrentDate();
         get_current_time();
     }
@@ -309,7 +313,7 @@ private static final String TAG = "AddOrdringActivity";
     }
 
     private void set_date_onClick(){
-//        Typeface typeface = Typeface.createFromAsset(getAssets(), "shabnam-light.ttf");
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "shabnam-light.ttf");
         date_tv_bttn.setOnClickListener(view -> {
             picker = new PersianDatePickerDialog(this)
                     .setPositiveButtonString("باشه")
@@ -317,12 +321,14 @@ private static final String TAG = "AddOrdringActivity";
                     .setTodayButton("امروز")
                     .setTodayButtonVisible(true)
                     .setMinYear(1300)
+                    .setMaxYear(1500)
+                    .setMaxMonth(12)
+                    .setMaxDay(31)
                     .setMaxYear(PersianDatePickerDialog.THIS_YEAR)
                     .setMaxMonth(PersianDatePickerDialog.THIS_MONTH)
                     .setMaxDay(PersianDatePickerDialog.THIS_DAY)
-                    .setInitDate(1370, 3, 13)
                     .setActionTextColor(Color.GRAY)
-//                    .setTypeFace(typeface)
+                    .setTypeFace(typeface)
                     .setTitleType(PersianDatePickerDialog.WEEKDAY_DAY_MONTH_YEAR)
                     .setShowInBottomSheet(true)
                     .setListener(new PersianPickerListener() {
@@ -333,18 +339,32 @@ private static final String TAG = "AddOrdringActivity";
                             Log.d(TAG, "onDateSelected: " + persianPickerDate.getPersianLongDate());// دوشنبه  13  خرداد  1370
                             Log.d(TAG, "onDateSelected: " + persianPickerDate.getPersianMonthName());//خرداد
                             Log.d(TAG, "onDateSelected: " + PersianCalendarUtils.isPersianLeapYear(persianPickerDate.getPersianYear()));//true
-                            Toast.makeText(getApplicationContext(), persianPickerDate.getPersianYear() + "/" + persianPickerDate.getPersianMonth() + "/" + persianPickerDate.getPersianDay(), Toast.LENGTH_SHORT).show();
+
+
+                            date_tv_bttn.setText(persianPickerDate.getPersianYear() + "/" + persianPickerDate.getPersianMonth() + "/" + persianPickerDate.getPersianDay() );
                         }
 
                         @Override
-                        public void onDismissed() {
-
-                        }
+                        public void onDismissed() {}
                     });
-
             picker.show();
         });
     }
 
+    private void set_timePicker(){
+        time_tv_bttn.setOnClickListener(v -> {
+            PersianCalendar now = new PersianCalendar();
+            TimePickerDialog tpd = TimePickerDialog.newInstance(new TimePickerDialog.OnTimeSetListener() {
+                @Override
+                public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
+                    String time = hourOfDay+":"+minute;
+                    time_tv_bttn.setText(time);
+                }},
+                    now.get(PersianCalendar.HOUR_OF_DAY),
+                    now.get(PersianCalendar.MINUTE),
+                    true);
+            tpd.show(getFragmentManager(),"tpd");
+        });
+    }
 
 }

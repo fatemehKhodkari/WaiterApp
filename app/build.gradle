@@ -70,5 +70,8 @@ dependencies {
     //date_persion
     implementation 'com.github.aliab:Persian-Date-Picker-Dialog:1.7.1'
 
+    //time picker
+    implementation 'com.mohamadamin:persianmaterialdatetimepicker:1.2.1'
+
 
 }
