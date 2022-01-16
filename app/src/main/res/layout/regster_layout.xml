@@ -49,7 +49,7 @@
             android:drawableStart="@drawable/store_ic"
             android:drawablePadding="10dp"
             android:focusable="true"
-            android:inputType="textEmailAddress"
+            android:inputType="textPersonName"
             android:textColor="#AFB1B3"
             app:hintTextColor="#AFB1B3"
             android:textColorHint="#AFB1B3" />

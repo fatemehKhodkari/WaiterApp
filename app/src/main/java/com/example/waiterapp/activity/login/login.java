@@ -115,25 +115,19 @@ public class login extends AppCompatActivity {
         buttonlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//
-//                userN = input_user_tv.getText().toString();
-//                passW = input_pass_tv.getText().toString();
-//
-//                if(TextUtils.isEmpty(userN) || TextUtils.isEmpty(passW)){
-//                    Toast.makeText(getApplicationContext(), "لطفا فیلد ها را تکمیل کنید!", Toast.LENGTH_SHORT).show();
-//                }else if(userDao.getUser(userN,passW) == null){
-//                    Toast.makeText(getApplicationContext(), "همچین کافیشاپی وجود ندارد!", Toast.LENGTH_SHORT).show();
-//                }else{
-//                    Intent login = new Intent(login.this, HomeActivity.class);
-//                    startActivity(login);
-//                    finish();
-//                }
 
-                Intent login = new Intent(login.this, HomeActivity.class);
-                startActivity(login);
-                finish();
+                userN = input_user_tv.getText().toString();
+                passW = input_pass_tv.getText().toString();
 
-
+                if(TextUtils.isEmpty(userN) || TextUtils.isEmpty(passW)){
+                    Toast.makeText(getApplicationContext(), "لطفا فیلد ها را تکمیل کنید!", Toast.LENGTH_SHORT).show();
+                }else if(userDao.getUser(userN,passW) == null){
+                    Toast.makeText(getApplicationContext(), "همچین کافیشاپی وجود ندارد!", Toast.LENGTH_SHORT).show();
+                }else{
+                    Intent login = new Intent(login.this, HomeActivity.class);
+                    startActivity(login);
+                    finish();
+                }
             }
         });
     }
@@ -144,7 +138,7 @@ public class login extends AppCompatActivity {
             dialog.setContentView(R.layout.regster_layout);
 
             TextInputEditText USERname = (TextInputEditText)dialog.findViewById(R.id.register_user_name_ed);
-            TextInputEditText passWord = (TextInputEditText)dialog.findViewById(R.id.register_user_name_ed);
+            TextInputEditText passWord = (TextInputEditText)dialog.findViewById(R.id.register_user_pass_ed);
             TextView register_new_user = (TextView)dialog.findViewById(R.id.register_new_user);
 
             register_new_user.setOnClickListener(view1 -> {
@@ -155,7 +149,6 @@ public class login extends AppCompatActivity {
                 if(TextUtils.isEmpty(getName) || TextUtils.isEmpty(getPass)){
                     Toast.makeText(getApplicationContext(), "لطفا فیلد ها را تکمیل کنید!", Toast.LENGTH_SHORT).show();
                 }else {
-//                    System.out.print("---------------------------------------------/n/npass and name:"+getName+"   "+getPass);
                     userDao.insertUser(new User(getName , getPass));
                     Toast.makeText(getApplicationContext(), "ثبت نام شما با موفقیت انجام شد", Toast.LENGTH_SHORT).show();
                     dialog.dismiss();
