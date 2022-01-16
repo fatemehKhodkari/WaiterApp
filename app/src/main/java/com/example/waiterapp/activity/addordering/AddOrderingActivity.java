@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -44,6 +43,7 @@ import java.util.List;
 import ir.hamsaa.persiandatepicker.PersianDatePickerDialog;
 import ir.hamsaa.persiandatepicker.api.PersianPickerDate;
 import ir.hamsaa.persiandatepicker.api.PersianPickerListener;
+import ir.hamsaa.persiandatepicker.util.PersianCalendar;
 import ir.hamsaa.persiandatepicker.util.PersianCalendarUtils;
 //import saman.zamani.persiandate.PersianDate;
 //import saman.zamani.persiandate.PersianDateFormat;
@@ -71,10 +71,8 @@ public class AddOrderingActivity extends AppCompatActivity {
     private CustomerDao customerDao;
     private String CODE = String.valueOf(System.currentTimeMillis());
     private List<Product> orderDetailList;
-
-
-    private TextView ttttttt;
-private PersianDatePickerDialog picker;
+    private TextView time_tv_bttn,date_tv_bttn;
+    private PersianDatePickerDialog picker;
 
 private static final String TAG = "AddOrdringActivity";
 
@@ -95,46 +93,9 @@ private static final String TAG = "AddOrdringActivity";
         click_add_product();
         set_recycler();
         set_submit_order();
-
-
-
-        ttttttt = findViewById(R.id.date_tv_bttn);
-        ttttttt.setOnClickListener(view -> {
-            picker = new PersianDatePickerDialog(this)
-                    .setPositiveButtonString("باشه")
-                    .setNegativeButton("بیخیال")
-                    .setTodayButton("امروز")
-                    .setTodayButtonVisible(true)
-                    .setMinYear(1300)
-                    .setMaxYear(PersianDatePickerDialog.THIS_YEAR)
-                    .setMaxMonth(PersianDatePickerDialog.THIS_MONTH)
-                    .setMaxDay(PersianDatePickerDialog.THIS_DAY)
-                    .setInitDate(1370, 3, 13)
-                    .setActionTextColor(Color.GRAY)
-//                    .setTypeFace(typeface)
-                    .setTitleType(PersianDatePickerDialog.WEEKDAY_DAY_MONTH_YEAR)
-                    .setShowInBottomSheet(true)
-                    .setListener(new PersianPickerListener() {
-                        @Override
-                        public void onDateSelected(@NotNull PersianPickerDate persianPickerDate) {
-                            Log.d(TAG, "onDateSelected: " + persianPickerDate.getTimestamp());//675930448000
-                            Log.d(TAG, "onDateSelected: " + persianPickerDate.getGregorianDate());//Mon Jun 03 10:57:28 GMT+04:30 1991
-                            Log.d(TAG, "onDateSelected: " + persianPickerDate.getPersianLongDate());// دوشنبه  13  خرداد  1370
-                            Log.d(TAG, "onDateSelected: " + persianPickerDate.getPersianMonthName());//خرداد
-                            Log.d(TAG, "onDateSelected: " + PersianCalendarUtils.isPersianLeapYear(persianPickerDate.getPersianYear()));//true
-                            Toast.makeText(getApplicationContext(), persianPickerDate.getPersianYear() + "/" + persianPickerDate.getPersianMonth() + "/" + persianPickerDate.getPersianDay(), Toast.LENGTH_SHORT).show();
-                        }
-
-                        @Override
-                        public void onDismissed() {
-
-                        }
-                    });
-
-            picker.show();
-        });
-
-
+        set_date_onClick();
+        getCurrentDate();
+        get_current_time();
     }
 
     @Override
@@ -226,6 +187,8 @@ private static final String TAG = "AddOrdringActivity";
         submit_ordering_tv = findViewById(R.id.submit_ordering_tv);
         add_ordering = findViewById(R.id.add_ordering);
         not_ordering_tv = findViewById(R.id.not_ordering_tv);
+        date_tv_bttn = findViewById(R.id.date_tv_bttn);
+        time_tv_bttn = findViewById(R.id.time_tv_bttn);
     }
 
     private void callDatabase(){
@@ -330,5 +293,58 @@ private static final String TAG = "AddOrdringActivity";
         }
 
     }
+
+    private void getCurrentDate(){
+        PersianCalendar today = new PersianCalendar();
+        String currentDate = today.getPersianShortDate();
+        date_tv_bttn.setText(currentDate);
+
+    }
+
+    private void get_current_time(){
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss ");
+        String datetime = dateFormat.format(calendar.getTime());
+        time_tv_bttn.setText(datetime);
+    }
+
+    private void set_date_onClick(){
+//        Typeface typeface = Typeface.createFromAsset(getAssets(), "shabnam-light.ttf");
+        date_tv_bttn.setOnClickListener(view -> {
+            picker = new PersianDatePickerDialog(this)
+                    .setPositiveButtonString("باشه")
+                    .setNegativeButton("بیخیال")
+                    .setTodayButton("امروز")
+                    .setTodayButtonVisible(true)
+                    .setMinYear(1300)
+                    .setMaxYear(PersianDatePickerDialog.THIS_YEAR)
+                    .setMaxMonth(PersianDatePickerDialog.THIS_MONTH)
+                    .setMaxDay(PersianDatePickerDialog.THIS_DAY)
+                    .setInitDate(1370, 3, 13)
+                    .setActionTextColor(Color.GRAY)
+//                    .setTypeFace(typeface)
+                    .setTitleType(PersianDatePickerDialog.WEEKDAY_DAY_MONTH_YEAR)
+                    .setShowInBottomSheet(true)
+                    .setListener(new PersianPickerListener() {
+                        @Override
+                        public void onDateSelected(@NotNull PersianPickerDate persianPickerDate) {
+                            Log.d(TAG, "onDateSelected: " + persianPickerDate.getTimestamp());//675930448000
+                            Log.d(TAG, "onDateSelected: " + persianPickerDate.getGregorianDate());//Mon Jun 03 10:57:28 GMT+04:30 1991
+                            Log.d(TAG, "onDateSelected: " + persianPickerDate.getPersianLongDate());// دوشنبه  13  خرداد  1370
+                            Log.d(TAG, "onDateSelected: " + persianPickerDate.getPersianMonthName());//خرداد
+                            Log.d(TAG, "onDateSelected: " + PersianCalendarUtils.isPersianLeapYear(persianPickerDate.getPersianYear()));//true
+                            Toast.makeText(getApplicationContext(), persianPickerDate.getPersianYear() + "/" + persianPickerDate.getPersianMonth() + "/" + persianPickerDate.getPersianDay(), Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onDismissed() {
+
+                        }
+                    });
+
+            picker.show();
+        });
+    }
+
 
 }

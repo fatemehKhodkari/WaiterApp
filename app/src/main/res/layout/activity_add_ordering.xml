@@ -20,9 +20,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <include layout="@layout/submit_ordering_toolbar"></include>
-
         <include layout="@layout/date_clock"></include>
-
         <include layout="@layout/customer_submit_ordering"></include>
         <include layout="@layout/add_product_submit_ordering" ></include>
     </LinearLayout>
