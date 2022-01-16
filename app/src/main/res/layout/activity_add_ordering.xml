@@ -11,7 +11,9 @@
         android:id="@+id/ordering_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clipToPadding="false"
         android:paddingTop="290dp"
+        android:paddingBottom="70dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/product_submited_info"></androidx.recyclerview.widget.RecyclerView>
 
@@ -122,20 +124,19 @@
         android:id="@+id/not_order_here"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/not_ordering_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="هنوز محصولی به لیست سفارشات اضافه نشده است!"
+            android:layout_gravity="center"
             android:fontFamily="@font/iran_sans"
-            android:textStyle="bold"
+            android:text="هنوز محصولی به لیست سفارشات اضافه نشده است!"
             android:textColor="#d3d3d3"
             android:textSize="14dp"
-            android:layout_gravity="center"
-            />
+            android:textStyle="bold" />
 
     </LinearLayout>
 
