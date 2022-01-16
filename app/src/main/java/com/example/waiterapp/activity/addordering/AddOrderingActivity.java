@@ -267,7 +267,7 @@ private static final String TAG = "AddOrdringActivity";
 
                     Toast.makeText(AddOrderingActivity.this, " سفارش " + customer.name + " با موفقیت ثبت شد", Toast.LENGTH_SHORT).show();
                 }
-                databaseHelper.close();
+//                databaseHelper.close();
                 finish();
             }
 
@@ -293,7 +293,7 @@ private static final String TAG = "AddOrdringActivity";
     protected void onDestroy() {
         super.onDestroy();
         if(databaseHelper != null){
-            databaseHelper.close();
+//            databaseHelper.close();
         }
 
     }

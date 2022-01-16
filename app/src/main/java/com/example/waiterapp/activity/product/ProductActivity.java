@@ -219,7 +219,7 @@ public class ProductActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (databaseHelper != null) databaseHelper.close();
+//        if (databaseHelper != null) databaseHelper.close();
     }
 
 }
