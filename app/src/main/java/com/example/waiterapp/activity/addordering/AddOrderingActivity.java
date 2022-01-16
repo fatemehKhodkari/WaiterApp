@@ -76,8 +76,7 @@ public class AddOrderingActivity extends AppCompatActivity {
     private List<Product> orderDetailList;
     private TextView time_tv_bttn,date_tv_bttn;
     private PersianDatePickerDialog picker;
-
-private static final String TAG = "AddOrdringActivity";
+    private static final String TAG = "AddOrdringActivity";
 
 
 
@@ -249,9 +248,8 @@ private static final String TAG = "AddOrdringActivity";
             if( customer == null ){
                 Toast.makeText(this, "فیلد مشتری خالی است!", Toast.LENGTH_SHORT).show();
             }else {
-                submitOrderDao.insertOrder(new Order(customer.name , CODE , customer.id , 1 , total_price_tv.getText()+"" , "با تمام مخلفات" , getCurrentTime_time() ,
-//                        getCurrentTime_Date()
-                        "1400/10/20"
+                submitOrderDao.insertOrder(new Order(customer.name , CODE , customer.id , 1 , total_price_tv.getText()+"" , "با تمام مخلفات" , time_tv_bttn.getText()+"" ,
+                        date_tv_bttn.getText()+""
                 ));
 
                 for (int i = 0; i < orderDetailList.size(); i++) {
@@ -273,22 +271,7 @@ private static final String TAG = "AddOrdringActivity";
 
         });
     }
-
-//    public String getCurrentTime_Date(){
-//        PersianDate c = new PersianDate();
-//        PersianDateFormat dateFormat = new PersianDateFormat(" Y/m/d ");
-//        String datetime = dateFormat.format(c);
-//        return datetime;
-//    }
-
-    public String getCurrentTime_time(){
-        Calendar c = Calendar.getInstance();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss ");
-        String datetime = dateFormat.format(c.getTime());
-        return datetime;
-    }
-
-
+    
     @Override
     protected void onDestroy() {
         super.onDestroy();
