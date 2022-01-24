@@ -36,8 +36,6 @@ import com.mohamadamin.persianmaterialdatetimepicker.time.TimePickerDialog;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -307,16 +305,13 @@ public class AddOrderingActivity extends AppCompatActivity {
                     .setMaxYear(1500)
                     .setMaxMonth(12)
                     .setMaxDay(31)
-                    .setMaxYear(PersianDatePickerDialog.THIS_YEAR)
-                    .setMaxMonth(PersianDatePickerDialog.THIS_MONTH)
-                    .setMaxDay(PersianDatePickerDialog.THIS_DAY)
                     .setActionTextColor(Color.GRAY)
                     .setTypeFace(typeface)
                     .setTitleType(PersianDatePickerDialog.WEEKDAY_DAY_MONTH_YEAR)
                     .setShowInBottomSheet(true)
                     .setListener(new PersianPickerListener() {
                         @Override
-                        public void onDateSelected(@NotNull PersianPickerDate persianPickerDate) {
+                        public void onDateSelected(PersianPickerDate persianPickerDate) {
                             Log.d(TAG, "onDateSelected: " + persianPickerDate.getTimestamp());//675930448000
                             Log.d(TAG, "onDateSelected: " + persianPickerDate.getGregorianDate());//Mon Jun 03 10:57:28 GMT+04:30 1991
                             Log.d(TAG, "onDateSelected: " + persianPickerDate.getPersianLongDate());// دوشنبه  13  خرداد  1370
