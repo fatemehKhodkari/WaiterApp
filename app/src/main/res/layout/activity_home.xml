@@ -19,40 +19,43 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="396dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/back_chart">
 
-            </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/chaarrtt"
+                    android:layout_width="match_parent"
+                    android:layout_height="255dp"
+                    android:orientation="vertical">
+                    <include layout="@layout/chart"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_below="@+id/chaarrtt"
+                    android:paddingHorizontal="5dp">
+
+                    <include layout="@layout/date_data"/>
+
+                </LinearLayout>
+            </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
 
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="255dp"
-                android:orientation="vertical">
-                <include layout="@layout/chart"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingHorizontal="5dp">
-
-                <include layout="@layout/date_data"/>
-
-            </LinearLayout>
 
 
             <LinearLayout
@@ -78,7 +81,7 @@
 
 
         </LinearLayout>
-        </RelativeLayout>
+        </LinearLayout>
     </ScrollView>
 
 </LinearLayout>

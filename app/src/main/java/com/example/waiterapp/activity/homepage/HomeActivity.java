@@ -25,6 +25,8 @@ import com.example.waiterapp.database.dao.GroupingDao;
 import com.example.waiterapp.database.dao.ProductDao;
 import com.example.waiterapp.database.dao.SubmitOrderDao;
 import com.example.waiterapp.helper.App;
+import com.example.waiterapp.helper.Tools;
+import com.example.waiterapp.model.Order;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.XAxis;
@@ -33,6 +35,7 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -45,6 +48,8 @@ public class HomeActivity extends AppCompatActivity {
     private ProductDao productDao;
     private CustomerDao customerDao;
     private GroupingDao groupingDao;
+    private TextView today_profit , week_profit , month_profit;
+    private TextView dayName , monthName , cafeName;
     private SubmitOrderDao submitOrderDao;
 
     @Override
@@ -79,6 +84,11 @@ public class HomeActivity extends AppCompatActivity {
         num_category = findViewById(R.id.number_category);
         num_ordering = findViewById(R.id.number_orderings);
         num_customer = findViewById(R.id.number_customer);
+        today_profit = findViewById(R.id.today_profit);
+        week_profit = findViewById(R.id.week_profit);
+        month_profit = findViewById(R.id.month_profit);
+        monthName = findViewById(R.id.monthName);
+        dayName = findViewById(R.id.dayName);
     }
 
     private void graph(){
@@ -183,5 +193,51 @@ public class HomeActivity extends AppCompatActivity {
         num_customer.setText(Integer.toString(customerDao.getCustomerList().size()));
         num_category.setText(Integer.toString(groupingDao.getGroupingList().size()));
         num_ordering.setText(Integer.toString(submitOrderDao.getOrderList().size()));
+        getTotalDaily();
+        getTotalWeekly();
+        getTotalMonthly();
+        setName();
+    }
+
+    private int getTotalDaily(){
+        List<String> total = new ArrayList<>();
+        int j = 0 ;
+        try {
+            total.addAll(submitOrderDao.dailyTotal(Tools.getCurrentDate()));
+            for (int i = 0; i < submitOrderDao.getOrderList().size() ; i++) {
+                String t = total.get(i);
+                j = j + Tools.convertToPrice(t);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        today_profit.setText(Tools.getForamtPrice(String.valueOf(j)));
+        return j;
+    }
+    private void getTotalWeekly(){
+        List<Order> total = new ArrayList<>();
+        total.addAll(submitOrderDao.getOrderListDate(Tools.getSevenDayAgo()));
+        int j = 0 ;
+        for (int i = 0; i < total.size() ; i++) {
+            String t = total.get(i).total;
+            j = j + Tools.convertToPrice(t);
+        }
+        week_profit.setText(Tools.getForamtPrice(String.valueOf(j)));
+    }
+
+    private void getTotalMonthly(){
+        List<Order> total = new ArrayList<>();
+        total.addAll(submitOrderDao.getOrderListDate(Tools.getThirtyDaysAgo()));
+        int j = 0 ;
+        for (int i = 0; i < total.size() ; i++) {
+            String t = total.get(i).total;
+            j = j + Tools.convertToPrice(t);
+        }
+        month_profit.setText(Tools.getForamtPrice(String.valueOf(j)));
+    }
+
+    private void setName(){
+        dayName.setText(" ( " + Tools.getDayName() + " ) ");
+        monthName.setText(" ( " + Tools.getMonthName() + " ) ");
     }
 }

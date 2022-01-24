@@ -44,6 +44,16 @@
                         android:textColor="@color/browwn"
                         android:textStyle="bold"
                         android:gravity="center" />
+                    <TextView
+                        android:id="@+id/dayName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/iran_sans"
+                        android:gravity="start|center"
+                        android:text=" ( شنبه )"
+                        android:textSize="11dp"
+                        android:textColor="#676767"
+                        android:textStyle="normal" />
 
                 </LinearLayout>
                 <LinearLayout
@@ -61,6 +71,7 @@
                         android:textSize="14dp"
                         android:textColor="#737373"
                         android:textStyle="bold"
+                        android:fontFamily="@font/irsansfanum"
                         android:gravity="center"/>
 
                 </LinearLayout>
@@ -101,6 +112,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="14000"
+                        android:fontFamily="@font/irsansfanum"
                         android:textSize="14dp"
                         android:textColor="#737373"
                         android:textStyle="bold"
@@ -131,6 +143,16 @@
                         android:textSize="14dp"
                         android:textColor="@color/browwn"
                         android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/monthName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/iran_sans"
+                        android:gravity="start|center"
+                        android:text=" ( بهمن )"
+                        android:textSize="11dp"
+                        android:textColor="#676767"
+                        android:textStyle="normal" />
 
                 </LinearLayout>
                 <LinearLayout
@@ -146,6 +168,7 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:text="90000"
+                        android:fontFamily="@font/irsansfanum"
                         android:textColor="#737373"
                         android:textSize="14dp"
                         android:textStyle="bold" />
@@ -197,6 +220,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="700000"
+                        android:fontFamily="@font/irsansfanum"
                         android:textSize="14dp"
                         android:textColor="#737373"
                         android:textStyle="bold"

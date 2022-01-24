@@ -183,6 +183,7 @@ public class ProductActivity extends AppCompatActivity {
         TextView searchText = (TextView) searchView.findViewById(R.id.search_src_text);
         Typeface myCustomFont = Typeface.createFromAsset(getAssets(),"font/iran_sans.ttf");
         searchText.setTypeface(myCustomFont);
+        searchText.setHint("");
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
