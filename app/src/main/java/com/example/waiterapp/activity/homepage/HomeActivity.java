@@ -3,8 +3,8 @@ package com.example.waiterapp.activity.homepage;
 import static com.github.mikephil.charting.utils.ColorTemplate.rgb;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -26,9 +26,9 @@ import com.example.waiterapp.database.dao.ProductDao;
 import com.example.waiterapp.database.dao.SubmitOrderDao;
 import com.example.waiterapp.helper.App;
 import com.example.waiterapp.helper.Tools;
+import com.example.waiterapp.model.ChartModel;
 import com.example.waiterapp.model.Order;
 import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
@@ -51,6 +51,8 @@ public class HomeActivity extends AppCompatActivity {
     private TextView today_profit , week_profit , month_profit;
     private TextView dayName , monthName , cafeName;
     private SubmitOrderDao submitOrderDao;
+    private ArrayList<ChartModel> chartModels;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +61,7 @@ public class HomeActivity extends AppCompatActivity {
 
         initDataBase();
         init();
-        graph();
+
         on_click_cards();
         ordering();
 
@@ -91,39 +93,98 @@ public class HomeActivity extends AppCompatActivity {
         dayName = findViewById(R.id.dayName);
     }
 
+
+
+    private void populateChart(){
+        Log.e("qqqqmain", "populateChart: started" );
+        ArrayList<Order> list = new ArrayList<>(submitOrderDao.getOrderList());
+        chartModels = new ArrayList<>();
+
+        Log.e("qqqqmain", "populateChart: "+list.size() + "-"+ chartModels.size() );
+
+        for (int i = 0; i < list.size(); i++) {
+
+
+            Log.e("qqqqmain2", "populateChart: for list is started \n"
+                    + list.get(i).date
+            );
+
+            if (chartModels.size() == 0){
+                Log.e("qqqqmain", "populateChart: chartModels.size() == 0" );
+
+                chartModels.add(new ChartModel(list.get(i).date,Tools.convertToPrice(list.get(i).total)));
+            }else {
+                Log.e("qqqqmain", "populateChart: chartModels.size() > 0" );
+
+                for (int c = 0; c < chartModels.size(); c++) {
+                    Log.e("qqqqmain2", "populateChart: for chart model is started\n"
+                            + chartModels.get(c).getDate() );
+
+                    if (list.get(i).date.equals(chartModels.get(c).getDate())){
+                        chartModels.get(c).setTotal(chartModels.get(c).getTotal() + Tools.convertToPrice(list.get(i).total));
+//                        return;
+                    }else {
+                        chartModels.add(new ChartModel(list.get(i).date,Tools.convertToPrice(list.get(i).total)));
+                    }
+                }
+            }
+        }
+    }
+
     private void graph(){
-        BarData barData;
-        BarDataSet barDataSet;
-        ArrayList barEntries;
+//        BarData barData;
+//        BarDataSet barDataSet;
+//        ArrayList barEntries;
+//
+//        barEntries = new ArrayList<>();
+//
+//        barEntries.add(new BarEntry(1f, 0.5f));
+//        barEntries.add(new BarEntry(2f, 1.8f));
+//        barEntries.add(new BarEntry(3f, 1));
+//        barEntries.add(new BarEntry(4f, 3));
+//        barEntries.add(new BarEntry(5f, 1));
+//        barEntries.add(new BarEntry(6f, 4));
+//        barEntries.add(new BarEntry(7f, 3));
+        ArrayList<BarEntry> visitor = new ArrayList<>();
 
-        barEntries = new ArrayList<>();
+        for (int i = 0; i < chartModels.size(); i++) {
+            visitor.add(new BarEntry( i, (int) chartModels.get(i).getTotal() ));
 
-        barEntries.add(new BarEntry(1f, 0.5f));
-        barEntries.add(new BarEntry(2f, 1.8f));
-        barEntries.add(new BarEntry(3f, 1));
-        barEntries.add(new BarEntry(4f, 3));
-        barEntries.add(new BarEntry(5f, 1));
-        barEntries.add(new BarEntry(6f, 4));
-        barEntries.add(new BarEntry(7f, 3));
+        }
 
-        barDataSet = new BarDataSet(barEntries, "");
-        barData = new BarData(barDataSet);
-        graph.setData(barData);
+        BarDataSet barDataSet = new BarDataSet(visitor, "");
         barDataSet.setColors(MY_COLOES);
-        barDataSet.setValueTextColor(Color.BLACK);
-        barDataSet.setValueTextSize(18f);
-        Description description = new Description();
-        description.setEnabled(false);
-        graph.setDescription(description);
+        barDataSet.setValueTextSize(0f);
+
+        BarData barData = new BarData(barDataSet);
         graph.setFitBars(true);
+        graph.setData(barData);
+        graph.getDescription().setText("");
         graph.animateY(1000);
 
         XAxis xAxis = graph.getXAxis();
         xAxis.setGranularity(1f);
-        xAxis.setAxisMinimum(0f);
         xAxis.setDrawAxisLine(true);
         xAxis.setDrawGridLines(false);
 
+//        barDataSet = new BarDataSet(visitor, "");
+//        barData = new BarData(barDataSet);
+//        graph.setData(barData);
+//        barDataSet.setColors(MY_COLOES);
+//        barDataSet.setValueTextColor(Color.BLACK);
+//        barDataSet.setValueTextSize(18f);
+//        Description description = new Description();
+//        description.setEnabled(false);
+//        graph.setDescription(description);
+//        graph.setFitBars(true);
+//        graph.animateY(1000);
+//
+//        XAxis xAxis = graph.getXAxis();
+//        xAxis.setGranularity(1f);
+//        xAxis.setAxisMinimum(0f);
+//        xAxis.setDrawAxisLine(true);
+//        xAxis.setDrawGridLines(false);
+//
 
     }
 
@@ -193,6 +254,8 @@ public class HomeActivity extends AppCompatActivity {
         num_customer.setText(Integer.toString(customerDao.getCustomerList().size()));
         num_category.setText(Integer.toString(groupingDao.getGroupingList().size()));
         num_ordering.setText(Integer.toString(submitOrderDao.getOrderList().size()));
+        populateChart();
+        graph();
         getTotalDaily();
         getTotalWeekly();
         getTotalMonthly();
