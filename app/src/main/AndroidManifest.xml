@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.waiterapp">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:name=".helper.App"
         android:allowBackup="true"
@@ -13,13 +16,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WaiterApp">
         <activity
+            android:name=".activity.file.FileActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.submittedorderdetail.SubmittedOrderDetailActivity"
             android:exported="true"
-            android:theme="@style/Theme.WaiterApp.SlidrActivityTheme"/>
+            android:theme="@style/Theme.WaiterApp.SlidrActivityTheme" />
         <activity
             android:name=".activity.submittedorder.SubmittedOrderActivity"
             android:exported="true"
-            android:theme="@style/Theme.WaiterApp.SlidrActivityTheme"/>
+            android:theme="@style/Theme.WaiterApp.SlidrActivityTheme" />
         <activity
             android:name=".activity.addordering.AddOrderingActivity"
             android:exported="true"
