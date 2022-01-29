@@ -18,7 +18,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.waiterapp.R;
-import com.example.waiterapp.activity.file.FileActivity;
+import com.example.waiterapp.activity.homepage.HomeActivity;
 import com.example.waiterapp.database.DatabaseHelper;
 import com.example.waiterapp.database.dao.UserDao;
 import com.example.waiterapp.helper.App;
@@ -124,7 +124,7 @@ public class login extends AppCompatActivity {
                 }else if(userDao.getUser(userN,passW) == null){
                     Toast.makeText(getApplicationContext(), "همچین کافیشاپی وجود ندارد!", Toast.LENGTH_SHORT).show();
                 }else{
-                    Intent login = new Intent(login.this, FileActivity.class);
+                    Intent login = new Intent(login.this, HomeActivity.class);
                     startActivity(login);
                     finish();
                 }

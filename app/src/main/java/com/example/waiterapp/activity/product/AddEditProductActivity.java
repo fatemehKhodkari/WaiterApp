@@ -65,6 +65,8 @@ public class AddEditProductActivity extends AppCompatActivity {
         cancle_bttn();
 
     }
+
+
     void hideActionBar(){
         getWindow().setFlags(
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
