@@ -17,6 +17,9 @@ public interface DetailOrderDao {
     @Query("Select * from detailorder where code = :code")
     List<DetailOrder> getSpecificOrder(String code);
 
+    @Query("DELETE from detailorder where code = :code")
+    void deleteOneOrderDetail(String code);
+
     @Insert
     void insertDetailOrder(DetailOrder detailOrder);
 

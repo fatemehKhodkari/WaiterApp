@@ -17,7 +17,7 @@ public interface SubmitOrderDao {
     @Query("Select total from table_order where date = :date limit 1")
     String date(String date);
 
-    @Query("Select total from table_order where date = :datee ")
+    @Query("Select total from table_order where date = :datee")
     List<String> dailyTotal( String datee);
 
     @Query("Select * from table_order where name_orderer = :name ")

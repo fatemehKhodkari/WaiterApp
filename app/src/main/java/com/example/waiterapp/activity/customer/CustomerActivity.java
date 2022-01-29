@@ -93,7 +93,7 @@ public class CustomerActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         customerAdapter = new CustomerAdapter(new ArrayList<>() , this,new CustomerAdapter.Listener(){
             @Override
-            public void onClickListener(Customer customer, int pos) {
+            public void onClickListener(Customer customer, int pos ,String name) {
 //                customerr = customer;
 //                poss = pos;
                 if (for_order) {
@@ -102,7 +102,7 @@ public class CustomerActivity extends AppCompatActivity {
                     setResult(Activity.RESULT_OK, returnIntent);
                     finish();
                 } else {
-                    customerAdapter.showDialogBSheet(pos);
+                    customerAdapter.showDialogBSheet(pos , name , customer.id);
                 }
             }
         });
