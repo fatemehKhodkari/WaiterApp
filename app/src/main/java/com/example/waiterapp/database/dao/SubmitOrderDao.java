@@ -14,6 +14,10 @@ public interface SubmitOrderDao {
     @Query("Select * from table_order")
     List<Order> getOrderList();
 
+
+    @Query("Select * from table_order order by date DESC")
+    List<Order> getOrderListByDate();
+
     @Query("Select total from table_order where date = :date limit 1")
     String date(String date);
 

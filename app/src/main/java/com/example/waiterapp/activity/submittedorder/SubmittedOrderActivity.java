@@ -48,7 +48,7 @@ public class SubmittedOrderActivity extends AppCompatActivity {
 
     private void initRecycler(){
         recyclerView.setHasFixedSize(true);
-        listSubmittedAdapter = new ListSubmittedAdapter(this,submitOrderDao.getOrderList());
+        listSubmittedAdapter = new ListSubmittedAdapter(this,submitOrderDao.getOrderListByDate());
         recyclerView.setAdapter(listSubmittedAdapter);
     }
 
