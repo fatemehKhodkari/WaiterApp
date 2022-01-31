@@ -1,5 +1,6 @@
 package com.example.waiterapp.activity.product;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -171,6 +173,7 @@ public class ProductActivity extends AppCompatActivity {
         initListProduct();
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_search,menu);
@@ -178,12 +181,18 @@ public class ProductActivity extends AppCompatActivity {
         SearchView searchView = (SearchView)item.getActionView();
         searchView.setMaxWidth(Integer.MAX_VALUE);
         searchView.setBackground(getResources().getDrawable(R.drawable.rippler));
-        searchView.setIconified(false);
 
         TextView searchText = (TextView) searchView.findViewById(R.id.search_src_text);
         Typeface myCustomFont = Typeface.createFromAsset(getAssets(),"font/iran_sans.ttf");
         searchText.setTypeface(myCustomFont);
-        searchText.setHint("");
+
+
+
+        EditText searchEdit = ((EditText)searchView.findViewById(androidx.appcompat.R.id.search_src_text));
+        searchEdit.setTextColor(getResources().getColor(R.color.whitediff));
+        searchEdit.setHintTextColor(getResources().getColor(R.color.whiteopa));
+        searchEdit.setHint("جستجوی محصول..");
+        searchEdit.setTextSize(14);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
