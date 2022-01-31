@@ -24,4 +24,20 @@
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
+    <style name="MyTimePickerlight" parent="android:Widget.Material.TimePicker">
+        <item name="android:background">@color/whitediff</item>
+        <item name="android:headerBackground">@color/browwn</item>
+        <item name="android:headerTimeTextAppearance">@color/browwn</item>
+        <item name="colorOnBackground">@color/browwn</item>
+        <item name="colorOnPrimary">@color/browwn</item>
+        <item name="colorOnSecondary">@color/browwn</item>
+        <item name="android:headerAmPmTextAppearance">@color/browwn</item>
+        <item name="android:numbersTextColor">#673AB7</item>
+        <item name="android:numbersSelectorColor">@color/browwn</item>
+        <item name="android:numbersBackgroundColor">#61E761</item>
+        <item name="colorAccent">@color/browwn</item>
+        <item name="colorControlNormal">@color/browwn</item>
+        <item name="android:backgroundTint">@color/browwndiff</item>
+    </style>
+
 </resources>
