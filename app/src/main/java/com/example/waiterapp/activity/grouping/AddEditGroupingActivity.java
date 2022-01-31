@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -20,10 +22,15 @@ import com.example.waiterapp.R;
 import com.example.waiterapp.database.DatabaseHelper;
 import com.example.waiterapp.database.dao.GroupingDao;
 import com.example.waiterapp.helper.App;
+import com.example.waiterapp.helper.Tools;
 import com.example.waiterapp.model.Grouping;
 import com.google.gson.Gson;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
+
+import java.io.File;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -38,9 +45,11 @@ public class AddEditGroupingActivity extends AppCompatActivity {
     DatabaseHelper databaseHelper;
     CircleImageView grouping_add_img;
     EditText grouping_name_edt;
+    String save;
     String grouping_name , grouping_previous_name;
     private static final int PICK_IMAGE = 100;
     Uri imageuri , img_previouse_uri;
+    private String Timemilisecond = String.valueOf(System.currentTimeMillis());
 
 
     @Override
@@ -118,7 +127,7 @@ public class AddEditGroupingActivity extends AppCompatActivity {
 
                 if(grouping == null){
 
-                    if(TextUtils.isEmpty(grouping_name) || imageuri==null){
+                    if(TextUtils.isEmpty(grouping_name) || TextUtils.isEmpty(save)){
 
                         Toast.makeText(AddEditGroupingActivity.this, "تمام فیلد هارا پر کنید!", Toast.LENGTH_LONG).show();
                         //
@@ -126,18 +135,18 @@ public class AddEditGroupingActivity extends AppCompatActivity {
                         Toast.makeText(AddEditGroupingActivity.this, "این دسته بندی تکراری است!", Toast.LENGTH_LONG).show();
 
                     } else {
-                        groupingDao.insertGrouping(new Grouping(grouping_name , imageuri.toString()));
+                        groupingDao.insertGrouping(new Grouping(grouping_name , save));
                         Toast.makeText(getApplicationContext(), grouping_name + " با موفقیت به لیست اضافه شد ", Toast.LENGTH_LONG).show();
                         finish();
 
                     }
                 }else {
                     grouping.name = grouping_name;
-                    if(imageuri == null){
-                        imageuri = img_previouse_uri;
-                        grouping.picture = imageuri.toString();
+                    if(TextUtils.isEmpty(save)){
+                        save = img_previouse_uri.toString();
+                        grouping.picture = save;
                     }else {
-                        grouping.picture = imageuri.toString();
+                        grouping.picture = save;
                     }
                     groupingDao.updateGrouping(grouping);
                     Toast.makeText(getApplicationContext(),  grouping_previous_name + " به " + grouping_name + " تغییر کرد", Toast.LENGTH_LONG).show();
@@ -160,10 +169,15 @@ public class AddEditGroupingActivity extends AppCompatActivity {
         grouping_add_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
-                startActivityForResult(Intent.createChooser(intent , "Select Picture") , PICK_IMAGE);
+//                Intent intent = new Intent();
+//                intent.setType("image/*");
+//                intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
+//                startActivityForResult(Intent.createChooser(intent , "Select Picture") , PICK_IMAGE);
+
+                CropImage.activity()
+                        .setGuidelines(CropImageView.Guidelines.ON)
+                        .start(AddEditGroupingActivity.this);
+
             }
         });
     }
@@ -171,10 +185,18 @@ public class AddEditGroupingActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode,Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK){
-            if(requestCode == PICK_IMAGE){
-                imageuri=data.getData();
-                grouping_add_img.setImageURI(imageuri);
+        if(requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if(resultCode == RESULT_OK){
+//                imageuri=data.getData();
+//                grouping_add_img.setImageURI(imageuri);
+                Uri resultUri = result.getUri();
+                save = Tools.saveFile(Tools.getBytes(resultUri),new File( Environment.getExternalStorageDirectory() + "/DCIM/Barista") , Timemilisecond +".jpg");
+                grouping_add_img.setImageURI(resultUri);
+//                imageView_back.setVisibility(View.GONE);
+                Log.e("qqqqfile", "onActivityResult: " + save );
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
             }
         }
     }

@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +21,9 @@ import com.example.waiterapp.database.dao.GroupingDao;
 import com.example.waiterapp.model.Grouping;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.util.List;
 
 public class GroupingAdapter extends RecyclerView.Adapter<GroupingAdapter.ViewHolder>{
@@ -49,7 +50,16 @@ public class GroupingAdapter extends RecyclerView.Adapter<GroupingAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Grouping grouping = groupingList.get(position);
         holder.grouping_name_tv.setText(grouping.name);
-        holder.grouping_img.setImageURI(Uri.parse(grouping.picture));
+
+
+        try {
+            if (new File(grouping.picture).exists() && !grouping.picture.isEmpty()){
+                Picasso.with(context).load(new File(grouping.picture)).into(holder.grouping_img);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
