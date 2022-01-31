@@ -32,9 +32,9 @@
         <item name="colorOnPrimary">@color/browwn</item>
         <item name="colorOnSecondary">@color/browwn</item>
         <item name="android:headerAmPmTextAppearance">@color/browwn</item>
-        <item name="android:numbersTextColor">#673AB7</item>
+        <item name="android:numbersTextColor">#B7703A</item>
         <item name="android:numbersSelectorColor">@color/browwn</item>
-        <item name="android:numbersBackgroundColor">#61E761</item>
+        <item name="android:numbersBackgroundColor">#E79061</item>
         <item name="colorAccent">@color/browwn</item>
         <item name="colorControlNormal">@color/browwn</item>
         <item name="android:backgroundTint">@color/browwndiff</item>
