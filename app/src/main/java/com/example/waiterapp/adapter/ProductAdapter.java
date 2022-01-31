@@ -6,8 +6,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Build;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +27,9 @@ import com.example.waiterapp.database.dao.ProductDao;
 import com.example.waiterapp.model.Product;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,7 +71,19 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Viewhold
         holder.product_name_tv.setText(product.name_product);
         holder.product_grouping_name_tv.setText(product.category);
         holder.product_price_tv.setText(product.price);
-        holder.product_imv.setImageURI(Uri.parse(product.picture_product));
+
+        Log.e("qqqq", "onBindViewHolder: " + product.picture_product );
+
+        try {
+            if (new File(product.picture_product).exists() && !product.picture_product.isEmpty()){
+                Picasso.with(context).load(new File(product.picture_product)).into(holder.product_imv);
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+//        holder.product_imv.setImageURI(Uri.parse(product.picture_product));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

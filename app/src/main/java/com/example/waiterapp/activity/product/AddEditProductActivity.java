@@ -3,6 +3,7 @@ package com.example.waiterapp.activity.product;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -22,10 +23,15 @@ import com.example.waiterapp.database.dao.GroupingDao;
 import com.example.waiterapp.database.dao.ProductDao;
 import com.example.waiterapp.design.NumberTextWatcherForThousand;
 import com.example.waiterapp.helper.App;
+import com.example.waiterapp.helper.Tools;
 import com.example.waiterapp.model.Product;
 import com.google.gson.Gson;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
+
+import java.io.File;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -45,6 +51,9 @@ public class AddEditProductActivity extends AppCompatActivity {
     Uri imageuri , img_previouse_uri;
     CircleImageView product_add_img;
     String product_name , product_grouping_name , product_price ;
+    private String save;
+    private String Timemilisecond = String.valueOf(System.currentTimeMillis());
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +65,6 @@ public class AddEditProductActivity extends AppCompatActivity {
 
         call_db();
         init();
-
         check_db();
         onclick_img();
         thousandNumbersEdt();
@@ -120,7 +128,7 @@ public class AddEditProductActivity extends AppCompatActivity {
                 product_price = product_price_edt.getText().toString();
 
                 if(product == null){
-                    if(TextUtils.isEmpty(product_name) || TextUtils.isEmpty(product_grouping_name) || TextUtils.isEmpty(product_price) || imageuri == null){
+                    if(TextUtils.isEmpty(product_name) || TextUtils.isEmpty(product_grouping_name) || TextUtils.isEmpty(product_price) || TextUtils.isEmpty(save)){
                         Toast.makeText(getApplicationContext(),"تمام فیلد هارا پر کنید!",Toast.LENGTH_SHORT).show();
                     }else
                         if(productDao.getOneName(product_name) != null){
@@ -130,7 +138,7 @@ public class AddEditProductActivity extends AppCompatActivity {
 
                         }
                         else{
-                        productDao.insertProduct(new Product(product_name,product_grouping_name,product_price , imageuri.toString()));
+                        productDao.insertProduct(new Product(product_name,product_grouping_name,product_price , save));
                         Toast.makeText(getApplicationContext(),"با موفقیت به لیست اضافه شد",Toast.LENGTH_SHORT).show();
                         finish();
                     }
@@ -138,13 +146,13 @@ public class AddEditProductActivity extends AppCompatActivity {
                     product.name_product = product_name;
                     product.category = product_grouping_name;
                     product.price = product_price;
-                    if(imageuri == null){
-                        imageuri = img_previouse_uri;
-                        product.picture_product = imageuri.toString();
+                    if(TextUtils.isEmpty(save)){
+                        save = img_previouse_uri.toString();
+                        product.picture_product = save;
                     }else {
-                        product.picture_product = imageuri.toString();
+                        product.picture_product = save;
                     }
-                    product.picture_product = imageuri.toString();
+                    product.picture_product = save;
                     Log.e("qqqq","onClick: update product =" + product.id);
                     productDao.updateProduct(product);
                     Toast.makeText(getApplicationContext(),"تغییرات با موفقیت اعمال شد!" , Toast.LENGTH_LONG).show();
@@ -170,10 +178,15 @@ public class AddEditProductActivity extends AppCompatActivity {
         product_add_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
-                startActivityForResult(Intent.createChooser(intent , "Select Picture") , PICK_IMAGE);
+//                Intent intent = new Intent();
+//                intent.setType("image/*");
+//                intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
+//                startActivityForResult(Intent.createChooser(intent , "Select Picture") , PICK_IMAGE);
+
+                CropImage.activity()
+                        .setGuidelines(CropImageView.Guidelines.ON)
+                        .start(AddEditProductActivity.this);
+
             }
         });
     }
@@ -181,10 +194,21 @@ public class AddEditProductActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode,Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK){
-            if(requestCode == PICK_IMAGE){
-                imageuri=data.getData();
-                product_add_img.setImageURI(imageuri);
+//        if(resultCode == RESULT_OK){
+//            if(requestCode == PICK_IMAGE){
+//                imageuri=data.getData();
+//                product_add_img.setImageURI(imageuri);
+//            }
+//        }
+        if(requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if(resultCode == RESULT_OK){
+                Uri resultUri = result.getUri();
+                save = Tools.saveFile(Tools.getBytes(resultUri),new File( Environment.getExternalStorageDirectory() + "/DCIM/Barista") , Timemilisecond +".jpg");
+                product_add_img.setImageURI(resultUri);
+                Log.e("qqqqfile", "onActivityResult: " + save );
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
             }
         }
     }
