@@ -52,6 +52,7 @@ public class AddEditProductActivity extends AppCompatActivity {
     CircleImageView product_add_img;
     String product_name , product_grouping_name , product_price ;
     private String save;
+    int a;
     private String Timemilisecond = String.valueOf(System.currentTimeMillis());
 
 
