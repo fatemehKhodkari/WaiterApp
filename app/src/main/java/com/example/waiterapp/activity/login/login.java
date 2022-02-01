@@ -2,6 +2,7 @@ package com.example.waiterapp.activity.login;
 
 import android.Manifest;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -68,6 +70,7 @@ public class login extends AppCompatActivity {
         set_bttnlogin();
         register_dialog();
         set_checkBox();
+        hideKeyBoard();
 
     }
 
@@ -227,5 +230,29 @@ public class login extends AppCompatActivity {
             return true;
         }
         return false;
+    }
+
+    private void hideKeyBoard(){
+
+        input_user_tv.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(v.getWindowToken() , 0);
+                }
+            }
+        });
+
+        input_pass_tv.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(v.getWindowToken() , 0);
+                }
+            }
+        });
+
     }
 }
