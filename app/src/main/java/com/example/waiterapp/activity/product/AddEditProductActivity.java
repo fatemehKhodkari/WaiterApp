@@ -1,5 +1,6 @@
 package com.example.waiterapp.activity.product;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -75,6 +77,7 @@ public class AddEditProductActivity extends AppCompatActivity {
         save_bttn();
         cancle_bttn();
         set_autoCompleteTV();
+        hideKeyBoard();
 
     }
 
@@ -177,17 +180,6 @@ public class AddEditProductActivity extends AppCompatActivity {
 
     void set_autoCompleteTV(){
 
-//        product_grouping_name_actv.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-//            @Override
-//            public void onFocusChange(View v, boolean hasFocus) {
-//                if(!hasFocus){
-//                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-//                    inputMethodManager.hideSoftInputFromWindow(v.getWindowToken() , 0);
-//                }
-//            }
-//        });
-
-
         adapterAutoComplete =  new ArrayAdapter<>(getApplicationContext() , android.R.layout.simple_dropdown_item_1line , groupingDao.getname());
         product_grouping_name_actv.setAdapter(adapterAutoComplete);
         product_grouping_name_actv.setThreshold(0);
@@ -197,8 +189,6 @@ public class AddEditProductActivity extends AppCompatActivity {
 
             }
         });
-
-
 
     }
 
@@ -240,4 +230,39 @@ public class AddEditProductActivity extends AppCompatActivity {
             }
         }
     }
+
+    private void hideKeyBoard(){
+
+        product_name_edt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(v.getWindowToken() , 0);
+                }
+            }
+        });
+
+        product_grouping_name_actv.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(v.getWindowToken() , 0);
+                }
+            }
+        });
+
+        product_price_edt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(v.getWindowToken() , 0);
+                }
+            }
+        });
+
+    }
+
 }
