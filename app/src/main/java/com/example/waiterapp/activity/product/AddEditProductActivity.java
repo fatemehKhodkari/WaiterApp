@@ -8,6 +8,8 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -37,22 +39,22 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AddEditProductActivity extends AppCompatActivity {
 
-    SlidrInterface slidrInterface;
-    EditText product_name_edt , product_price_edt;
-    AutoCompleteTextView product_grouping_name_actv;
-    TextView save_product,cancle_tv;
-    LinearLayout product_anim_feilds;
-    ConstraintLayout product_desing_anim;
-    DatabaseHelper databaseHelper;
-    ProductDao productDao;
-    Product product;
-    GroupingDao groupingDao;
+    private SlidrInterface slidrInterface;
+    private EditText product_name_edt , product_price_edt;
+    private AutoCompleteTextView product_grouping_name_actv;
+    private TextView save_product,cancle_tv;
+    private LinearLayout product_anim_feilds;
+    private ConstraintLayout product_desing_anim;
+    private DatabaseHelper databaseHelper;
+    private ProductDao productDao;
+    private Product product;
+    private GroupingDao groupingDao;
     private static final int PICK_IMAGE = 100;
-    Uri imageuri , img_previouse_uri;
-    CircleImageView product_add_img;
-    String product_name , product_grouping_name , product_price ;
+    private Uri imageuri , img_previouse_uri;
+    private CircleImageView product_add_img;
+    private String product_name , product_grouping_name , product_price ;
     private String save;
-    int a;
+    private ArrayAdapter<String> adapterAutoComplete;
     private String Timemilisecond = String.valueOf(System.currentTimeMillis());
 
 
@@ -72,6 +74,7 @@ public class AddEditProductActivity extends AppCompatActivity {
         animateOb();
         save_bttn();
         cancle_bttn();
+        set_autoCompleteTV();
 
     }
 
@@ -173,6 +176,30 @@ public class AddEditProductActivity extends AppCompatActivity {
     }
 
     void set_autoCompleteTV(){
+
+//        product_grouping_name_actv.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//            @Override
+//            public void onFocusChange(View v, boolean hasFocus) {
+//                if(!hasFocus){
+//                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+//                    inputMethodManager.hideSoftInputFromWindow(v.getWindowToken() , 0);
+//                }
+//            }
+//        });
+
+
+        adapterAutoComplete =  new ArrayAdapter<>(getApplicationContext() , android.R.layout.simple_dropdown_item_1line , groupingDao.getname());
+        product_grouping_name_actv.setAdapter(adapterAutoComplete);
+        product_grouping_name_actv.setThreshold(0);
+        product_grouping_name_actv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
+
+
+
     }
 
     void onclick_img(){
