@@ -18,6 +18,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +34,7 @@ import com.example.waiterapp.activity.homepage.HomeActivity;
 import com.example.waiterapp.database.DatabaseHelper;
 import com.example.waiterapp.database.dao.UserDao;
 import com.example.waiterapp.helper.App;
+import com.example.waiterapp.helper.Session;
 import com.example.waiterapp.model.User;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -53,6 +55,7 @@ public class login extends AppCompatActivity {
     public static final String CafePref = "CafePrefernce";
     public static final String Name = "nameKey";
     public static final String Pass = "passKey";
+    public static final String check = "isCheck";
     private static final int STORAGE_PERMISSION_CODE = 101;
     public static final int CALL_PERMISSION_CODE = 100;
 
@@ -108,19 +111,32 @@ public class login extends AppCompatActivity {
     }
 
     private void set_checkBox(){
-        checkBox.setOnClickListener(view -> {
-            String getName = input_user_tv.getText().toString();
-            String getPass = input_pass_tv.getText().toString();
 
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString(Name , getName);
-            editor.putString(Pass , getPass);
-            editor.apply();
+        checkBox.setChecked(false);
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    String getName = input_user_tv.getText().toString();
+                    String getPass = input_pass_tv.getText().toString();
+                    if (TextUtils.isEmpty(getName)|| TextUtils.isEmpty(getPass)){
+                        Toast.makeText(login.this, "فیلد های خالی را پر کنید", Toast.LENGTH_SHORT).show();
+                        checkBox.setChecked(false);
+                    }else {
+                        Boolean checkBox_state = checkBox.isChecked();
+                        Session.getInstance().putExtra(Name , getName);
+                        Session.getInstance().putExtra(Pass , getPass);
+                        Session.getInstance().putExtra(check , checkBox_state);
+                    }
+                }else if(!isChecked){
+                    Session.getInstance().clearExtras();
+                }
+            }
         });
-        if(sharedPreferences.contains(Name) && sharedPreferences.contains(Pass)){
-            input_user_tv.setText(sharedPreferences.getString(Name , null));
-            input_pass_tv.setText(sharedPreferences.getString(Pass , null));
-            checkBox.setChecked(true);
+        if(Session.getInstance().getString(Name) != null || Session.getInstance().getString(Pass) != null ){
+            input_user_tv.setText(Session.getInstance().getString(Name));
+            input_pass_tv.setText(Session.getInstance().getString(Pass));
+            checkBox.setChecked(Session.getInstance().getBoolean(check));
         }
     }
 
