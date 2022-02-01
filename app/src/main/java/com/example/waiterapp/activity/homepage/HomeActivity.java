@@ -48,7 +48,7 @@ public class HomeActivity extends AppCompatActivity {
     private ProductDao productDao;
     private CustomerDao customerDao;
     private GroupingDao groupingDao;
-    private TextView today_profit , week_profit , month_profit;
+    private TextView today_profit , week_profit , month_profit , total_profit;
     private TextView dayName , monthName , cafeName;
     private SubmitOrderDao submitOrderDao;
     private ArrayList<ChartModel> chartModels;
@@ -61,7 +61,6 @@ public class HomeActivity extends AppCompatActivity {
 
         initDataBase();
         init();
-
         on_click_cards();
         ordering();
 
@@ -91,6 +90,7 @@ public class HomeActivity extends AppCompatActivity {
         month_profit = findViewById(R.id.month_profit);
         monthName = findViewById(R.id.monthName);
         dayName = findViewById(R.id.dayName);
+        total_profit = findViewById(R.id.total_profit);
     }
 
 
@@ -260,6 +260,7 @@ public class HomeActivity extends AppCompatActivity {
         getTotalWeekly();
         getTotalMonthly();
         setName();
+        setTotal_profit();
     }
 
     private int getTotalDaily(){
@@ -298,9 +299,22 @@ public class HomeActivity extends AppCompatActivity {
         }
         month_profit.setText(Tools.getForamtPrice(String.valueOf(j)));
     }
+//    total_profit
+    private void setTotal_profit(){
+        List<String> allTotal = new ArrayList<>();
+        allTotal.addAll(submitOrderDao.getAllTotal());
+        int t = 0 ;
+        for (int i = 0; i < allTotal.size() ; i++) {
+            String at = allTotal.get(i);
+            t = t + Tools.convertToPrice(at);
+        }
+        total_profit.setText(Tools.getForamtPrice(String.valueOf(t)));
+
+    }
 
     private void setName(){
         dayName.setText(" ( " + Tools.getDayName() + " ) ");
         monthName.setText(" ( " + Tools.getMonthName() + " ) ");
     }
+
 }

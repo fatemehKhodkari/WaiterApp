@@ -37,6 +37,12 @@ public interface SubmitOrderDao {
     @Query("DELETE from table_order where orderer_id = :id " )
     void deteteID(int id);
 
+    @Query("Select date from table_order")
+    List<String> getAllDate();
+
+    @Query("Select total from table_order")
+    List<String> getAllTotal();
+
 
 
 
