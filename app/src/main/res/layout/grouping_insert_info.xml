@@ -11,6 +11,8 @@
     android:clipToPadding="false"
     android:backgroundTint="@color/browwn"
     app:cardBackgroundColor="#00000000"
+    android:clickable="true"
+    android:focusableInTouchMode="true"
     android:background="@drawable/back_add_edit_center">
 
         <LinearLayout
@@ -18,6 +20,8 @@
             android:layout_height="match_parent"
             android:backgroundTint="#00000000"
             android:gravity="center"
+            android:clickable="true"
+            android:focusableInTouchMode="true"
             android:orientation="vertical">
 
             <LinearLayout

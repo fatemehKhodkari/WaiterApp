@@ -67,17 +67,8 @@ public class AddEditGroupingActivity extends AppCompatActivity {
         animateOb();
         save_bttn();
         cancle_bttn();
+        hideKeyBoard();
 
-        grouping_name_edt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
-                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(v.getWindowToken() , 0);
-                }
-
-            }
-        });
     }
 
     void hideActionBar(){
@@ -199,5 +190,19 @@ public class AddEditGroupingActivity extends AppCompatActivity {
                 Exception error = result.getError();
             }
         }
+    }
+
+    private void hideKeyBoard(){
+
+        grouping_name_edt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken() , 0);
+                }
+
+            }
+        });
     }
 }
