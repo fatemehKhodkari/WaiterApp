@@ -17,6 +17,12 @@
 
         <!--        <item name="editTextColor">@color/text</item>-->
         <!--        <item name="android:textColorSecondary">@color/text</item>-->
+
+        <!--        add to search-->
+        <item name="android:textColorSecondary">@color/whitediff</item>
+        <item name="android:editTextColor">@color/whitediff</item>
+
+
     </style>
 
     <style name="Theme.WaiterApp.SlidrActivityTheme">

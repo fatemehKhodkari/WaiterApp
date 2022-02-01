@@ -190,7 +190,8 @@ public class ProductActivity extends AppCompatActivity {
 
         EditText searchEdit = ((EditText)searchView.findViewById(androidx.appcompat.R.id.search_src_text));
         searchEdit.setTextColor(getResources().getColor(R.color.whitediff));
-        searchEdit.setHintTextColor(getResources().getColor(R.color.whiteopa));
+        searchEdit.setHintTextColor(getResources().getColor(R.color.brownlight));
+        searchEdit.setTypeface(myCustomFont);
         searchEdit.setHint("جستجوی محصول..");
         searchEdit.setTextSize(14);
 
