@@ -40,7 +40,7 @@ import java.util.List;
 public class HomeActivity extends AppCompatActivity {
 
     private CardView cardViewproduct,cardViewcustomer , cardViewgrouping , cardViewSubmittedOrdering;
-    private ImageView add_order;
+    private ImageView add_order , menu_drawle;
     private LinearLayout copy , share , upload, download , delete;
     private BarChart graph;
     private TextView num_product , num_customer , num_ordering , num_category ;
@@ -91,6 +91,7 @@ public class HomeActivity extends AppCompatActivity {
         monthName = findViewById(R.id.monthName);
         dayName = findViewById(R.id.dayName);
         total_profit = findViewById(R.id.total_profit);
+        menu_drawle = findViewById(R.id.menu_drawle);
     }
 
 
@@ -315,6 +316,11 @@ public class HomeActivity extends AppCompatActivity {
     private void setName(){
         dayName.setText(" ( " + Tools.getDayName() + " ) ");
         monthName.setText(" ( " + Tools.getMonthName() + " ) ");
+    }
+
+
+    private void set_menu_drawle(){
+
     }
 
 }
