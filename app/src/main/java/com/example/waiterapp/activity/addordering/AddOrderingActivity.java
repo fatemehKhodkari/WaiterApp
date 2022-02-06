@@ -4,6 +4,7 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -354,20 +355,40 @@ public class AddOrderingActivity extends AppCompatActivity {
 
         time_tv_bttn.setOnClickListener(v -> {
 
-            Calendar calendar = Calendar.getInstance();
-            int hour = calendar.get(Calendar.HOUR_OF_DAY);
-            int min = calendar.get(Calendar.MINUTE);
+//            Calendar calendar = Calendar.getInstance();
+//            int hour = calendar.get(Calendar.HOUR_OF_DAY);
+//            int min = calendar.get(Calendar.MINUTE);
+//
+//            TimePickerDialog timePickerDialog = new TimePickerDialog(this , R.style.MyTimePickerlight , new TimePickerDialog.OnTimeSetListener() {
+//                @Override
+//                public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+//                    String time = hourOfDay+":"+minute;
+//                    time_tv_bttn.setText(time);
+//                }
+//
+//            },hour,min,true);
+////            timePickerDialog.getWindow().setBackgroundDrawable();
+//            timePickerDialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+//            timePickerDialog.show();
 
-            TimePickerDialog timePickerDialog = new TimePickerDialog(this , R.style.MyTimePickerlight , new TimePickerDialog.OnTimeSetListener() {
+
+
+            PersianCalendar now = new PersianCalendar();
+            TimePickerDialog tpd = new TimePickerDialog(AddOrderingActivity.this, R.style.MyTimePickerlight, new TimePickerDialog.OnTimeSetListener() {
+
                 @Override
                 public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                     String time = hourOfDay+":"+minute;
                     time_tv_bttn.setText(time);
                 }
+            },
+                    now.get(PersianCalendar.HOUR_OF_DAY),
+                    now.get(PersianCalendar.MINUTE),
+                    true);
+            tpd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            tpd.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+            tpd.show();
 
-            },hour,min,android.text.format.DateFormat.is24HourFormat(this));
-            timePickerDialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-            timePickerDialog.show();
 
         });
 

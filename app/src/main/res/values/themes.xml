@@ -15,6 +15,8 @@
         <item name="android:direction">right_to_left</item>
         <item name="android:layoutDirection">rtl</item>
 
+<!--        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>-->
+
         <!--        <item name="editTextColor">@color/text</item>-->
         <!--        <item name="android:textColorSecondary">@color/text</item>-->
 
@@ -31,11 +33,12 @@
     </style>
 
     <style name="MyTimePickerlight" parent="android:Widget.Material.TimePicker">
-        <item name="android:background">@color/whitediff</item>
+        <item name="android:background">@color/cream</item>
         <item name="android:headerBackground">@color/browwn</item>
         <item name="android:headerTimeTextAppearance">@color/browwn</item>
         <item name="colorOnBackground">@color/browwn</item>
         <item name="colorOnPrimary">@color/browwn</item>
+        <item name="dialogTheme">@color/browwn</item>
         <item name="colorOnSecondary">@color/browwn</item>
         <item name="android:headerAmPmTextAppearance">@color/browwn</item>
         <item name="android:numbersTextColor">#B7703A</item>
@@ -44,6 +47,31 @@
         <item name="colorAccent">@color/browwn</item>
         <item name="colorControlNormal">@color/browwn</item>
         <item name="android:backgroundTint">@color/browwndiff</item>
+    </style>
+
+    <style name="myS" parent="Theme.MaterialComponents.Light.NoActionBar" >
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/browwn</item>
+        <item name="colorPrimaryVariant">@color/browwn</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/browwn</item>
+        <item name="colorSecondaryVariant">@color/browwn</item>
+        <item name="colorOnSecondary">@color/whitediff</item>
+        <item name="colorPrimaryDark">@color/browwn</item>
+        <!-- Status bar color. -->
+        <!-- Customize your theme here. -->
+        <item name="android:direction">right_to_left</item>
+        <item name="android:layoutDirection">rtl</item>
+
+
+        <item name="android:textColorSecondary">@color/browwn</item>
+        <item name="android:editTextColor">@color/black</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+
     </style>
 
 

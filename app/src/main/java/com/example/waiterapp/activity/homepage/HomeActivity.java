@@ -20,6 +20,7 @@ import com.example.waiterapp.activity.addordering.AddOrderingActivity;
 import com.example.waiterapp.activity.customer.CustomerActivity;
 import com.example.waiterapp.activity.grouping.GroupingActivity;
 import com.example.waiterapp.activity.product.ProductActivity;
+import com.example.waiterapp.activity.setting.SettingActivity;
 import com.example.waiterapp.activity.submittedorder.SubmittedOrderActivity;
 import com.example.waiterapp.database.DatabaseHelper;
 import com.example.waiterapp.database.dao.CustomerDao;
@@ -50,6 +51,7 @@ public class HomeActivity extends AppCompatActivity {
     private ProductDao productDao;
     private CustomerDao customerDao;
     private DrawerLayout mydrawer;
+    private LinearLayout setting_nav , about_nav , guid_nav , signup_nav;
     private GroupingDao groupingDao;
     private TextView today_profit , week_profit , month_profit , total_profit;
     private TextView dayName , monthName , cafeName;
@@ -67,6 +69,7 @@ public class HomeActivity extends AppCompatActivity {
         on_click_cards();
         ordering();
         set_menu_drawle();
+        set_drawer_setting();
 
     }
 
@@ -97,6 +100,10 @@ public class HomeActivity extends AppCompatActivity {
         total_profit = findViewById(R.id.total_profit);
         menu_drawle = findViewById(R.id.menu_drawle);
         mydrawer = findViewById(R.id.mydrawer);
+        setting_nav = findViewById(R.id.setting_nav);
+        about_nav = findViewById(R.id.about_nav);
+        guid_nav = findViewById(R.id.about_nav);
+        signup_nav = findViewById(R.id.signup_nav);
     }
 
 
@@ -333,7 +340,19 @@ public class HomeActivity extends AppCompatActivity {
                 mydrawer.openDrawer((int) GravityCompat.END);
             }
         });
+    }
 
+    private void set_drawer_setting(){
+
+
+        setting_nav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this , SettingActivity.class);
+                startActivity(intent);
+                mydrawer.closeDrawer(GravityCompat.END);
+            }
+        });
 
     }
 

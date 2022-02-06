@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.waiterapp">
 
-
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -19,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WaiterApp">
         <activity
+            android:name=".activity.setting.SettingActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.file.FileActivity"
             android:exported="true" />
         <activity
@@ -28,12 +30,12 @@
         <activity
             android:name=".activity.submittedorder.SubmittedOrderActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustPan"
-            android:theme="@style/Theme.WaiterApp.SlidrActivityTheme" />
+            android:theme="@style/Theme.WaiterApp.SlidrActivityTheme"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.addordering.AddOrderingActivity"
             android:exported="true"
-            android:theme="@style/Theme.WaiterApp.SlidrActivityTheme" />
+            android:theme="@style/myS" />
         <activity
             android:name=".activity.product.AddEditProductActivity"
             android:exported="true"
@@ -41,8 +43,8 @@
         <activity
             android:name=".activity.product.ProductActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustPan"
-            android:theme="@style/Theme.WaiterApp.SlidrActivityTheme" />
+            android:theme="@style/Theme.WaiterApp.SlidrActivityTheme"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.grouping.AddEditGroupingActivity"
             android:exported="true"
@@ -51,8 +53,8 @@
         <activity
             android:name=".activity.grouping.GroupingActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustPan"
-            android:theme="@style/Theme.WaiterApp.SlidrActivityTheme" />
+            android:theme="@style/Theme.WaiterApp.SlidrActivityTheme"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.customer.AddEditCostomerActivity"
             android:exported="true"
@@ -60,8 +62,8 @@
         <activity
             android:name=".activity.customer.CustomerActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustPan"
-            android:theme="@style/Theme.WaiterApp.SlidrActivityTheme" />
+            android:theme="@style/Theme.WaiterApp.SlidrActivityTheme"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.homepage.HomeActivity"
             android:exported="true" />
@@ -74,8 +76,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
-            android:theme="@style/Base.Theme.AppCompat"/>
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
     </application>
 
 </manifest>
