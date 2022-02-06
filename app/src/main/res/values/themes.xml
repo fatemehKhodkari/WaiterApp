@@ -20,7 +20,7 @@
 
         <!--        add to search-->
         <item name="android:textColorSecondary">@color/whitediff</item>
-        <item name="android:editTextColor">@color/whitediff</item>
+        <item name="android:editTextColor">@color/browwn</item>
 
 
     </style>
@@ -45,5 +45,6 @@
         <item name="colorControlNormal">@color/browwn</item>
         <item name="android:backgroundTint">@color/browwndiff</item>
     </style>
+
 
 </resources>

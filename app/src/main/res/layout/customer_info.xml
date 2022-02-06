@@ -12,8 +12,9 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         android:elevation="6dp"
+        android:background="@color/white"
         android:outlineSpotShadowColor="@color/browwn"
-        app:cardCornerRadius="10dp"
+        app:cardCornerRadius="11dp"
         android:layout_marginBottom="2dp"
         android:layout_marginTop="5dp">
 
@@ -40,7 +41,7 @@
                     android:alpha="0.5"
                     android:paddingLeft="5dp"
                     android:src="@drawable/person_ic"
-                    app:tint="@color/cream" />
+                    app:tint="@color/brownlight" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -49,6 +50,7 @@
                     android:gravity="center"
                     android:paddingLeft="5dp"
                     android:paddingTop="5dp"
+                    android:fontFamily="@font/iran_sans"
                     android:textColor="#737373"
                     android:text="نام و نام خانوادگی :"
                     android:textSize="12dp"
@@ -61,6 +63,7 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:text="_____"
+                    android:fontFamily="@font/iran_sans"
                     android:textColor="@color/matn"
                     android:paddingTop="5dp"
                     android:textSize="12dp"
@@ -81,7 +84,7 @@
                     android:alpha="0.5"
                     android:paddingLeft="5dp"
                     android:src="@drawable/phone_ic"
-                    app:tint="@color/cream" />
+                    app:tint="@color/brownlight" />
 
 
                 <TextView
@@ -89,6 +92,7 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="5dp"
                     android:text="تلفن :"
+                    android:fontFamily="@font/iran_sans"
                     android:textColor="#737373"
                     android:paddingTop="5dp"
                     android:textSize="12dp"
@@ -100,6 +104,7 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="5dp"
                     android:text="_____"
+                    android:fontFamily="@font/irsansfanum"
                     android:textColor="@color/matn"
                     android:textSize="12dp"
                     android:textStyle="bold" />
@@ -123,13 +128,14 @@
                         android:alpha="0.5"
                         android:paddingLeft="5dp"
                         android:src="@drawable/home_ic"
-                        app:tint="@color/cream" />
+                        app:tint="@color/brownlight" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:paddingTop="5dp"
+                        android:fontFamily="@font/iran_sans"
                         android:text="آدرس :"
                         android:textColor="#737373"
                         android:textSize="12dp"
@@ -140,6 +146,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="______"
+                        android:fontFamily="@font/iran_sans"
                         android:textSize="12dp"
                         android:textColor="@color/matn"
                         android:paddingBottom="10dp"
@@ -153,7 +160,7 @@
                     android:layout_height="40dp"
                     android:background="@drawable/back_call"
                     android:layout_gravity="bottom"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="7dp"
                     android:gravity="center">
 
                     <ImageView

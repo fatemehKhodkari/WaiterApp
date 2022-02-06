@@ -25,6 +25,7 @@
                 android:text="لیست مشتریان"
                 android:textColor="@color/whitediff"
                 android:textSize="16dp"
+                android:fontFamily="@font/iran_sans"
                 android:layout_gravity="center_vertical"
                 android:gravity="center_vertical"/>
         </LinearLayout>
