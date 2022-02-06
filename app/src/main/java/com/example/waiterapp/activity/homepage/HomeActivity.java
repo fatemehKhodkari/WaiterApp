@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.waiterapp.R;
 import com.example.waiterapp.activity.addordering.AddOrderingActivity;
@@ -47,6 +49,7 @@ public class HomeActivity extends AppCompatActivity {
     private DatabaseHelper databaseHelper;
     private ProductDao productDao;
     private CustomerDao customerDao;
+    private DrawerLayout mydrawer;
     private GroupingDao groupingDao;
     private TextView today_profit , week_profit , month_profit , total_profit;
     private TextView dayName , monthName , cafeName;
@@ -63,6 +66,7 @@ public class HomeActivity extends AppCompatActivity {
         init();
         on_click_cards();
         ordering();
+        set_menu_drawle();
 
     }
 
@@ -92,6 +96,7 @@ public class HomeActivity extends AppCompatActivity {
         dayName = findViewById(R.id.dayName);
         total_profit = findViewById(R.id.total_profit);
         menu_drawle = findViewById(R.id.menu_drawle);
+        mydrawer = findViewById(R.id.mydrawer);
     }
 
 
@@ -320,6 +325,15 @@ public class HomeActivity extends AppCompatActivity {
 
 
     private void set_menu_drawle(){
+
+        menu_drawle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                mydrawer.openDrawer((int) GravityCompat.END);
+            }
+        });
+
 
     }
 

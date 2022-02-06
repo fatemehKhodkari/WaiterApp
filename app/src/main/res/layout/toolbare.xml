@@ -79,12 +79,12 @@
 
                 <ImageView
                     android:id="@+id/menu_drawle"
-                    android:layout_width="50dp"
+                    android:layout_width="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_height="match_parent"
                     android:src="@drawable/menu_ic"
                     android:pointerIcon="alias"
-                    android:padding="13dp" />
+                    android:padding="10dp" />
 
 
             </LinearLayout>
