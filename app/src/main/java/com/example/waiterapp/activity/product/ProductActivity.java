@@ -70,8 +70,7 @@ public class ProductActivity extends AppCompatActivity {
         hide_floatingActionButton();
 
 
-        set_grouping_recycler();
-        set_product_recycler();
+
 
 
     }
@@ -169,6 +168,8 @@ public class ProductActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        set_grouping_recycler();
+        set_product_recycler();
         productAdapter.clear();
         initListProduct();
     }

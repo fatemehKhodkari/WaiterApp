@@ -1,6 +1,8 @@
 package com.example.waiterapp.activity.product;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -28,6 +30,7 @@ import com.example.waiterapp.database.dao.ProductDao;
 import com.example.waiterapp.design.NumberTextWatcherForThousand;
 import com.example.waiterapp.helper.App;
 import com.example.waiterapp.helper.Tools;
+import com.example.waiterapp.model.Grouping;
 import com.example.waiterapp.model.Product;
 import com.google.gson.Gson;
 import com.r0adkll.slidr.Slidr;
@@ -74,7 +77,6 @@ public class AddEditProductActivity extends AppCompatActivity {
         onclick_img();
         thousandNumbersEdt();
         animateOb();
-        save_bttn();
         cancle_bttn();
         set_autoCompleteTV();
         hideKeyBoard();
@@ -125,6 +127,12 @@ public class AddEditProductActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        save_bttn();
+    }
+
     void save_bttn(){
         save_product.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,8 +149,28 @@ public class AddEditProductActivity extends AppCompatActivity {
                         if(productDao.getOneName(product_name) != null){
                             Toast.makeText(AddEditProductActivity.this, " این محصول تکراری است! ", Toast.LENGTH_SHORT).show();
                         }else if(groupingDao.getOneName(product_grouping_name) == null){
-                            Toast.makeText(AddEditProductActivity.this,  " دسته بندی "+ product_grouping_name + " وجود ندارد ", Toast.LENGTH_SHORT).show();
 
+                            new AlertDialog.Builder(AddEditProductActivity.this)
+                                    .setMessage( " دسته بندی "+ product_grouping_name + " وجود ندارد!\nآیا اضافه شود؟")
+                                    .setPositiveButton("افزودن دسته بندی" , new DialogInterface.OnClickListener(){
+
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            groupingDao.insertGrouping(new Grouping(product_grouping_name , ""));
+                                            productDao.insertProduct(new Product(product_name,product_grouping_name,product_price , save));
+                                            Toast.makeText(getApplicationContext(),"دسته بندی همراه با محصول به لیست اضافه شد",Toast.LENGTH_SHORT).show();
+                                            finish();
+                                        }
+                                    })
+                                    .setNegativeButton("ویرایش", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();
+                                        }
+                                    })
+                                    .create()
+                                    .show();
+//                            Toast.makeText(AddEditProductActivity.this,  " دسته بندی "+ product_grouping_name + " وجود ندارد ", Toast.LENGTH_SHORT).show();
                         }
                         else{
                         productDao.insertProduct(new Product(product_name,product_grouping_name,product_price , save));
