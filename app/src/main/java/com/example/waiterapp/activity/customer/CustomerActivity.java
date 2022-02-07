@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,13 +25,14 @@ import java.util.ArrayList;
 
 public class CustomerActivity extends AppCompatActivity {
 
-    FloatingActionButton floatingActionButton;
-    RecyclerView recyclerView;
-    DatabaseHelper databaseHelper;
-    CustomerDao customerDao;
-    Customer customerr;
+    private FloatingActionButton floatingActionButton;
+    private RecyclerView recyclerView;
+    private DatabaseHelper databaseHelper;
+    private CustomerDao customerDao;
+    private Customer customerr;
     private int poss;
-    CustomerAdapter customerAdapter;
+    private CustomerAdapter customerAdapter;
+    private LinearLayout call;
     private boolean for_order = false;
     private SlidrInterface slidrInterface;
 

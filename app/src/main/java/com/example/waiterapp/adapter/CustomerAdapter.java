@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -70,6 +71,16 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHo
         holder.customer_name_tv.setText(customer.name);
         holder.customer_phone_tv.setText(customer.phone);
         holder.customer_address_tv.setText(customer.address);
+
+        holder.call.setOnClickListener(v -> {
+
+            String number_txt = list_search.get(position).phone;
+            Intent intent =  new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("tel:" + number_txt));
+            context.startActivity(intent);
+
+        });
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,12 +99,14 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView customer_name_tv, customer_phone_tv , customer_address_tv;
+        LinearLayout call;
 
         public ViewHolder(View itemView) {
             super(itemView);
             customer_name_tv = itemView.findViewById(R.id.customer_name);
             customer_phone_tv = itemView.findViewById(R.id.customer_phone);
             customer_address_tv =itemView.findViewById(R.id.customer_address);
+            call = itemView.findViewById(R.id.call);
         }
     }
 
