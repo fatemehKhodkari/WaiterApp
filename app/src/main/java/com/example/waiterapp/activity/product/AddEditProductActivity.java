@@ -158,7 +158,7 @@ public class AddEditProductActivity extends AppCompatActivity {
                                         public void onClick(DialogInterface dialog, int which) {
                                             groupingDao.insertGrouping(new Grouping(product_grouping_name , ""));
                                             productDao.insertProduct(new Product(product_name,product_grouping_name,product_price , save));
-                                            Toast.makeText(getApplicationContext(),"دسته بندی همراه با محصول به لیست اضافه شد",Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getApplicationContext(),"دسته بندی همراه با محصول با موفقیت به لیست اضافه شد",Toast.LENGTH_SHORT).show();
                                             finish();
                                         }
                                     })

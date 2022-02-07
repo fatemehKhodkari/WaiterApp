@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -24,16 +26,18 @@ import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
-public class GroupingAdapter extends RecyclerView.Adapter<GroupingAdapter.ViewHolder>{
+public class GroupingAdapter extends RecyclerView.Adapter<GroupingAdapter.ViewHolder> implements Filterable {
     Context context;
     DatabaseHelper databaseHelper;
     GroupingDao groupingDao;
-    List<Grouping> groupingList;
+    List<Grouping> groupingList , list_search;
 
     public GroupingAdapter(List<Grouping> groupingList,Context context) {
-        this.groupingList = groupingList;
+        this.list_search = groupingList;
+        this.groupingList = new ArrayList<>(list_search);
         this.context = context;
 
     }
@@ -145,10 +149,46 @@ public class GroupingAdapter extends RecyclerView.Adapter<GroupingAdapter.ViewHo
     }
 
     public void addList(List<Grouping> arrGroupingList){
-        groupingList.clear();
-        groupingList.addAll(arrGroupingList);
+        list_search.clear();
+        list_search.addAll(arrGroupingList);
+        groupingList = new ArrayList<>(list_search);
         notifyDataSetChanged();
     }
+
+    //  For search
+    @Override
+    public Filter getFilter() {
+        return newsFilter;
+    }
+
+    private final Filter newsFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+
+            List<Grouping> filterdNewList = new ArrayList<>();
+            if(constraint == null || constraint.length() == 0){
+                filterdNewList.addAll(list_search);
+            }else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for(Grouping grouping : list_search){
+
+                    if(grouping.name.toLowerCase().contains(filterPattern))
+                        filterdNewList.add(grouping);
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filterdNewList;
+            results.count = filterdNewList.size();
+            return results;
+        }
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            groupingList.clear();
+            groupingList.addAll((ArrayList)results.values);
+            notifyDataSetChanged();
+        }
+    };
+
 
 
 }

@@ -33,7 +33,7 @@
                 android:layout_marginHorizontal="4dp"
                 android:layout_marginVertical="4dp"
                 android:alpha="0.7"
-                android:src="@drawable/cofee_grouping_back" />
+                android:src="@drawable/prodgr_default_300" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -47,6 +47,7 @@
                 android:layout_centerInParent="true"
                 android:gravity="center"
                 android:text="دسته بندی"
+                android:fontFamily="@font/iran_sans"
                 android:textColor="@color/white"
                 android:textSize="24dp"
                 android:textStyle="bold" />

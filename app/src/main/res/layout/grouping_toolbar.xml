@@ -5,30 +5,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal">
 
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/grouping_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:padding="6dp"
-        android:elevation="6dp"
         android:background="@color/browwn">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="لیست دسته بندی ها"
+            android:textColor="@color/whitediff"
+            android:fontFamily="@font/iran_sans"
+            android:textSize="16dp"
             android:layout_gravity="center_vertical"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="10dp">
+            android:gravity="center_vertical"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="دسته بندی ها"
-                android:textColor="@color/whitediff"
-                android:textSize="16dp"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_vertical"/>
-        </LinearLayout>
-
-    </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
 
 </LinearLayout>

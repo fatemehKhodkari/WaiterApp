@@ -1,10 +1,17 @@
 package com.example.waiterapp.activity.grouping;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.waiterapp.R;
@@ -23,12 +30,13 @@ import java.util.ArrayList;
 
 public class GroupingActivity extends AppCompatActivity {
 
-    DatabaseHelper databaseHelper;
-    GroupingDao groupingDao;
-    RecyclerView recyclerView;
-    GroupingAdapter groupingAdapter;
-    FloatingActionButton floatingActionButton;
-    SlidrInterface slidrInterface;
+    private DatabaseHelper databaseHelper;
+    private GroupingDao groupingDao;
+    private RecyclerView recyclerView;
+    private GroupingAdapter groupingAdapter;
+    private FloatingActionButton floatingActionButton;
+    private SlidrInterface slidrInterface;
+    private Toolbar grouping_toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +46,7 @@ public class GroupingActivity extends AppCompatActivity {
         slidrInterface = Slidr.attach(this);
 
         init();
+        set_search();
         set_recycler();
         set_floatingActionBttn();
         hide_floatingActionBttn();
@@ -47,6 +56,50 @@ public class GroupingActivity extends AppCompatActivity {
     public void init(){
         recyclerView = findViewById(R.id.grouping_recycler);
         floatingActionButton = findViewById(R.id.grouping_flabttn);
+        grouping_toolbar = findViewById(R.id.grouping_toolbar);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.search_grouping,menu);
+        MenuItem item = menu.findItem(R.id.menu_item_search_grouping);
+        SearchView searchView = (SearchView)item.getActionView();
+        searchView.setMaxWidth(Integer.MAX_VALUE);
+        searchView.setBackground(getResources().getDrawable(R.drawable.rippler));
+
+        TextView searchText = (TextView) searchView.findViewById(R.id.search_src_text);
+        Typeface myCustomFont = Typeface.createFromAsset(getAssets(),"font/iran_sans.ttf");
+        searchText.setTypeface(myCustomFont);
+
+
+
+        EditText searchEdit = ((EditText)searchView.findViewById(androidx.appcompat.R.id.search_src_text));
+        searchEdit.setTextColor(getResources().getColor(R.color.whitediff));
+        searchEdit.setHintTextColor(getResources().getColor(R.color.brownlight));
+        searchEdit.setTypeface(myCustomFont);
+        searchEdit.setHint("جستجوی دسته بندی..");
+        searchEdit.setTextSize(14);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newtxt) {
+                groupingAdapter.getFilter().filter(newtxt);
+                return false;
+            }
+        });
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    private void set_search(){
+        grouping_toolbar.setTitle("");
+        grouping_toolbar.setTitleTextColor(getResources().getColor(R.color.whitediff));
+        setSupportActionBar(grouping_toolbar);
     }
 
     public void set_recycler(){
