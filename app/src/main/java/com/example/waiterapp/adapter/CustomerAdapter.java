@@ -195,7 +195,6 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHo
                 .show();
         bottomSheetDialog.dismiss();
 
-
     }
 
     public void deleteOneItem(BottomSheetDialog bottomSheetDialog , int pos, String name){

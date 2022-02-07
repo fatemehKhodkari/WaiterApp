@@ -1,12 +1,19 @@
 package com.example.waiterapp.activity.customer;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,8 +38,8 @@ public class CustomerActivity extends AppCompatActivity {
     private CustomerDao customerDao;
     private Customer customerr;
     private int poss;
+    private Toolbar customer_toolbar;
     private CustomerAdapter customerAdapter;
-    private LinearLayout call;
     private boolean for_order = false;
     private SlidrInterface slidrInterface;
 
@@ -50,7 +57,7 @@ public class CustomerActivity extends AppCompatActivity {
         init();
         set_floatingActtionButton();
         hide_floatingActionButton();
-
+        set_search();
         set_recyclerView();
     }
 
@@ -64,6 +71,55 @@ public class CustomerActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.customer_recycler);
         floatingActionButton = findViewById(R.id.customer_flabttn);
     }
+
+
+
+    @SuppressLint("ResourceAsColor")
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.search_customer,menu);
+        MenuItem item = menu.findItem(R.id.menu_item_search_customer);
+        SearchView searchView = (SearchView)item.getActionView();
+        searchView.setMaxWidth(Integer.MAX_VALUE);
+        searchView.setBackground(getResources().getDrawable(R.drawable.rippler));
+
+        TextView searchText = (TextView) searchView.findViewById(R.id.search_src_text);
+        Typeface myCustomFont = Typeface.createFromAsset(getAssets(),"font/iran_sans.ttf");
+        searchText.setTypeface(myCustomFont);
+
+
+
+        EditText searchEdit = ((EditText)searchView.findViewById(androidx.appcompat.R.id.search_src_text));
+        searchEdit.setTextColor(getResources().getColor(R.color.whitediff));
+        searchEdit.setHintTextColor(getResources().getColor(R.color.brownlight));
+        searchEdit.setTypeface(myCustomFont);
+        searchEdit.setHint("جستجوی مشتری..");
+        searchEdit.setTextSize(14);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newtxt) {
+                customerAdapter.getFilter().filter(newtxt);
+                return false;
+            }
+        });
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    private void set_search(){
+
+        customer_toolbar = findViewById(R.id.customer_toolbar);
+        customer_toolbar.setTitle("");
+        customer_toolbar.setTitleTextColor(getResources().getColor(R.color.whitediff));
+        setSupportActionBar(customer_toolbar);
+    }
+
 
     public void set_floatingActtionButton(){
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
