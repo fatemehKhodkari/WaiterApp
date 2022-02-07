@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,9 +32,9 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHolder>{
+public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHolder> implements Filterable{
 
-    private List<Customer> list_customer;
+    private List<Customer> list_customer , list_search;
     private DatabaseHelper databaseHelper;
     private CustomerDao customerDao;
     private SubmitOrderDao submitOrderDao;
@@ -44,7 +46,8 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHo
 
 
     public CustomerAdapter(List<Customer> list_customer, Context context, Listener listener){
-        this.list_customer = list_customer;
+        this.list_search = list_customer;
+        this.list_customer = new ArrayList<>(list_search);
         this.context = context;
         this.listener = listener;
     }
@@ -193,8 +196,48 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHo
     }
 
     public void addList(List<Customer> arrCustomerList){
-        list_customer.clear();
-        list_customer.addAll(arrCustomerList);
+        list_search.clear();
+        list_search.addAll(arrCustomerList);
+        list_customer = new ArrayList<>(list_search);
         notifyDataSetChanged();
     }
+
+
+    //  For search
+    @Override
+    public Filter getFilter() {
+        return newsFilter;
+    }
+    private final Filter newsFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+
+            List<Customer> filterdNewList = new ArrayList<>();
+            if(constraint == null || constraint.length() == 0){
+                filterdNewList.addAll(list_search);
+            }else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for(Customer customer : list_search){
+
+                    if(customer.name.toLowerCase().contains(filterPattern))
+                        filterdNewList.add(customer);
+
+                    if(customer.phone.toLowerCase().contains(filterPattern))
+                        filterdNewList.add(customer);
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filterdNewList;
+            results.count = filterdNewList.size();
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            list_customer.clear();
+            list_customer.addAll((ArrayList)results.values);
+            notifyDataSetChanged();
+        }
+    };
+
 }
