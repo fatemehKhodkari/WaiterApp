@@ -1,12 +1,15 @@
 package com.example.waiterapp.activity.product;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -20,8 +23,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.example.waiterapp.R;
 import com.example.waiterapp.database.DatabaseHelper;
@@ -224,15 +230,12 @@ public class AddEditProductActivity extends AppCompatActivity {
         product_add_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent();
-//                intent.setType("image/*");
-//                intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
-//                startActivityForResult(Intent.createChooser(intent , "Select Picture") , PICK_IMAGE);
 
-                CropImage.activity()
-                        .setGuidelines(CropImageView.Guidelines.ON)
-                        .start(AddEditProductActivity.this);
-
+                if(checkStoregPermition()){
+                    CropImage.activity()
+                            .setGuidelines(CropImageView.Guidelines.ON)
+                            .start(AddEditProductActivity.this);
+                }
             }
         });
     }
@@ -292,5 +295,45 @@ public class AddEditProductActivity extends AppCompatActivity {
         });
 
     }
+
+    public Boolean checkStoregPermition() {
+        String[] permission = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
+        if (ContextCompat.checkSelfPermission(this, permission[0]) == PackageManager.PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(AddEditProductActivity.this, new String[]{permission[0]}, 200);
+        } else if (ContextCompat.checkSelfPermission(this, permission[1]) == PackageManager.PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(AddEditProductActivity.this, new String[]{permission[1]}, 200);
+        } else {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == 200) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                Toast.makeText(this, "Storage Permission Granted", Toast.LENGTH_SHORT).show();
+
+            } else {
+                androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
+                builder.setMessage(" دسترسی به مجوزها ");
+                builder.setPositiveButton("برو به تنظیمات", (dialog, which) -> {
+                    dialog.cancel();
+                    Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                    Uri uri = Uri.fromParts("package", getPackageName(), null);
+                    intent.setData(uri);
+                    startActivityForResult(intent, 200);
+                });
+                builder.setNegativeButton("بستن", (dialog, which) -> {
+                    dialog.cancel();
+//                        finish();
+                });
+                builder.show();
+            }
+        }
+    }
+
 
 }
