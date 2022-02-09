@@ -41,8 +41,8 @@ public class SubmittedOrderActivity extends AppCompatActivity {
 
         call_db();
         initID();
-        set_search();
         initRecycler();
+        set_search();
 
     }
 

@@ -346,7 +346,6 @@ public class HomeActivity extends AppCompatActivity {
 
     private void set_drawer_setting(){
 
-
         setting_nav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -355,7 +354,6 @@ public class HomeActivity extends AppCompatActivity {
                 mydrawer.closeDrawer(GravityCompat.END);
             }
         });
-
     }
 
     private void initSetName() {

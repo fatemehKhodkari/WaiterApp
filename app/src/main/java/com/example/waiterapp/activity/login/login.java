@@ -1,15 +1,10 @@
 package com.example.waiterapp.activity.login;
 
-import android.Manifest;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,11 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import com.example.waiterapp.R;
 import com.example.waiterapp.activity.homepage.HomeActivity;
@@ -153,12 +144,12 @@ public class login extends AppCompatActivity {
                 }else if(userDao.getUser(userN,passW) == null){
                     Toast.makeText(getApplicationContext(), "همچین کافیشاپی وجود ندارد!", Toast.LENGTH_SHORT).show();
                 }else{
-                    if(checkPermission()) {
+
                         Intent login = new Intent(login.this, HomeActivity.class);
                         login.putExtra("cafe_name" , userN);
                         startActivity(login);
                         finish();
-                    }
+
                 }
             }
         });
@@ -196,58 +187,58 @@ public class login extends AppCompatActivity {
     }
 
 
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if (requestCode == STORAGE_PERMISSION_CODE ) {
-            if (grantResults.length > 0
-                    && grantResults[0] == PackageManager.PERMISSION_GRANTED
-                    && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "Storage Permission Granted", Toast.LENGTH_SHORT).show();
-
-            } else {
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage("desc_need_permission");
-                builder.setPositiveButton("ok_permission", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                        Uri uri = Uri.fromParts("package", getPackageName(), null);
-                        intent.setData(uri);
-                        startActivityForResult(intent, STORAGE_PERMISSION_CODE);
-                    }
-                });
-                builder.setNegativeButton("exit_app", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                        finish();
-                    }
-                });
-                builder.show();
-            }
-        }
-    }
-
-    public Boolean checkPermission() {
-        String[] permission = {Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CALL_PHONE};
-        int requestCode = STORAGE_PERMISSION_CODE;
-        int requestCode_call = CALL_PERMISSION_CODE;
-        if (ContextCompat.checkSelfPermission(this, permission[0]) == PackageManager.PERMISSION_DENIED) {
-            ActivityCompat.requestPermissions(this, new String[] { permission[0] }, requestCode);
-        }else if (ContextCompat.checkSelfPermission(this, permission[1]) == PackageManager.PERMISSION_DENIED) {
-            ActivityCompat.requestPermissions(this, new String[]{permission[1]}, requestCode);
-        }else if (ContextCompat.checkSelfPermission(this, permission[2]) == PackageManager.PERMISSION_DENIED) {
-            ActivityCompat.requestPermissions(this, new String[]{permission[2]}, requestCode_call);
-        }
-        else {
-            return true;
-        }
-        return false;
-    }
+//
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//
+//        if (requestCode == STORAGE_PERMISSION_CODE ) {
+//            if (grantResults.length > 0
+//                    && grantResults[0] == PackageManager.PERMISSION_GRANTED
+//                    && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+//                Toast.makeText(this, "Storage Permission Granted", Toast.LENGTH_SHORT).show();
+//
+//            } else {
+//                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//                builder.setMessage("desc_need_permission");
+//                builder.setPositiveButton("ok_permission", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        dialog.cancel();
+//                        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+//                        Uri uri = Uri.fromParts("package", getPackageName(), null);
+//                        intent.setData(uri);
+//                        startActivityForResult(intent, STORAGE_PERMISSION_CODE);
+//                    }
+//                });
+//                builder.setNegativeButton("exit_app", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        dialog.cancel();
+//                        finish();
+//                    }
+//                });
+//                builder.show();
+//            }
+//        }
+//    }
+//
+//    public Boolean checkPermission() {
+//        String[] permission = {Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CALL_PHONE};
+//        int requestCode = STORAGE_PERMISSION_CODE;
+//        int requestCode_call = CALL_PERMISSION_CODE;
+//        if (ContextCompat.checkSelfPermission(this, permission[0]) == PackageManager.PERMISSION_DENIED) {
+//            ActivityCompat.requestPermissions(this, new String[] { permission[0] }, requestCode);
+//        }else if (ContextCompat.checkSelfPermission(this, permission[1]) == PackageManager.PERMISSION_DENIED) {
+//            ActivityCompat.requestPermissions(this, new String[]{permission[1]}, requestCode);
+//        }else if (ContextCompat.checkSelfPermission(this, permission[2]) == PackageManager.PERMISSION_DENIED) {
+//            ActivityCompat.requestPermissions(this, new String[]{permission[2]}, requestCode_call);
+//        }
+//        else {
+//            return true;
+//        }
+//        return false;
+//    }
 
     private void hideKeyBoard(){
 

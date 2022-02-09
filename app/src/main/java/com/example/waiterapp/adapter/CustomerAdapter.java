@@ -40,7 +40,6 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHo
     private CustomerDao customerDao;
     private SubmitOrderDao submitOrderDao;
     private DetailOrderDao detailOrderDao;
-    private Customer customer;
     private Context context;
     private Listener listener;
     private String text;
@@ -67,7 +66,8 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(CustomerAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        customer = list_customer.get(position);
+
+        Customer customer = list_customer.get(position);
         holder.customer_name_tv.setText(customer.name);
         holder.customer_phone_tv.setText(customer.phone);
         holder.customer_address_tv.setText(customer.address);
