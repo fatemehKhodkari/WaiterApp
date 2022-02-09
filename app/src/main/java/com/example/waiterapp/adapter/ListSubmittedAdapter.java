@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,17 +19,19 @@ import com.example.waiterapp.database.dao.SubmitOrderDao;
 import com.example.waiterapp.helper.App;
 import com.example.waiterapp.model.Order;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ListSubmittedAdapter extends  RecyclerView.Adapter<ListSubmittedAdapter.ViewHolder>{
+public class ListSubmittedAdapter extends  RecyclerView.Adapter<ListSubmittedAdapter.ViewHolder> implements Filterable {
 
     private Context context;
-    private List<Order> orderList;
+    private List<Order> orderList , list_search;
     DatabaseHelper databaseHelper = App.getDatabase();
 
     public ListSubmittedAdapter(Context context, List<Order> orderList) {
+        this.list_search = orderList;
         this.context = context;
-        this.orderList = orderList;
+        this.orderList = new ArrayList<>(list_search);
     }
 
     @Override
@@ -103,4 +107,41 @@ public class ListSubmittedAdapter extends  RecyclerView.Adapter<ListSubmittedAda
 
         }
     }
+
+    //  For search
+    @Override
+    public Filter getFilter() {
+        return newsFilter;
+    }
+    private final Filter newsFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+
+            List<Order> filterdNewList = new ArrayList<>();
+            if(constraint == null || constraint.length() == 0){
+                filterdNewList.addAll(list_search);
+            }else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for(Order order : list_search){
+
+                    if(order.name_orderer.toLowerCase().contains(filterPattern))
+                        filterdNewList.add(order);
+
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filterdNewList;
+            results.count = filterdNewList.size();
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            orderList.clear();
+            orderList.addAll((ArrayList)results.values);
+            notifyDataSetChanged();
+        }
+    };
+
+
 }
