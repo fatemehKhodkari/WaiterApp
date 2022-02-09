@@ -104,6 +104,7 @@ public class HomeActivity extends AppCompatActivity {
         about_nav = findViewById(R.id.about_nav);
         guid_nav = findViewById(R.id.about_nav);
         signup_nav = findViewById(R.id.signup_nav);
+        cafeName = findViewById(R.id.cafe_name);
     }
 
 
@@ -273,6 +274,7 @@ public class HomeActivity extends AppCompatActivity {
         getTotalWeekly();
         getTotalMonthly();
         setName();
+        initSetName();
         setTotal_profit();
     }
 
@@ -354,6 +356,13 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void initSetName() {
+
+        Intent intent = getIntent();
+        String a = intent.getStringExtra("cafe_name");
+        cafeName.setText(a);
     }
 
 }

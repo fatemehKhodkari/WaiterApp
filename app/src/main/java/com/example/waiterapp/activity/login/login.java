@@ -155,6 +155,7 @@ public class login extends AppCompatActivity {
                 }else{
                     if(checkPermission()) {
                         Intent login = new Intent(login.this, HomeActivity.class);
+                        login.putExtra("cafe_name" , userN);
                         startActivity(login);
                         finish();
                     }
