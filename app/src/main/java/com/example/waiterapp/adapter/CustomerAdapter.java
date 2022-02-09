@@ -1,6 +1,7 @@
 package com.example.waiterapp.adapter;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -16,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.waiterapp.R;
@@ -25,6 +27,7 @@ import com.example.waiterapp.database.dao.CustomerDao;
 import com.example.waiterapp.database.dao.DetailOrderDao;
 import com.example.waiterapp.database.dao.SubmitOrderDao;
 import com.example.waiterapp.helper.App;
+import com.example.waiterapp.helper.Permition;
 import com.example.waiterapp.model.Customer;
 import com.example.waiterapp.model.Order;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -43,13 +46,15 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHo
     private Context context;
     private Listener listener;
     private String text;
+    private Activity activity;
 
 
-    public CustomerAdapter(List<Customer> list_customer, Context context, Listener listener){
+    public CustomerAdapter(List<Customer> list_customer, Context context, Listener listener , Activity activity){
         this.list_search = list_customer;
         this.list_customer = new ArrayList<>(list_search);
         this.context = context;
         this.listener = listener;
+        this.activity = activity;
     }
 
     public interface Listener{
@@ -74,10 +79,21 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHo
 
         holder.call.setOnClickListener(v -> {
 
-            String number_txt = list_search.get(position).phone;
-            Intent intent =  new Intent(Intent.ACTION_VIEW);
-            intent.setData(Uri.parse("tel:" + number_txt));
-            context.startActivity(intent);
+            Permition permition;
+            permition = new Permition(200,context , activity) {
+
+                @Override
+                public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+                    super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+                }
+            };
+
+            if (permition.checkPermission()){
+                String number_txt = list_search.get(position).phone;
+                Intent intent =  new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("tel:" + number_txt));
+                context.startActivity(intent);
+            }
 
         });
 

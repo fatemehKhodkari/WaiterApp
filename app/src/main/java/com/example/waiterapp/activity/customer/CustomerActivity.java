@@ -163,7 +163,7 @@ public class CustomerActivity extends AppCompatActivity {
                     customerAdapter.showDialogBSheet(pos , name , customer.id);
                 }
             }
-        });
+        },CustomerActivity.this);
         recyclerView.setAdapter(customerAdapter);
     }
 
