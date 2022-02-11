@@ -54,10 +54,10 @@
                         >
                         <TextView
                             android:text="محصولات"
-                            android:textSize="20dp"
+                            android:textSize="18dp"
                             android:textColor="@color/black"
                             android:textStyle="bold"
-                            android:fontFamily="@fonts/IranianSans"
+                            android:fontFamily="@font/iran_sans"
                             android:layout_gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
@@ -73,6 +73,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:text="7800"
+                                android:fontFamily="@font/irsansfanum"
                                 android:textSize="11dp"
                                 android:layout_marginRight="10dp"
                                 android:layout_gravity="center"
@@ -135,10 +136,10 @@
                         >
                         <TextView
                             android:text="مشتری"
-                            android:textSize="20dp"
+                            android:textSize="18dp"
+                            android:fontFamily="@font/iran_sans"
                             android:textColor="@color/black"
                             android:textStyle="bold"
-                            android:fontFamily="@fonts/IranianSans"
                             android:layout_gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
@@ -155,6 +156,7 @@
                                 android:layout_height="match_parent"
                                 android:text="7800"
                                 android:textSize="11dp"
+                                android:fontFamily="@font/irsansfanum"
                                 android:layout_marginRight="10dp"
                                 android:layout_gravity="center"
                                 android:gravity="center"
@@ -224,10 +226,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:fontFamily="@fonts/IranianSans"
+                            android:fontFamily="@font/iran_sans"
                             android:text="دسته بندی"
                             android:textColor="@color/black"
-                            android:textSize="20dp"
+                            android:textSize="18dp"
                             android:textStyle="bold" />
                         <LinearLayout
                             android:layout_width="50dp"
@@ -242,6 +244,7 @@
                                 android:layout_height="match_parent"
                                 android:text="7800"
                                 android:textSize="11dp"
+                                android:fontFamily="@font/irsansfanum"
                                 android:layout_gravity="center"
                                 android:gravity="center"
                                 android:textAlignment="textEnd"
@@ -303,10 +306,10 @@
                         >
                         <TextView
                             android:text="سفارشات"
-                            android:textSize="20dp"
+                            android:textSize="18dp"
+                            android:fontFamily="@font/iran_sans"
                             android:textColor="@color/black"
                             android:textStyle="bold"
-                            android:fontFamily="@fonts/IranianSans"
                             android:layout_gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
@@ -323,6 +326,7 @@
                                 android:layout_height="match_parent"
                                 android:text="7800"
                                 android:textSize="11dp"
+                                android:fontFamily="@font/irsansfanum"
                                 android:layout_gravity="center"
                                 android:gravity="center"
                                 android:textAlignment="textEnd"

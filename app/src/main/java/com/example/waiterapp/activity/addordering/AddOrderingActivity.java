@@ -91,9 +91,10 @@ public class AddOrderingActivity extends AppCompatActivity {
         callDatabase();
         init();
         click_customer();
-        set_Lottie();
         click_add_product();
         set_recycler();
+        set_Lottie();
+
         set_submit_order();
         set_date_onClick();
         set_timePicker();
@@ -162,6 +163,7 @@ public class AddOrderingActivity extends AppCompatActivity {
     }
 
     private void set_Lottie(){
+
         lottie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -171,6 +173,7 @@ public class AddOrderingActivity extends AppCompatActivity {
                     orderDetailList.clear();
                     orderingAdapter.notifyDataSetChanged();
                     bttnvigtion_submit_order.setVisibility(View.GONE);
+
                 }else {
                     Toast.makeText(AddOrderingActivity.this, "لیست خالی است", Toast.LENGTH_SHORT).show();
                 }

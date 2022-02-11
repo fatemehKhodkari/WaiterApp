@@ -48,7 +48,7 @@
                     android:text="مشتری"
                     android:gravity="center"
                     android:paddingTop="3dp"
-                    android:textColor="#d3d3d3"
+                    android:textColor="@color/brownlight"
                     android:fontFamily="@font/iran_sans"
                     android:textSize="14dp"
                     />

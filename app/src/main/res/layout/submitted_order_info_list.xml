@@ -160,7 +160,7 @@
     <LinearLayout
         android:id="@+id/second"
         android:layout_width="match_parent"
-        android:layout_height="5dp"
+        android:layout_height="3dp"
         android:background="@color/whitediff"
         android:layout_below="@+id/first"
 

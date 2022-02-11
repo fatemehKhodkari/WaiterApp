@@ -18,6 +18,7 @@
         tools:listitem="@layout/product_submited_info"></androidx.recyclerview.widget.RecyclerView>
 
     <LinearLayout
+        android:id="@+id/add_orderer_info_product"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -60,6 +61,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0000"
+                    android:fontFamily="@font/irsansfanum"
                     android:textColor="@color/browwn"
                     android:textSize="14dp"
                     android:textStyle="bold" />
@@ -96,6 +98,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="4dp"
                 android:text="000"
+                android:fontFamily="@font/irsansfanum"
                 android:textColor="@color/browwn"
                 android:textSize="16dp"
                 android:textStyle="bold" />
@@ -122,6 +125,7 @@
 
     <LinearLayout
         android:id="@+id/not_order_here"
+        android:layout_below="@+id/add_orderer_info_product"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"

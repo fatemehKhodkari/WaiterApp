@@ -41,6 +41,7 @@
                         android:layout_height="wrap_content"
                         android:text="امروز :"
                         android:textSize="14dp"
+                        android:fontFamily="@font/iran_sans"
                         android:textColor="@color/browwn"
                         android:textStyle="bold"
                         android:gravity="center" />
@@ -96,6 +97,7 @@
                         android:layout_height="wrap_content"
                         android:text="این هفته :"
                         android:textSize="14dp"
+                        android:fontFamily="@font/iran_sans"
                         android:textColor="@color/browwn"
                         android:textStyle="bold"
                         android:gravity="center" />
@@ -141,6 +143,7 @@
                         android:layout_height="wrap_content"
                         android:text="این ماه :"
                         android:textSize="14dp"
+                        android:fontFamily="@font/iran_sans"
                         android:textColor="@color/browwn"
                         android:textStyle="bold" />
                     <TextView
@@ -203,6 +206,7 @@
                         android:layout_height="wrap_content"
                         android:text="فروش کل :"
                         android:textSize="14dp"
+                        android:fontFamily="@font/iran_sans"
                         android:textColor="@color/browwn"
                         android:textStyle="bold"
                         android:gravity="center" />

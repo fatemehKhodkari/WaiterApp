@@ -81,6 +81,7 @@
                         android:drawableStart="@drawable/store_ic"
                         android:drawablePadding="10dp"
                         android:focusable="true"
+                        android:fontFamily="@font/iran_sans"
                         android:inputType="textPersonName"
                         android:textColor="#AFB1B3"
                         app:hintTextColor="#AFB1B3"
@@ -95,6 +96,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/iran_sans"
                     android:hint="رمز عبور"
                     app:endIconMode="password_toggle">
 
@@ -109,6 +111,8 @@
                         android:inputType="textPassword"
                         android:textColor="#AFB1B3"
                         app:hintTextColor="#AFB1B3"
+                        android:fontFamily="@font/irsansfanum"
+
                         android:textColorHint="#AFB1B3" />
 
                 </com.google.android.material.textfield.TextInputLayout>
