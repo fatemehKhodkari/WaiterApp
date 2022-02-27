@@ -29,21 +29,22 @@ import com.example.waiterapp.model.Grouping;
 import com.example.waiterapp.model.Product;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
-import com.mig35.carousellayoutmanager.CenterScrollListener;
 
 import java.util.ArrayList;
 
 public class ProductActivity extends AppCompatActivity {
 
-    FloatingActionButton floatingActionButton;
-    RecyclerView category_recycler , product_recycler;
-    DatabaseHelper databaseHelper;
-    ProductDao productDao;
-    GroupingDao groupingDao;
-    ProductAdapter productAdapter;
-    GroupingProductAdapter groupingProductAdapter;
-    Toolbar toolbar;
-    String category;
+    private FloatingActionButton floatingActionButton;
+    private RecyclerView category_recycler , product_recycler;
+    private DatabaseHelper databaseHelper;
+    private ProductDao productDao;
+    private GroupingDao groupingDao;
+    private ProductAdapter productAdapter;
+    private GroupingProductAdapter groupingProductAdapter;
+    private Toolbar toolbar;
+    private TextView noProduct;
+    private String category;
+
 
 
     private Boolean for_order = false ;
@@ -79,12 +80,18 @@ public class ProductActivity extends AppCompatActivity {
         if(getIntent().getExtras() != null){
             for_order = getIntent().getBooleanExtra("for_order",false);
         }
+        if (getIntent().getStringExtra("groupingToproduct") != null) {
+            String for_grouping = getIntent().getStringExtra("groupingToproduct");
+            Grouping grouping = new Gson().fromJson(for_grouping, Grouping.class);
+            category = grouping.name;
+        }
     }
 
     public void init(){
         category_recycler = findViewById(R.id.grouping_product_recycler);
         product_recycler = findViewById(R.id.product_recycler);
         floatingActionButton = findViewById(R.id.product_flabttn);
+        noProduct = findViewById(R.id.noProduct);
     }
 
     public void set_floatingActtionButton(){
@@ -129,7 +136,7 @@ public class ProductActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this ,LinearLayoutManager.HORIZONTAL , false);
         category_recycler.setLayoutManager(layoutManager);
 
-        category_recycler.addOnScrollListener(new CenterScrollListener());
+//        category_recycler.addOnScrollListener(new CenterScrollListener());
         groupingProductAdapter = new GroupingProductAdapter(this, groupingArrayList , new GroupingProductAdapter.Listener() {
             @Override
             public void onClick(int pos, Grouping catgry) {
@@ -140,7 +147,7 @@ public class ProductActivity extends AppCompatActivity {
                 }
                 initListProduct();
             }
-        });
+        }, category);
         category_recycler.setAdapter(groupingProductAdapter);
     }
 
@@ -219,11 +226,18 @@ public class ProductActivity extends AppCompatActivity {
     private void initListProduct(){
         Log.e("qqqq", "initListProduct: " + category);
         if(productAdapter != null){
+
+            category_recycler.setVisibility(View.VISIBLE);
+
             if (category == null || category.isEmpty()){
                 productAdapter.addList(productDao.getProductList());
             }else {
                 productAdapter.addList(productDao.getListByCtegory(category));
             }
+        }else {
+            category_recycler.setVisibility(View.GONE);
+            noProduct.setVisibility(View.VISIBLE);
+
         }
     }
 
@@ -233,7 +247,9 @@ public class ProductActivity extends AppCompatActivity {
         super.onDestroy();
 //        if (databaseHelper != null) databaseHelper.close();
     }
-
-
+//
+//    private void setReverseRecycler() {
+//        Tools.setReverseRecycler(this, recyclerView_product);
+//    }
 
 }

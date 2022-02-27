@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.waiterapp.R;
 import com.example.waiterapp.activity.grouping.AddEditGroupingActivity;
+import com.example.waiterapp.activity.product.ProductActivity;
 import com.example.waiterapp.database.DatabaseHelper;
 import com.example.waiterapp.database.dao.GroupingDao;
 import com.example.waiterapp.model.Grouping;
@@ -64,10 +65,11 @@ public class GroupingAdapter extends RecyclerView.Adapter<GroupingAdapter.ViewHo
             e.printStackTrace();
         }
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onClick(View view) {
+            public boolean onLongClick(View v) {
                 showDialogBSheet(position);
+                return false;
             }
         });
 
@@ -78,7 +80,7 @@ public class GroupingAdapter extends RecyclerView.Adapter<GroupingAdapter.ViewHo
         return groupingList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnLongClickListener , View.OnClickListener{
         ImageView grouping_img;
         TextView grouping_name_tv;
 
@@ -87,6 +89,23 @@ public class GroupingAdapter extends RecyclerView.Adapter<GroupingAdapter.ViewHo
 
             grouping_img = itemView.findViewById(R.id.grouping_photo_imv);
             grouping_name_tv = itemView.findViewById(R.id.grouping_name_tv);
+            itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
+        }
+
+
+        @Override
+        public void onClick(View v) {
+
+            Intent intent = new Intent(context, ProductActivity.class);
+            intent.putExtra("groupingToproduct" , new Gson().toJson(groupingList.get(getAdapterPosition())));
+            context.startActivity(intent);
+        }
+
+        @Override
+        public boolean onLongClick(View v) {
+            showDialogBSheet(getAdapterPosition());
+            return true;
         }
     }
 

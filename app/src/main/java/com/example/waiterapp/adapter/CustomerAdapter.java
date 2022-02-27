@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.waiterapp.R;
@@ -97,14 +98,6 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHo
 
         });
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-//                showDialogBSheet(position);
-                listener.onClickListener(customer , position , list_customer.get(position).name);
-            }
-        });
     }
 
     @Override
@@ -116,6 +109,8 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView customer_name_tv, customer_phone_tv , customer_address_tv;
         LinearLayout call;
+        CardView cardSwipe;
+
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -123,6 +118,11 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHo
             customer_phone_tv = itemView.findViewById(R.id.customer_phone);
             customer_address_tv =itemView.findViewById(R.id.customer_address);
             call = itemView.findViewById(R.id.call);
+            cardSwipe = itemView.findViewById(R.id.costomerinfocard);
+            cardSwipe.setOnClickListener(v -> {
+                Customer customer = list_customer.get(getAdapterPosition());
+                listener.onClickListener(customer, getAdapterPosition(), list_customer.get(getAdapterPosition()).name);
+            });
         }
     }
 

@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:id="@+id/group_produc_back"
     android:paddingHorizontal="10dp"
     android:paddingVertical="5dp"
-    android:background="@drawable/back_grouping_item"
     android:layout_margin="5dp"
-    android:gravity="center">
+    android:gravity="center"
+    android:outlineSpotShadowColor="@color/browwn"
+    android:foreground="@drawable/back_grouping_item"
+    app:cardBackgroundColor="@color/whitediff"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="4dp">
 
     <TextView
         android:id="@+id/grouping_product_name_tv"
@@ -20,7 +25,8 @@
         android:fontFamily="@font/iran_sans"
         android:paddingHorizontal="10dp"
         android:gravity="center"
+        android:paddingTop="2dp"
         android:layout_gravity="center"
         android:textStyle="bold"/>
 
-</LinearLayout>
+</androidx.cardview.widget.CardView>

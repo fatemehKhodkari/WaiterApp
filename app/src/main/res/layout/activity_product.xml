@@ -30,6 +30,16 @@
         android:background="#dbdbdb"
         android:orientation="horizontal" />
 
+    <TextView
+        android:id="@+id/noProduct"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/linear_saparat"
+        android:fontFamily="@font/iran_sans"
+        android:gravity="center"
+        android:text="محصولی وجود ندارد"
+        android:visibility="gone" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/product_recycler"
         android:layout_width="match_parent"
